@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Kitties
+Exec=kitties
+Icon=io.github.Micro856.KittiesGtk
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=GTK;
+StartupNotify=true
+DBusActivatable=true
