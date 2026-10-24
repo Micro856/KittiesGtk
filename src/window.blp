@@ -21,6 +21,14 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
             icon-name: "dice-symbolic";
             tooltip-text: _("Randomize");
           }
+          SpinButton cat_id_button {
+            adjustment: Adjustment {
+                          lower: 1;
+                          upper: 1000;
+                          step-increment: 1;
+                        };
+            digits: 0;
+          }
           [end]
           MenuButton {
                 primary: true;

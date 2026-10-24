@@ -28,6 +28,8 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private unowned Gtk.DropDown cat_selector;
     [GtkChild]
     private unowned Adw.Banner data_issue;
+     [GtkChild]
+    private unowned Gtk.SpinButton cat_id_button;
 
     private int64 cat_id;
     private string cat_url;
@@ -35,6 +37,10 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
     public Window (Gtk.Application app) {
         Object (application: app);
+
+        cat_id_button.value_changed.connect (() => {
+            set_spinner();
+        });
 
         cat_selector.notify["selected-item"].connect (() => {
             image_render_random ();
@@ -48,19 +54,22 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             image_render_random ();
         });
 
-        image_renderer ();
+        image_render_random ();
         }
 
-    private async void image_render_random () {
-        yield image_get_id();
+    private async void set_spinner() {
+        cat_id = (int64) cat_id_button.get_value();
+        yield image_get ();
+    }
+
+    private async void image_get () {
         yield image_get_url();
         yield image_get_data ();
         image_render ();
     }
 
-    private async void image_renderer () {
-        image_render_random ();
-        image_render ();
+    private async void image_render_random () {
+        yield image_get_id();
     }
 
     private async void image_get_id () {
@@ -69,6 +78,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         var backend = new Kittiesgtk.Backend ();
         cat_id = yield backend.refresh_id (selection.string);
         stdout.printf ("ID: %" + int64.FORMAT + "\n", cat_id);
+        cat_id_button.set_value((double) cat_id);
     }
 
     private async void image_get_url () {
