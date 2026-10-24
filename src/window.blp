@@ -9,6 +9,13 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
   Adw.ToolbarView {
     [top]
     Adw.HeaderBar {
+          [start]
+          Button dice {
+            halign: center;
+            valign: end;
+            icon-name: "dice-symbolic";
+            tooltip-text: _("Randomize");
+          }
           [end]
           MenuButton {
                 primary: true;
@@ -17,11 +24,12 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
                 menu-model: primary_menu;
           }
       }
-
-    Gtk.Label label {
-      label: _("Hello, World!");
-      styles ["title-1"]
-    }
+      Picture picture {
+        can-shrink: true;
+        content-fit: contain;
+        halign: center;
+        valign: center;
+      }
   }
 }
 

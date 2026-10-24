@@ -21,9 +21,33 @@
 [GtkTemplate (ui = "/io/github/Micro856/KittiesGtk/window.ui")]
 public class Kittiesgtk.Window : Adw.ApplicationWindow {
     [GtkChild]
-    private unowned Gtk.Label label;
+    private unowned Gtk.Picture picture;
+    [GtkChild]
+    private unowned Gtk.Button dice;
 
     public Window (Gtk.Application app) {
         Object (application: app);
+
+        dice.clicked.connect (() => {
+            image_render_random ();
+        });
+
+        image_render_random ();
+        }
+
+    private async void image_render_random () {
+        var backend = new Kittiesgtk.Backend ();
+
+        var cat_id = yield backend.refresh_id ();
+        stdout.printf ("ID: %" + int64.FORMAT + "\n", cat_id);
+
+        var url = backend.refresh_url (cat_id);
+        stdout.printf ("%s\n", url);
+
+        var session = new Soup.Session ();
+        var image = new Soup.Message ("GET", @url);
+        GLib.Bytes image_data = yield session.send_and_read_async (image, GLib.Priority.DEFAULT, null);
+        var to_display = Gdk.Texture.from_bytes (image_data);
+        picture.set_paintable (to_display);
     }
 }
