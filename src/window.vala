@@ -70,6 +70,5 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         } catch {
             data_issue.set_revealed (true);
         }
-
     }
 }
