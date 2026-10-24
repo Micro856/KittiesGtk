@@ -2,7 +2,9 @@ kittiesgtk_sources = [
   'main.vala',
   'application.vala',
   'window.vala',
-  'backend.vala'
+  'backend.vala',
+  'gary_api.vala',
+  'rory_api.vala'
 ]
 
 kittiesgtk_deps = [
@@ -11,6 +13,7 @@ kittiesgtk_deps = [
   dependency('libadwaita-1', version: '>= 1.4'),
   dependency('libsoup-3.0'),
   dependency('json-glib-1.0'),
+  dependency('gio-2.0'),
 ]
 
 blueprints = custom_target('blueprints',

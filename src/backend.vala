@@ -19,23 +19,27 @@
  */
 
 public class Kittiesgtk.Backend {
-    public async int64 refresh_id () {
-        var session = new Soup.Session ();
-
-        var json_get = new Soup.Message ("GET", @"https://api.garythe.cat/gary");
-        GLib.Bytes raw_json_response_data = yield session.send_and_read_async (json_get, GLib.Priority.DEFAULT, null);
-        string json_response_data = (string) raw_json_response_data.get_data ();
-
-        var parser = new Json.Parser ();
-        parser.load_from_data (json_response_data);
-        Json.Object json_root_object = parser.get_root ().get_object ();
-	    int64 cat_id = json_root_object.get_int_member ("number");
-
+    public async int64 refresh_id (string cat_name) {
+        var gary = new Kittiesgtk.GaryApi ();
+        var rory = new Kittiesgtk.RoryApi ();
+        int64 cat_id = 0;
+        if (cat_name == "Gary" || cat_name == "Goober") {
+            cat_id = yield gary.get_gary_id (cat_name);
+        } else if (cat_name == "Rory") {
+            cat_id = yield rory.get_rory_id ();
+        }
         return cat_id;
     }
 
-    public string refresh_url (int64 cat_id) {
-        var url = "https://cdn.garythe.cat/Gary/Gary" + cat_id.to_string () + ".jpg";
+    public async string refresh_url (int64 cat_id, string cat_name) {
+        var gary = new Kittiesgtk.GaryApi ();
+        var rory = new Kittiesgtk.RoryApi ();
+        var url = "https://example.org";
+        if (cat_name == "Gary" || cat_name == "Goober") {
+            url = gary.get_gary_url (cat_id, cat_name);
+        } else if (cat_name == "Rory") {
+            url = yield rory.get_rory_url (cat_id);
+        }
         return url;
     }
 }

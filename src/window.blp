@@ -9,6 +9,11 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
   Adw.ToolbarView {
     [top]
     Adw.HeaderBar {
+          title-widget: DropDown cat_selector {
+                          model: StringList {
+                          strings: ["Gary", "Goober", "Rory"];
+                          };
+                        };
           [start]
           Button dice {
             halign: center;
@@ -24,11 +29,21 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
                 menu-model: primary_menu;
           }
       }
-      Picture picture {
-        can-shrink: true;
-        content-fit: contain;
-        halign: center;
-        valign: center;
+      Box {
+        orientation: vertical;
+
+        Adw.Banner data_issue {
+          title: _("A problem occured while getting the image.");
+          button-label: _("Try Again");
+          revealed: false;
+        }
+
+        Picture picture {
+          can-shrink: true;
+          content-fit: contain;
+          halign: center;
+          valign: center;
+        }
       }
   }
 }
