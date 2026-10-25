@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Kitties
-Exec=kitties
+Exec=kittiesgtk
 Icon=io.github.Micro856.KittiesGtk
 Terminal=false
 Type=Application
