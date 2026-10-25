@@ -1,14 +1,13 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Polish translation for KittiesGtk
+# Copyright (C) 2026 Marcel Mrówka
 # This file is distributed under the same license as the kitties package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # Marcel Mrówka <micro.mail88@gmail.com>, 2026.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: kitties\n"
+"Project-Id-Version: kittiesgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-25 21:36+0100\n"
+"POT-Creation-Date: 2026-10-25 21:43+0100\n"
 "PO-Revision-Date: 2026-10-25 21:43+0100\n"
 "Last-Translator: Marcel Mrówka <micro.mail88@gmail.com>\n"
 "Language-Team: Polish <https://l10n.gnome.org/teams/pl/>\n"
