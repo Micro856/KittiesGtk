@@ -12,8 +12,7 @@
         "--share=ipc",
         "--socket=fallback-x11",
         "--device=dri",
-        "--socket=wayland",
-        "--filesystem=home"
+        "--socket=wayland"
     ],
     "build-options" : {
         "append-path" : "/usr/lib/sdk/vala/bin",
@@ -39,7 +38,7 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "file:///var/home/microwave/Projekty"
+                    "url" : "file:///var/home/microwave/Projekty/KittiesGtk"
                 }
             ]
         }
