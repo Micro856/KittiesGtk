@@ -34,7 +34,7 @@
   <!-- URLs of this type should point to a webpage showing information on how to contribute to the described software project -->
   <url type="contribute">https://github.org/Micro856/KittiesGtk</url>
 
-  <translation type="gettext">kittiesgtk</translation>
+  <translation type="gettext">kitties</translation>
   <!-- All graphical applications having a desktop file must have this tag in the MetaInfo.
      If this is present, appstreamcli compose will pull icons, keywords and categories from the desktop file. -->
   <launchable type="desktop-id">io.github.Micro856.KittiesGtk.desktop</launchable>

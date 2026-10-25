@@ -7,7 +7,7 @@
         "org.freedesktop.Sdk.Extension.vala"
     ],
     "separate-locales": false,
-    "command" : "kittiesgtk",
+    "command" : "kitties",
     "finish-args" : [
         "--share=network",
         "--share=ipc",

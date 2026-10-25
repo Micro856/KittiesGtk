@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schemalist gettext-domain="kittiesgtk">
+<schemalist gettext-domain="kitties">
 	<schema id="io.github.Micro856.KittiesGtk" path="/io/github/Micro856/KittiesGtk/">
 	</schema>
 </schemalist>

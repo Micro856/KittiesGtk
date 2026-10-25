@@ -33,7 +33,7 @@ kittiesgtk_sources += gnome.compile_resources('kittiesgtk-resources',
   dependencies: [blueprints],
 )
 
-executable('kittiesgtk', kittiesgtk_sources,
+executable('kitties', kittiesgtk_sources,
   dependencies: kittiesgtk_deps,
   include_directories: config_inc,
        install: true,
