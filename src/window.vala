@@ -25,6 +25,8 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     [GtkChild]
     private unowned Gtk.Button dice;
     [GtkChild]
+    private unowned Gtk.Button getting;
+    [GtkChild]
     private unowned Gtk.DropDown cat_selector;
     [GtkChild]
     private unowned Adw.Banner data_issue;
@@ -40,17 +42,28 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private unowned Adw.ActionRow info_copying;
     [GtkChild]
     private unowned Adw.ActionRow info_api;
+    [GtkChild]
+    private unowned Adw.ToastOverlay file_action;
+    [GtkChild]
+    private unowned Adw.Toast file_saved;
+    [GtkChild]
+    private unowned Adw.Toast file_error;
+    [GtkChild]
+    private unowned Adw.Toast file_cancelled;
 
     private int64 cat_id;
     private string cat_url;
     private GLib.Bytes image_data;
     private Gtk.StringObject selection;
+    private GLib.File file;
+
+    private Cancellable cancellable;
 
     public Window (Gtk.Application app) {
         Object (application: app);
 
         cat_id_button.notify["value"].connect (() => {
-            set_spinner();
+            set_spinner ();
         });
 
         cat_selector.notify["selected-item"].connect (() => {
@@ -59,6 +72,10 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
         dice.clicked.connect (() => {
             image_render_random ();
+        });
+
+        getting.clicked.connect (() => {
+            saving ();
         });
 
         data_issue.button_clicked.connect (() => {
@@ -120,13 +137,50 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         try {
             data_issue.set_revealed (false);
             image_data = yield session.send_and_read_async (image, GLib.Priority.DEFAULT, null);
+            info_id.show ();
+            info_url.show ();
         } catch {
             data_issue.set_revealed (true);
+            info_id.hide ();
+            info_url.hide ();
         }
     }
 
     private async void image_render () {
         var to_display = Gdk.Texture.from_bytes (image_data);
         picture.set_paintable (to_display);
+    }
+
+    private async void saving () {
+        var dialog = new Gtk.FileDialog ();
+        var cat_name = selection.string;
+        if (cat_name == "Rory") {
+            var initial_url = GLib.Path.get_basename (cat_url);
+            var final_url = @"$cat_name$cat_id - $initial_url";
+            dialog.set_initial_name (final_url);
+        } else {
+            var final_url = GLib.Path.get_basename (cat_url);
+            dialog.set_initial_name (final_url);
+        }
+        try {
+            file = yield dialog.save (this, cancellable);
+            stdout.printf ("%s\n", (string) file.get_path ());
+            try {
+                var file_stream = file.replace (null, false, FileCreateFlags.NONE);
+                if (file.query_exists ()) {
+                    file_action.add_toast (file_saved);
+                }
+                var data_stream = new DataOutputStream (file_stream);
+                data_stream.write_bytes (image_data);
+            } catch {
+                file_action.add_toast (file_error);
+            }
+        } catch {
+            file_action.add_toast (file_cancelled);
+        }
+    }
+
+    private void open_file () {
+        stdout.printf("TEST");
     }
 }

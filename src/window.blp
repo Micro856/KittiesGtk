@@ -6,87 +6,97 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
   default-width: 740;
   default-height: 600;
 
-  Adw.ToolbarView {
-    [top]
-    Adw.HeaderBar {
-          title-widget: Box {
-            orientation: horizontal;
-            spacing: 6;
-            DropDown cat_selector {
-              model: StringList {
-                strings: ["Garfield", "Gary", "Goober", "Gully", "Rory"];
-              };
-              selected: 1;
-            }
-            MenuButton {
-              primary: false;
-              icon-name: "image-symbolic";
-              tooltip-text: _("Image selector");
-              popover: Popover {
-                Adw.PreferencesGroup {
-                  Adw.SpinRow cat_id_button {
-                    title: _("Picture number");
-                    adjustment: Adjustment {
-                      lower: 1;
-                      upper: 1000;
-                      step-increment: 1;
-                    };
-                    digits: 0;
-                  }
+  Adw.ToastOverlay file_action {
+    Adw.ToolbarView {
+      [top]
+      Adw.HeaderBar {
+        title-widget: Box {
+          orientation: horizontal;
+          spacing: 6;
+          DropDown cat_selector {
+            model: StringList {
+              strings: ["Garfield", "Gary", "Goober", "Gully", "Rory"];
+            };
+            selected: 1;
+          }
+          MenuButton {
+            primary: false;
+            icon-name: "image-symbolic";
+            tooltip-text: _("Image Selector");
+            popover: Popover {
+              Adw.PreferencesGroup {
+                Adw.SpinRow cat_id_button {
+                  title: _("Picture Number");
+                  adjustment: Adjustment {
+                    lower: 0;
+                    upper: 1000;
+                    step-increment: 1;
+                  };
+                  digits: 0;
                 }
-              };
+              }
+            };
+          }
+        };
+      [start]
+      Box {
+        spacing: 6;
+        Button dice {
+          halign: center;
+          valign: end;
+          icon-name: "dice-symbolic";
+          tooltip-text: _("Randomize Image");
+        }
+        Button getting {
+          halign: center;
+          valign: end;
+          icon-name: "document-save-symbolic";
+          tooltip-text: _("Save Image");
+        }
+      }
+      [end]
+      Box {
+        spacing: 6;
+        MenuButton {
+          primary: false;
+          icon-name: "info-outline-symbolic";
+          tooltip-text: _("Image Details");
+          popover: Popover {
+            Adw.PreferencesGroup {
+              Adw.ActionRow info_cat {
+                styles ["property"]
+                title: _("Cat");
+              }
+              Adw.ActionRow info_id {
+                styles ["property"]
+                title: _("Picture Number");
+              }
+              Adw.ActionRow info_url {
+                styles ["property"]
+                title: _("URL");
+                use-markup: true;
+              }
+              Adw.ActionRow info_copying {
+                styles ["property"]
+                title: _("Lincense");
+                use-markup: true;
+              }
+              Adw.ActionRow info_api {
+                styles ["property"]
+                title: _("API");
+                use-markup: true;
+              }
             }
           };
-          [start]
-          Button dice {
-            halign: center;
-            valign: end;
-            icon-name: "dice-symbolic";
-            tooltip-text: _("Randomize");
-          }
-          [end]
-          Box {
-            spacing: 6;
-            MenuButton {
-              primary: false;
-              icon-name: "info-outline-symbolic";
-              tooltip-text: _("Image details");
-              popover: Popover {
-                Adw.PreferencesGroup {
-                  Adw.ActionRow info_cat {
-                        styles ["property"]
-                        title: _("Cat");
-                  }
-                  Adw.ActionRow info_id {
-                        styles ["property"]
-                        title: _("Picture number");
-                  }
-                  Adw.ActionRow info_url {
-                        styles ["property"]
-                        title: _("URL");
-                        use-markup: true;
-                  }
-                  Adw.ActionRow info_copying {
-                        styles ["property"]
-                        title: _("Lincense");
-                        use-markup: true;
-                  }
-                  Adw.ActionRow info_api {
-                        styles ["property"]
-                        title: _("API");
-                        use-markup: true;
-                  }
-                }
-              };
-            }
-            MenuButton {
-                primary: true;
-                icon-name: "open-menu-symbolic";
-                tooltip-text: _("Main Menu");
-                menu-model: primary_menu;
-            }
-          }
+        }
+        MenuButton {
+          primary: true;
+          icon-name: "open-menu-symbolic";
+          tooltip-text: _("Main Menu");
+          menu-model: primary_menu;
+        }
       }
+    }
       Box {
         orientation: vertical;
 
@@ -102,6 +112,18 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
           valign: center;
         }
       }
+      Adw.Toast file_saved {
+        title: _("File saved successfully!");
+        timeout: 8;
+      }
+      Adw.Toast file_error {
+        title: _("A problem occured while saving the image.");
+      }
+      Adw.Toast file_cancelled {
+        title: _("File saving cancelled");
+        timeout: 3;
+      }
+  }
   }
 }
 

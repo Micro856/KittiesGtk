@@ -31,6 +31,8 @@ public class Kittiesgtk.GaryApi {
             url = "https://api.garythe.cat/gully";
         } else if (cat_name == "Garfield") {
             url = "https://api.garythe.cat/garfield";
+        } else {
+            url = "https://example.org";
         }
         var json_get = new Soup.Message ("GET", @url);
         try {
