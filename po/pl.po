@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kittiesgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-25 23:07+0100\n"
-"PO-Revision-Date: 2026-10-25 23:16+0100\n"
+"POT-Creation-Date: 2026-10-25 23:43+0100\n"
+"PO-Revision-Date: 2026-10-25 23:44+0100\n"
 "Last-Translator: Marcel Mrówka <micro.mail88@gmail.com>\n"
 "Language-Team: Polish <https://l10n.gnome.org/teams/pl/>\n"
 "Language: pl\n"
@@ -42,7 +42,7 @@ msgstr ""
 
 #: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:11
 msgid ""
-"Cat pictures come from various APIs including api.garythe.cat and rory.cat."
+"These pictures come from various APIs including api.garythe.cat and rory.cat."
 msgstr ""
 "Te obrazy pochodzą z różnych interfejsów API w tym api.garythe.cat oraz "
 "rory.cat."
@@ -76,7 +76,7 @@ msgid "Cat"
 msgstr "Kot"
 
 #: src/window.blp:26 src/window.blp:68
-msgid "Picture Number"
+msgid "Image Number"
 msgstr "Numer zdjęcia"
 
 #: src/window.blp:44
@@ -92,8 +92,8 @@ msgid "Image Details"
 msgstr "Szczegóły zdjęcia"
 
 #: src/window.blp:72
-msgid "URL"
-msgstr "Adres URL"
+msgid "Image URL"
+msgstr "Adres URL zdjęcia"
 
 #: src/window.blp:77
 msgid "Lincense"

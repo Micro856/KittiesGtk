@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kittiesgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-25 23:07+0100\n"
+"POT-Creation-Date: 2026-10-25 23:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,7 +38,7 @@ msgstr ""
 
 #: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:11
 msgid ""
-"Cat pictures come from various APIs including api.garythe.cat and rory.cat."
+"These pictures come from various APIs including api.garythe.cat and rory.cat."
 msgstr ""
 
 #: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:15
@@ -70,7 +70,7 @@ msgid "Cat"
 msgstr ""
 
 #: src/window.blp:26 src/window.blp:68
-msgid "Picture Number"
+msgid "Image Number"
 msgstr ""
 
 #: src/window.blp:44
@@ -86,7 +86,7 @@ msgid "Image Details"
 msgstr ""
 
 #: src/window.blp:72
-msgid "URL"
+msgid "Image URL"
 msgstr ""
 
 #: src/window.blp:77

@@ -8,7 +8,7 @@
   <summary>View random images of felines</summary>
   <description>
     <p>Kitties is an app that lets you display a random image of one of the available cats.</p>
-    <p>Cat pictures come from various APIs including api.garythe.cat and rory.cat.</p>
+    <p>These pictures come from various APIs including api.garythe.cat and rory.cat.</p>
   </description>
 
   <developer id="tld.vendor">

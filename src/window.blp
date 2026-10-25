@@ -23,7 +23,7 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
                               selected: 1;
                             }
                             Adw.SpinRow cat_id_button {
-                              title: _("Picture Number");
+                              title: _("Image Number");
                               adjustment: Adjustment {
                                 lower: 0;
                                 upper: 1000;
@@ -65,11 +65,11 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
               }
               Adw.ActionRow info_id {
                 styles ["property"]
-                title: _("Picture Number");
+                title: _("Image Number");
               }
               Adw.ActionRow info_url {
                 styles ["property"]
-                title: _("URL");
+                title: _("Image URL");
                 use-markup: true;
               }
               Adw.ActionRow info_copying {
