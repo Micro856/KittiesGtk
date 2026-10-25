@@ -137,18 +137,25 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         try {
             data_issue.set_revealed (false);
             image_data = yield session.send_and_read_async (image, GLib.Priority.DEFAULT, null);
+            getting.set_sensitive (true);
             info_id.show ();
             info_url.show ();
         } catch {
             data_issue.set_revealed (true);
+            getting.set_sensitive (false);
             info_id.hide ();
             info_url.hide ();
+            image_data = new GLib.Bytes(null);
         }
     }
 
     private async void image_render () {
-        var to_display = Gdk.Texture.from_bytes (image_data);
-        picture.set_paintable (to_display);
+        try {
+            var to_display = Gdk.Texture.from_bytes (image_data);
+            picture.set_paintable (to_display);
+        } catch {
+            picture.set_paintable (null);
+        }
     }
 
     private async void saving () {
@@ -178,9 +185,5 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         } catch {
             file_action.add_toast (file_cancelled);
         }
-    }
-
-    private void open_file () {
-        stdout.printf("TEST");
     }
 }
