@@ -3,6 +3,8 @@
 data/io.github.Micro856.KittiesGtk.desktop.in
 data/io.github.Micro856.KittiesGtk.metainfo.xml.in
 data/io.github.Micro856.KittiesGtk.gschema.xml
+src/application.vala
 src/main.vala
 src/window.vala
-src/window.ui
+src/shortcuts-dialog.blp
+src/window.blp

@@ -1,0 +1,130 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the kitties package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: kitties\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-25 21:36+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/io.github.Micro856.KittiesGtk.desktop.in:2
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:7 src/window.blp:5
+msgid "Kitties"
+msgstr ""
+
+#: data/io.github.Micro856.KittiesGtk.desktop.in:8
+msgid "GTK;Cat;Cats;Kitty;Feline;Felines;Meow;Gary;Goober;Gully;Garfield;Rory;API;Image;Download;Random;"
+msgstr ""
+
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:8
+msgid "View random images of felines"
+msgstr ""
+
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:10
+msgid ""
+"Kitties is an app that lets you display a random image of one of the "
+"available cats."
+msgstr ""
+
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:11
+msgid ""
+"Cat pictures come from various APIs including api.garythe.cat and rory.cat."
+msgstr ""
+
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:15
+msgid "Marcel Mrówka"
+msgstr ""
+
+#: src/application.vala:51
+msgid "translator-credits"
+msgstr ""
+
+#: src/shortcuts-dialog.blp:6
+msgid "Shortcuts"
+msgstr ""
+
+#: src/shortcuts-dialog.blp:8
+msgid "Show Shortcuts"
+msgstr ""
+
+#: src/shortcuts-dialog.blp:12
+msgid "Quit"
+msgstr ""
+
+#: src/window.blp:15
+msgid "Cat & Image Selector"
+msgstr ""
+
+#: src/window.blp:19 src/window.blp:64
+msgid "Cat"
+msgstr ""
+
+#: src/window.blp:26 src/window.blp:68
+msgid "Picture Number"
+msgstr ""
+
+#: src/window.blp:44
+msgid "Randomize Image"
+msgstr ""
+
+#: src/window.blp:50
+msgid "Save Image"
+msgstr ""
+
+#: src/window.blp:59
+msgid "Image Details"
+msgstr ""
+
+#: src/window.blp:72
+msgid "URL"
+msgstr ""
+
+#: src/window.blp:77
+msgid "Lincense"
+msgstr ""
+
+#: src/window.blp:82
+msgid "API"
+msgstr ""
+
+#: src/window.blp:91
+msgid "Main Menu"
+msgstr ""
+
+#: src/window.blp:100
+msgid "A problem occurred while getting the image."
+msgstr ""
+
+#: src/window.blp:101
+msgid "Try Again"
+msgstr ""
+
+#: src/window.blp:112
+msgid "File saved successfully!"
+msgstr ""
+
+#: src/window.blp:116
+msgid "A problem occurred while saving the image."
+msgstr ""
+
+#: src/window.blp:119
+msgid "File saving cancelled"
+msgstr ""
+
+#: src/window.blp:129
+msgid "_Keyboard Shortcuts"
+msgstr ""
+
+#: src/window.blp:133
+msgid "_About Kitties"
+msgstr ""
