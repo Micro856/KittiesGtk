@@ -116,7 +116,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private async void image_get () {
         yield image_get_url();
         yield image_get_data ();
-        yield image_render ();
+        image_render ();
     }
 
     private async void image_render_random () {
@@ -159,9 +159,12 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         }
     }
 
-    private async void image_render () {
+    private void image_render () {
         try {
-            var to_display = Gdk.Texture.from_bytes (image_data);
+            var loader = new Gly.Loader.for_bytes (image_data);
+            var img = loader.load ();
+            var frame = img.next_frame ();
+            var to_display = GlyGtk4.frame_get_texture (frame);
             picture.set_paintable (to_display);
         } catch {
             picture.set_paintable (null);
