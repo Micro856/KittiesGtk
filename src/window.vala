@@ -28,17 +28,28 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private unowned Gtk.DropDown cat_selector;
     [GtkChild]
     private unowned Adw.Banner data_issue;
-     [GtkChild]
-    private unowned Gtk.SpinButton cat_id_button;
+    [GtkChild]
+    private unowned Adw.SpinRow cat_id_button;
+    [GtkChild]
+    private unowned Adw.ActionRow info_cat;
+    [GtkChild]
+    private unowned Adw.ActionRow info_id;
+    [GtkChild]
+    private unowned Adw.ActionRow info_url;
+    [GtkChild]
+    private unowned Adw.ActionRow info_copying;
+    [GtkChild]
+    private unowned Adw.ActionRow info_api;
 
     private int64 cat_id;
     private string cat_url;
     private GLib.Bytes image_data;
+    private Gtk.StringObject selection;
 
     public Window (Gtk.Application app) {
         Object (application: app);
 
-        cat_id_button.value_changed.connect (() => {
+        cat_id_button.notify["value"].connect (() => {
             set_spinner();
         });
 
@@ -59,7 +70,21 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
     private async void set_spinner() {
         cat_id = (int64) cat_id_button.get_value();
+        info_cat.set_subtitle (selection.string);
+        info_id.set_subtitle (cat_id.to_string ());
+        if (selection.string == "Rory") {
+            info_copying.show ();
+            info_copying.set_subtitle ("<a href='https://rory.cat/license/'>CC BY 4.0</a>");
+        } else {
+            info_copying.hide ();
+        }
+        if (selection.string == "Rory") {
+            info_api.set_subtitle ("<a href='https://rory.cat/'>rory.cat</a>");
+        } else {
+            info_api.set_subtitle ("<a href='https://api.garythe.cat/'>api.garythe.cat</a>");
+        }
         yield image_get ();
+        info_url.set_subtitle (@"<a href='$cat_url'>$cat_url</a>");
     }
 
     private async void image_get () {
@@ -73,7 +98,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     }
 
     private async void image_get_id () {
-        var selection = cat_selector.get_selected_item() as Gtk.StringObject;
+        selection = cat_selector.get_selected_item() as Gtk.StringObject;
         stdout.printf("%s\n", selection.string);
         var backend = new Kittiesgtk.Backend ();
         cat_id = yield backend.refresh_id (selection.string);
@@ -82,7 +107,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     }
 
     private async void image_get_url () {
-        var selection = cat_selector.get_selected_item() as Gtk.StringObject;
+        selection = cat_selector.get_selected_item() as Gtk.StringObject;
         stdout.printf("%s\n", selection.string);
         var backend = new Kittiesgtk.Backend ();
         cat_url = yield backend.refresh_url (cat_id, selection.string);

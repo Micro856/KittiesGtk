@@ -23,10 +23,10 @@ public class Kittiesgtk.Backend {
         var gary = new Kittiesgtk.GaryApi ();
         var rory = new Kittiesgtk.RoryApi ();
         int64 cat_id = 0;
-        if (cat_name == "Gary" || cat_name == "Goober") {
-            cat_id = yield gary.get_gary_id (cat_name);
-        } else if (cat_name == "Rory") {
+        if (cat_name == "Rory") {
             cat_id = yield rory.get_rory_id ();
+        } else {
+            cat_id = yield gary.get_gary_id (cat_name);
         }
         return cat_id;
     }
@@ -35,10 +35,10 @@ public class Kittiesgtk.Backend {
         var gary = new Kittiesgtk.GaryApi ();
         var rory = new Kittiesgtk.RoryApi ();
         var url = "https://example.org";
-        if (cat_name == "Gary" || cat_name == "Goober") {
-            url = gary.get_gary_url (cat_id, cat_name);
-        } else if (cat_name == "Rory") {
+        if (cat_name == "Rory") {
             url = yield rory.get_rory_url (cat_id);
+        } else  {
+            url = gary.get_gary_url (cat_id, cat_name);
         }
         return url;
     }

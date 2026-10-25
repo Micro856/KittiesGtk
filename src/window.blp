@@ -9,11 +9,34 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
   Adw.ToolbarView {
     [top]
     Adw.HeaderBar {
-          title-widget: DropDown cat_selector {
-                          model: StringList {
-                          strings: ["Gary", "Goober", "Rory"];
-                          };
-                        };
+          title-widget: Box {
+            orientation: horizontal;
+            spacing: 6;
+            DropDown cat_selector {
+              model: StringList {
+                strings: ["Garfield", "Gary", "Goober", "Gully", "Rory"];
+              };
+              selected: 1;
+            }
+            MenuButton {
+              primary: false;
+              icon-name: "image-symbolic";
+              tooltip-text: _("Image selector");
+              popover: Popover {
+                Adw.PreferencesGroup {
+                  Adw.SpinRow cat_id_button {
+                    title: _("Picture number");
+                    adjustment: Adjustment {
+                      lower: 1;
+                      upper: 1000;
+                      step-increment: 1;
+                    };
+                    digits: 0;
+                  }
+                }
+              };
+            }
+          };
           [start]
           Button dice {
             halign: center;
@@ -21,20 +44,47 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
             icon-name: "dice-symbolic";
             tooltip-text: _("Randomize");
           }
-          SpinButton cat_id_button {
-            adjustment: Adjustment {
-                          lower: 1;
-                          upper: 1000;
-                          step-increment: 1;
-                        };
-            digits: 0;
-          }
           [end]
-          MenuButton {
+          Box {
+            spacing: 6;
+            MenuButton {
+              primary: false;
+              icon-name: "info-outline-symbolic";
+              tooltip-text: _("Image details");
+              popover: Popover {
+                Adw.PreferencesGroup {
+                  Adw.ActionRow info_cat {
+                        styles ["property"]
+                        title: _("Cat");
+                  }
+                  Adw.ActionRow info_id {
+                        styles ["property"]
+                        title: _("Picture number");
+                  }
+                  Adw.ActionRow info_url {
+                        styles ["property"]
+                        title: _("URL");
+                        use-markup: true;
+                  }
+                  Adw.ActionRow info_copying {
+                        styles ["property"]
+                        title: _("Lincense");
+                        use-markup: true;
+                  }
+                  Adw.ActionRow info_api {
+                        styles ["property"]
+                        title: _("API");
+                        use-markup: true;
+                  }
+                }
+              };
+            }
+            MenuButton {
                 primary: true;
                 icon-name: "open-menu-symbolic";
                 tooltip-text: _("Main Menu");
                 menu-model: primary_menu;
+            }
           }
       }
       Box {
@@ -57,10 +107,6 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
 
 menu primary_menu {
   section {
-    item {
-      label: _("_Preferences");
-      action: "app.preferences";
-    }
     item {
       label: _("_Keyboard Shortcuts");
       action: "app.shortcuts";

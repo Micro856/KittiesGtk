@@ -5,6 +5,6 @@
     <file preprocess="xml-stripblanks">shortcuts-dialog.ui</file>
 
     <file>icons/scalable/actions/dice-symbolic.svg</file>
-    <file>icons/scalable/actions/dots-horizontal-symbolic.svg</file>
+    <file>icons/scalable/actions/image-symbolic.svg</file>
   </gresource>
 </gresources>
