@@ -10,33 +10,29 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
     Adw.ToolbarView {
       [top]
       Adw.HeaderBar {
-        title-widget: Box {
-          orientation: horizontal;
-          spacing: 6;
-          DropDown cat_selector {
-            model: StringList {
-              strings: ["Garfield", "Gary", "Goober", "Gully", "Rory"];
-            };
-            selected: 1;
-          }
-          MenuButton {
-            primary: false;
-            icon-name: "image-symbolic";
-            tooltip-text: _("Image Selector");
-            popover: Popover {
-              Adw.PreferencesGroup {
-                Adw.SpinRow cat_id_button {
-                  title: _("Picture Number");
-                  adjustment: Adjustment {
-                    lower: 0;
-                    upper: 1000;
-                    step-increment: 1;
-                  };
-                  digits: 0;
-                }
-              }
-            };
-          }
+        title-widget: MenuButton cat_popover {
+                        primary: false;
+                        tooltip-text: _("Cat & Image Selector");
+                        popover: Popover {
+                          Adw.PreferencesGroup {
+                            Adw.ComboRow cat_selector {
+                              title: _("Cat");
+                              model: StringList {
+                                strings: ["Garfield", "Gary", "Goober", "Gully", "Rory"];
+                              };
+                              selected: 1;
+                            }
+                            Adw.SpinRow cat_id_button {
+                              title: _("Picture Number");
+                              adjustment: Adjustment {
+                                lower: 0;
+                                upper: 1000;
+                              step-increment: 1;
+                              };
+                              digits: 0;
+                            }
+                          }
+                        };
         };
       [start]
       Box {

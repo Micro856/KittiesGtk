@@ -27,7 +27,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     [GtkChild]
     private unowned Gtk.Button getting;
     [GtkChild]
-    private unowned Gtk.DropDown cat_selector;
+    private unowned Adw.ComboRow cat_selector;
     [GtkChild]
     private unowned Adw.Banner data_issue;
     [GtkChild]
@@ -50,6 +50,8 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private unowned Adw.Toast file_error;
     [GtkChild]
     private unowned Adw.Toast file_cancelled;
+    [GtkChild]
+    private unowned Gtk.MenuButton cat_popover;
 
     private int64 cat_id;
     private string cat_url;
@@ -67,6 +69,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         });
 
         cat_selector.notify["selected-item"].connect (() => {
+            set_popover_title ();
             image_render_random ();
         });
 
@@ -82,10 +85,16 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             image_render_random ();
         });
 
+        set_popover_title ();
         image_render_random ();
         }
 
-    private async void set_spinner() {
+    private void set_popover_title () {
+        selection = cat_selector.get_selected_item() as Gtk.StringObject;
+        cat_popover.set_label(selection.string);
+    }
+
+    private async void set_spinner () {
         cat_id = (int64) cat_id_button.get_value();
         info_cat.set_subtitle (selection.string);
         info_id.set_subtitle (cat_id.to_string ());
@@ -107,10 +116,11 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private async void image_get () {
         yield image_get_url();
         yield image_get_data ();
-        image_render ();
+        yield image_render ();
     }
 
     private async void image_render_random () {
+        picture.set_paintable (null);
         yield image_get_id();
     }
 
