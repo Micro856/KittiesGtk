@@ -6,7 +6,6 @@
     "sdk-extensions" : [
         "org.freedesktop.Sdk.Extension.vala"
     ],
-    "separate-locales": false,
     "command" : "kitties",
     "finish-args" : [
         "--share=network",

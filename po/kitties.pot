@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kitties\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-25 23:43+0100\n"
+"POT-Creation-Date: 2026-10-27 21:09+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,12 +45,12 @@ msgstr ""
 msgid "Marcel Mrówka"
 msgstr ""
 
-#: src/application.vala:51
+#: src/application.vala:59
 msgid "translator-credits"
 msgstr ""
 
 #: src/shortcuts-dialog.blp:6
-msgid "Shortcuts"
+msgid "General"
 msgstr ""
 
 #: src/shortcuts-dialog.blp:8
@@ -61,70 +61,110 @@ msgstr ""
 msgid "Quit"
 msgstr ""
 
+#: src/shortcuts-dialog.blp:17
+msgid "Image"
+msgstr ""
+
+#: src/shortcuts-dialog.blp:19
+msgid "Enter Image Number"
+msgstr ""
+
+#: src/shortcuts-dialog.blp:23 src/window.blp:45
+msgid "Randomize Image"
+msgstr ""
+
+#: src/shortcuts-dialog.blp:27 src/window.blp:51
+msgid "Save Image"
+msgstr ""
+
+#: src/shortcuts-dialog.blp:32
+msgid "Cat Selection"
+msgstr ""
+
+#: src/shortcuts-dialog.blp:34
+msgid "Switch to Garfield"
+msgstr ""
+
+#: src/shortcuts-dialog.blp:38
+msgid "Switch to Gary"
+msgstr ""
+
+#: src/shortcuts-dialog.blp:42
+msgid "Switch to Goober"
+msgstr ""
+
+#: src/shortcuts-dialog.blp:46
+msgid "Switch to Gully"
+msgstr ""
+
+#: src/shortcuts-dialog.blp:50
+msgid "Switch to Rory"
+msgstr ""
+
 #: src/window.blp:15
 msgid "Cat & Image Selector"
 msgstr ""
 
-#: src/window.blp:19 src/window.blp:64
+#: src/window.blp:19 src/window.blp:65
 msgid "Cat"
 msgstr ""
 
-#: src/window.blp:26 src/window.blp:68
+#: src/window.blp:26 src/window.blp:69
 msgid "Image Number"
 msgstr ""
 
-#: src/window.blp:44
-msgid "Randomize Image"
-msgstr ""
-
-#: src/window.blp:50
-msgid "Save Image"
-msgstr ""
-
-#: src/window.blp:59
+#: src/window.blp:60
 msgid "Image Details"
 msgstr ""
 
-#: src/window.blp:72
+#: src/window.blp:73
 msgid "Image URL"
 msgstr ""
 
-#: src/window.blp:77
+#: src/window.blp:78
 msgid "Lincense"
 msgstr ""
 
-#: src/window.blp:82
+#: src/window.blp:83
 msgid "API"
 msgstr ""
 
-#: src/window.blp:91
+#: src/window.blp:92
 msgid "Main Menu"
 msgstr ""
 
-#: src/window.blp:100
+#: src/window.blp:101
 msgid "A problem occurred while getting the image."
 msgstr ""
 
-#: src/window.blp:101
+#: src/window.blp:102 src/window.blp:107
 msgid "Try Again"
 msgstr ""
 
-#: src/window.blp:112
+#: src/window.blp:106
+msgid "A problem occurred while displaying the image."
+msgstr ""
+
+#: src/window.blp:125
 msgid "File saved successfully!"
 msgstr ""
 
-#: src/window.blp:116
+#: src/window.blp:129
 msgid "A problem occurred while saving the image."
 msgstr ""
 
-#: src/window.blp:119
+#: src/window.blp:132
 msgid "File saving cancelled"
 msgstr ""
 
-#: src/window.blp:129
+#: src/window.blp:149
+msgid "Enter Image Number:"
+msgstr ""
+
+#: src/window.blp:167
 msgid "_Keyboard Shortcuts"
 msgstr ""
 
-#: src/window.blp:133
+#: src/window.blp:171
 msgid "_About Kitties"
 msgstr ""

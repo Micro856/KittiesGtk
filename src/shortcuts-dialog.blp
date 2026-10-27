@@ -3,7 +3,7 @@ using Adw 1;
 
 Adw.ShortcutsDialog shortcuts_dialog {
       Adw.ShortcutsSection {
-            title: _("Shortcuts");
+            title: _("General");
             Adw.ShortcutsItem {
                   title: _("Show Shortcuts");
                   action-name: "app.shortcuts";
@@ -11,6 +11,44 @@ Adw.ShortcutsDialog shortcuts_dialog {
             Adw.ShortcutsItem {
                   title: _("Quit");
                   action-name: "app.quit";
+                }
+          }
+      Adw.ShortcutsSection {
+            title: _("Image");
+            Adw.ShortcutsItem {
+                  title: _("Enter Image Number");
+                  action-name: "win.img_number";
+                }
+            Adw.ShortcutsItem {
+                  title: _("Randomize Image");
+                  action-name: "win.randomize";
+                }
+            Adw.ShortcutsItem {
+                  title: _("Save Image");
+                  action-name: "win.save";
+                }
+          }
+      Adw.ShortcutsSection {
+            title: _("Cat Selection");
+            Adw.ShortcutsItem {
+                  title: _("Switch to Garfield");
+                  action-name: "win.switch_to_garfield";
+                }
+            Adw.ShortcutsItem {
+                  title: _("Switch to Gary");
+                  action-name: "win.switch_to_gary";
+                }
+            Adw.ShortcutsItem {
+                  title: _("Switch to Goober");
+                  action-name: "win.switch_to_goober";
+                }
+            Adw.ShortcutsItem {
+                  title: _("Switch to Gully");
+                  action-name: "win.switch_to_gully";
+                }
+            Adw.ShortcutsItem {
+                  title: _("Switch to Rory");
+                  action-name: "win.switch_to_rory";
                 }
           }
     }

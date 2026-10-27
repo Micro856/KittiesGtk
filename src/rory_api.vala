@@ -19,7 +19,7 @@
  */
 
 public class Kittiesgtk.RoryApi {
-    public async int64 get_rory_id () {
+    public async int64 get_rory_id (Adw.Banner data_issue) {
         var session = new Soup.Session ();
         var url = "https://rory.cat/purr";
         var json_get = new Soup.Message ("GET", @url);
@@ -34,6 +34,7 @@ public class Kittiesgtk.RoryApi {
 
             return cat_id;
         } catch {
+            data_issue.set_revealed (true);
             warning ("Can't get the picture ID");
             return 0;
         }

@@ -31,7 +31,11 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     [GtkChild]
     private unowned Adw.Banner data_issue;
     [GtkChild]
+    private unowned Adw.Banner image_issue;
+    [GtkChild]
     private unowned Adw.SpinRow cat_id_button;
+    [GtkChild]
+    private unowned Gtk.SpinButton cat_id_button_window;
     [GtkChild]
     private unowned Adw.ActionRow info_cat;
     [GtkChild]
@@ -52,6 +56,10 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private unowned Adw.Toast file_cancelled;
     [GtkChild]
     private unowned Gtk.MenuButton cat_popover;
+    [GtkChild]
+    private unowned Adw.Dialog cat_selector_window;
+    [GtkChild]
+    private unowned Gtk.ProgressBar progress;
 
     private int64 cat_id;
     private string cat_url;
@@ -61,11 +69,29 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
     private Cancellable cancellable;
 
+    construct {
+        ActionEntry[] action_entries = {
+            { "switch_to_garfield", switch_to_garfield },
+            { "switch_to_gary", switch_to_gary },
+            { "switch_to_goober", switch_to_goober },
+            { "switch_to_gully", switch_to_gully },
+            { "switch_to_rory", switch_to_rory },
+            { "randomize", random_action },
+            { "save", saving_action },
+            { "img_number", img_number_window }
+        };
+        this.add_action_entries (action_entries, this);
+    }
+
     public Window (Gtk.Application app) {
         Object (application: app);
 
         cat_id_button.notify["value"].connect (() => {
             set_spinner ();
+        });
+
+        cat_id_button_window.notify["value"].connect (() => {
+            cat_id_button.set_value (cat_id_button_window.get_value ());
         });
 
         cat_selector.notify["selected-item"].connect (() => {
@@ -85,17 +111,37 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             image_render_random ();
         });
 
+        data_issue.notify["revealed"].connect (() => {
+            if ( data_issue.get_revealed () == true ) {
+                getting.set_sensitive (false);
+            } else {
+                getting.set_sensitive (true);
+            }
+        });
+
+        image_issue.button_clicked.connect (() => {
+            image_render ();
+        });
+
+        image_issue.notify["revealed"].connect (() => {
+            if ( image_issue.get_revealed () == true ) {
+                getting.set_sensitive (false);
+            } else {
+                getting.set_sensitive (true);
+            }
+        });
+
         set_popover_title ();
         image_render_random ();
         }
 
     private void set_popover_title () {
-        selection = cat_selector.get_selected_item() as Gtk.StringObject;
+        selection = cat_selector.get_selected_item () as Gtk.StringObject;
         cat_popover.set_label(selection.string);
     }
 
     private async void set_spinner () {
-        cat_id = (int64) cat_id_button.get_value();
+        cat_id = (int64) cat_id_button.get_value ();
         info_cat.set_subtitle (selection.string);
         info_id.set_subtitle (cat_id.to_string ());
         if (selection.string == "Rory") {
@@ -121,20 +167,21 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
     private async void image_render_random () {
         picture.set_paintable (null);
-        yield image_get_id();
+        yield image_get_id ();
     }
 
     private async void image_get_id () {
-        selection = cat_selector.get_selected_item() as Gtk.StringObject;
+        data_issue.set_revealed (false);
+        selection = cat_selector.get_selected_item () as Gtk.StringObject;
         stdout.printf("%s\n", selection.string);
         var backend = new Kittiesgtk.Backend ();
-        cat_id = yield backend.refresh_id (selection.string);
+        cat_id = yield backend.refresh_id (selection.string, data_issue);
         stdout.printf ("ID: %" + int64.FORMAT + "\n", cat_id);
         cat_id_button.set_value((double) cat_id);
     }
 
     private async void image_get_url () {
-        selection = cat_selector.get_selected_item() as Gtk.StringObject;
+        selection = cat_selector.get_selected_item () as Gtk.StringObject;
         stdout.printf("%s\n", selection.string);
         var backend = new Kittiesgtk.Backend ();
         cat_url = yield backend.refresh_url (cat_id, selection.string);
@@ -145,14 +192,24 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         var session = new Soup.Session ();
         var image = new Soup.Message ("GET", @cat_url);
         try {
+            progress.set_visible (true);
+            double downloaded = 0;
+            double to_download = 0;
             data_issue.set_revealed (false);
+            image.got_headers.connect (() => {
+                to_download = image.response_headers.get_content_length ();
+            });
+            image.got_body_data.connect ((read) => {
+                downloaded += read;
+                var downloaded_prcnt = ( downloaded / to_download );
+                progress.set_fraction (downloaded_prcnt);
+            });
             image_data = yield session.send_and_read_async (image, GLib.Priority.DEFAULT, null);
-            getting.set_sensitive (true);
             info_id.show ();
             info_url.show ();
+            progress.set_fraction (0);
         } catch {
             data_issue.set_revealed (true);
-            getting.set_sensitive (false);
             info_id.hide ();
             info_url.hide ();
             image_data = new GLib.Bytes(null);
@@ -161,13 +218,19 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
     private void image_render () {
         try {
+            image_issue.set_revealed (false);
             var loader = new Gly.Loader.for_bytes (image_data);
             var img = loader.load ();
             var frame = img.next_frame ();
             var to_display = GlyGtk4.frame_get_texture (frame);
             picture.set_paintable (to_display);
+            progress.set_visible (false);
         } catch {
+            if (data_issue.get_revealed () == false) {
+                image_issue.set_revealed (true);
+            }
             picture.set_paintable (null);
+            progress.set_visible (false);
         }
     }
 
@@ -198,5 +261,42 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         } catch {
             file_action.add_toast (file_cancelled);
         }
+    }
+
+    private void random_action () {
+        image_render_random.begin();
+    }
+
+    private void saving_action () {
+        var disabled = getting.get_sensitive ();
+        if ( disabled ) {
+            saving.begin();
+        }
+    }
+
+    private void switch_to_garfield () {
+        cat_selector.set_selected (0);
+    }
+
+    private void switch_to_gary () {
+        cat_selector.set_selected (1);
+    }
+
+    private void switch_to_goober () {
+        cat_selector.set_selected (2);
+    }
+
+    private void switch_to_gully () {
+        cat_selector.set_selected (3);
+    }
+
+    private void switch_to_rory () {
+        cat_selector.set_selected (4);
+    }
+
+    private void img_number_window () {
+        var current_value = cat_id_button.get_value ();
+        cat_id_button_window.set_value (current_value);
+        cat_selector_window.present (this);
     }
 }

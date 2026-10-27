@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kitties\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-25 23:43+0100\n"
-"PO-Revision-Date: 2026-10-25 23:44+0100\n"
+"POT-Creation-Date: 2026-10-27 21:09+0100\n"
+"PO-Revision-Date: 2026-10-27 21:27+0100\n"
 "Last-Translator: Marcel Mrówka <micro.mail88@gmail.com>\n"
 "Language-Team: Polish <https://l10n.gnome.org/teams/pl/>\n"
 "Language: pl\n"
@@ -51,13 +51,13 @@ msgstr ""
 msgid "Marcel Mrówka"
 msgstr "Marcel Mrówka"
 
-#: src/application.vala:51
+#: src/application.vala:59
 msgid "translator-credits"
 msgstr "Marcel Mrówka <micro.mail88@gmail.com>, 2026"
 
 #: src/shortcuts-dialog.blp:6
-msgid "Shortcuts"
-msgstr "Skróty klawiszowe"
+msgid "General"
+msgstr "Ogólne"
 
 #: src/shortcuts-dialog.blp:8
 msgid "Show Shortcuts"
@@ -67,70 +67,113 @@ msgstr "Wyświetlenie skrótów klawiszowych"
 msgid "Quit"
 msgstr "Zakończenie działania"
 
+#: src/shortcuts-dialog.blp:17
+msgid "Image"
+msgstr "Zdjęcie"
+
+#: src/shortcuts-dialog.blp:19
+msgid "Enter Image Number"
+msgstr "Wprowadzenie numeru zdjęcia"
+
+#: src/shortcuts-dialog.blp:23 src/window.blp:45
+msgid "Randomize Image"
+msgstr "Wylosuj zdjęcie"
+
+#: src/shortcuts-dialog.blp:27 src/window.blp:51
+msgid "Save Image"
+msgstr "Zapisz zdjęcie"
+
+#: src/shortcuts-dialog.blp:32
+msgid "Cat Selection"
+msgstr "Wybór kota"
+
+#: src/shortcuts-dialog.blp:34
+msgid "Switch to Garfield"
+msgstr "Przełączenie na Garfielda"
+
+#: src/shortcuts-dialog.blp:38
+msgid "Switch to Gary"
+msgstr "Przełączenie na Gary'ego"
+
+#: src/shortcuts-dialog.blp:42
+msgid "Switch to Goober"
+msgstr "Przełączenie na Goobera"
+
+#: src/shortcuts-dialog.blp:46
+msgid "Switch to Gully"
+msgstr "Przełączenie na Gully'ego"
+
+#: src/shortcuts-dialog.blp:50
+msgid "Switch to Rory"
+msgstr "Przełączenie na Rory'ego"
+
 #: src/window.blp:15
 msgid "Cat & Image Selector"
 msgstr "Wybór kota i zdjęcia"
 
-#: src/window.blp:19 src/window.blp:64
+#: src/window.blp:19 src/window.blp:65
 msgid "Cat"
 msgstr "Kot"
 
-#: src/window.blp:26 src/window.blp:68
+#: src/window.blp:26 src/window.blp:69
 msgid "Image Number"
 msgstr "Numer zdjęcia"
 
-#: src/window.blp:44
-msgid "Randomize Image"
-msgstr "Wylosuj zdjęcie"
-
-#: src/window.blp:50
-msgid "Save Image"
-msgstr "Zapisz zdjęcie"
-
-#: src/window.blp:59
+#: src/window.blp:60
 msgid "Image Details"
 msgstr "Szczegóły zdjęcia"
 
-#: src/window.blp:72
+#: src/window.blp:73
 msgid "Image URL"
 msgstr "Adres URL zdjęcia"
 
-#: src/window.blp:77
+#: src/window.blp:78
 msgid "Lincense"
 msgstr "Licencja"
 
-#: src/window.blp:82
+#: src/window.blp:83
 msgid "API"
 msgstr "API"
 
-#: src/window.blp:91
+#: src/window.blp:92
 msgid "Main Menu"
 msgstr "Menu główne"
 
-#: src/window.blp:100
+#: src/window.blp:101
 msgid "A problem occurred while getting the image."
 msgstr "Wystąpił problem podczas pobierania zdjęcia."
 
-#: src/window.blp:101
+#: src/window.blp:102 src/window.blp:107
 msgid "Try Again"
 msgstr "Spróbuj ponownie"
 
-#: src/window.blp:112
+#: src/window.blp:106
+msgid "A problem occurred while displaying the image."
+msgstr "Wystąpił problem podczas wyświetlania zdjęcia."
+
+#: src/window.blp:125
 msgid "File saved successfully!"
 msgstr "Plik został zapisany pomyślnie!"
 
-#: src/window.blp:116
+#: src/window.blp:129
 msgid "A problem occurred while saving the image."
 msgstr "Wystąpił problem podczas zapisywania zdjęcia."
 
-#: src/window.blp:119
+#: src/window.blp:132
 msgid "File saving cancelled"
 msgstr "Anulowano zapisywanie pliku"
 
-#: src/window.blp:129
+#: src/window.blp:149
+msgid "Enter Image Number:"
+msgstr "Wprowadź numer zdjęcia:"
+
+#: src/window.blp:167
 msgid "_Keyboard Shortcuts"
 msgstr "Skróty _klawiszowe"
 
-#: src/window.blp:133
+#: src/window.blp:171
 msgid "_About Kitties"
 msgstr "O _aplikacji"
+
+#~ msgid "Shortcuts"
+#~ msgstr "Skróty klawiszowe"

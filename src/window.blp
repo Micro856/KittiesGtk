@@ -30,6 +30,7 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
                               step-increment: 1;
                               };
                               digits: 0;
+                              wrap: true;
                             }
                           }
                         };
@@ -101,6 +102,14 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
           button-label: _("Try Again");
           revealed: false;
         }
+        Adw.Banner image_issue {
+          title: _("A problem occurred while displaying the image.");
+          button-label: _("Try Again");
+          revealed: false;
+        }
+        ProgressBar progress {
+
+        }
         Picture picture {
           can-shrink: true;
           content-fit: contain;
@@ -108,18 +117,47 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
           valign: center;
         }
       }
-      Adw.Toast file_saved {
-        title: _("File saved successfully!");
-        timeout: 3;
-      }
-      Adw.Toast file_error {
-        title: _("A problem occurred while saving the image.");
-      }
-      Adw.Toast file_cancelled {
-        title: _("File saving cancelled");
-        timeout: 3;
-      }
+    }
   }
+}
+
+Adw.Toast file_saved {
+  title: _("File saved successfully!");
+  timeout: 3;
+}
+Adw.Toast file_error {
+  title: _("A problem occurred while saving the image.");
+}
+Adw.Toast file_cancelled {
+  title: _("File saving cancelled");
+  timeout: 3;
+}
+
+Adw.Dialog cat_selector_window {
+    presentation-mode: bottom_sheet;
+
+    Adw.ToolbarView {
+      [top]
+      Box {
+        margin-top: 6;
+        margin-bottom: 6;
+        spacing: 6;
+        halign: center;
+        valign: center;
+        orientation: horizontal;
+        Label {
+          label: _("Enter Image Number:");
+        }
+        SpinButton cat_id_button_window {
+          adjustment: Adjustment {
+            lower: 0;
+            upper: 1000;
+            step-increment: 1;
+          };
+          digits: 0;
+          wrap: true;
+        }
+      }
   }
 }
 

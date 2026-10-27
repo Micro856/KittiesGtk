@@ -19,7 +19,7 @@
  */
 
 public class Kittiesgtk.GaryApi {
-    public async int64 get_gary_id (string cat_name) {
+    public async int64 get_gary_id (string cat_name, Adw.Banner data_issue) {
         var session = new Soup.Session ();
         var url = "https://api.garythe.cat/gary";
 
@@ -45,6 +45,7 @@ public class Kittiesgtk.GaryApi {
 	        int64 cat_id = json_root_object.get_int_member ("number");
 	       return cat_id;
         } catch {
+            data_issue.set_revealed (true);
             warning ("Can't get the picture ID");
             return 0;
         }

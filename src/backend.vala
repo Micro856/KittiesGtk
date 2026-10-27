@@ -19,16 +19,20 @@
  */
 
 public class Kittiesgtk.Backend {
-    public async int64 refresh_id (string cat_name) {
+    public async int64 refresh_id (string cat_name, Adw.Banner data_issue) {
         var gary = new Kittiesgtk.GaryApi ();
         var rory = new Kittiesgtk.RoryApi ();
         int64 cat_id = 0;
-        if (cat_name == "Rory") {
-            cat_id = yield rory.get_rory_id ();
-        } else {
-            cat_id = yield gary.get_gary_id (cat_name);
+        try {
+            if (cat_name == "Rory") {
+                cat_id = yield rory.get_rory_id (data_issue);
+            } else {
+                cat_id = yield gary.get_gary_id (cat_name, data_issue);
+            }
+            return cat_id;
+        } catch {
+            return 0;
         }
-        return cat_id;
     }
 
     public async string refresh_url (int64 cat_id, string cat_name) {
@@ -43,3 +47,4 @@ public class Kittiesgtk.Backend {
         return url;
     }
 }
+
