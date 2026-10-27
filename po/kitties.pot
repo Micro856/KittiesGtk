@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kitties\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-27 22:10+0100\n"
+"POT-Creation-Date: 2026-10-27 22:18+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,68 +71,79 @@ msgstr ""
 
 #. Title of the keyboard shortcut category
 #: src/shortcuts-dialog.blp:7
+msgctxt "Shortcut category"
 msgid "General"
 msgstr ""
 
 #. Name of the keyboard shortcut
 #: src/shortcuts-dialog.blp:10
+msgctxt "Shortcut"
 msgid "Show Shortcuts"
 msgstr ""
 
 #. Name of the keyboard shortcut
 #: src/shortcuts-dialog.blp:15
+msgctxt "Shortcut"
 msgid "Quit"
 msgstr ""
 
 #. Tile of the keyboard shortcut category, things done to/with the image
 #: src/shortcuts-dialog.blp:21
+msgctxt "Shortcut category"
 msgid "Image"
 msgstr ""
 
 #. Name of the keyboard shortcut
 #: src/shortcuts-dialog.blp:24
+msgctxt "Shortcut"
 msgid "Enter Image Number"
 msgstr ""
 
 #. Name of the keyboard shortcut
-#. Tooltip for a button, which when pressesdwill display a random image
-#: src/shortcuts-dialog.blp:29 src/window.blp:50
+#: src/shortcuts-dialog.blp:29
+msgctxt "Shortcut"
 msgid "Randomize Image"
 msgstr ""
 
 #. Name of the keyboard shortcut
-#. Tooltip for a button, which when pressed will save the currently visible image
-#: src/shortcuts-dialog.blp:34 src/window.blp:57
+#: src/shortcuts-dialog.blp:34
+msgctxt "Shortcut"
 msgid "Save Image"
 msgstr ""
 
 #. Name of the keyboard shortcut category, selecting cats form keyboard
 #: src/shortcuts-dialog.blp:40
+msgctxt "Shortcut category"
 msgid "Cat Selection"
 msgstr ""
 
 #. Name of the keyboard shortcut
 #: src/shortcuts-dialog.blp:43
+msgctxt "Shortcut"
 msgid "Switch to Garfield"
 msgstr ""
 
 #. Name of the keyboard shortcut
 #: src/shortcuts-dialog.blp:48
+msgctxt "Shortcut"
 msgid "Switch to Gary"
 msgstr ""
 
 #. Name of the keyboard shortcut
 #: src/shortcuts-dialog.blp:53
+msgctxt "Shortcut"
 msgid "Switch to Goober"
 msgstr ""
 
 #. Name of the keyboard shortcut
 #: src/shortcuts-dialog.blp:58
+msgctxt "Shortcut"
 msgid "Switch to Gully"
 msgstr ""
 
 #. Name of the keyboard shortcut
 #: src/shortcuts-dialog.blp:63
+msgctxt "Shortcut"
 msgid "Switch to Rory"
 msgstr ""
 
@@ -142,15 +153,27 @@ msgid "Cat & Image Selector"
 msgstr ""
 
 #. Title for selector of cats, this means the currently selected Cat is, kind of like "Cat:", but without ':'
-#. An image property, works like "Cat:", for example if selected cat is Gary, it should be read as "Cat: Gary"
-#: src/window.blp:22 src/window.blp:73
+#: src/window.blp:22
+msgctxt "Cat selector"
 msgid "Cat"
 msgstr ""
 
 #. Title for the selector of the image, just like with the cat selector, this means ID number of the image to display
-#. An image property, works like "Cat:", for example if selected image is 2, it should be read as "Image number: 2"
-#: src/window.blp:30 src/window.blp:78
+#: src/window.blp:30
+msgctxt "Image selector"
 msgid "Image Number"
+msgstr ""
+
+#. Tooltip for a button, which when pressesdwill display a random image
+#: src/window.blp:50
+msgctxt "Button tooltip"
+msgid "Randomize Image"
+msgstr ""
+
+#. Tooltip for a button, which when pressed will save the currently visible image
+#: src/window.blp:57
+msgctxt "Button tooltip"
+msgid "Save Image"
 msgstr ""
 
 #. Tooltip for a button, which when pressed will display the details of the image
@@ -158,66 +181,85 @@ msgstr ""
 msgid "Image Details"
 msgstr ""
 
+#. An image property, works like "Cat:", for example if selected cat is Gary, it should be read as "Cat: Gary"
+#: src/window.blp:73
+msgctxt "Image details"
+msgid "Cat"
+msgstr ""
+
+#. An image property, works like "Cat:", for example if selected image is 2, it should be read as "Image number: 2"
+#: src/window.blp:78
+msgctxt "Image details"
+msgid "Image Number"
+msgstr ""
+
 #: src/window.blp:82
+msgctxt "Image details"
 msgid "Image URL"
 msgstr ""
 
 #. An image property, licence/license of the image
 #: src/window.blp:88
+msgctxt "Image details"
 msgid "Lincense"
 msgstr ""
 
 #. An image property, the API used to fetch the cat image, if Gary is selected, it should be read as "API: api.garythe.cat"
 #: src/window.blp:94
+msgctxt "Image details"
 msgid "API"
 msgstr ""
 
 #. A tooltip for a button, which when pressed opens the main menu
 #: src/window.blp:104
+msgctxt "Button tooltip"
 msgid "Main Menu"
 msgstr ""
 
 #. Text for the banner, which displays when the random image number or the image data could not be fetched
 #: src/window.blp:114
+msgctxt "Banner"
 msgid "A problem occurred while getting the image."
 msgstr ""
 
 #. Button for the action of both banners
 #: src/window.blp:116 src/window.blp:122
+msgctxt "Banner icon"
 msgid "Try Again"
-msgstr ""
-
-#. Text for the banner, which displays when the image could not be displayed
-#: src/window.blp:121
-msgid "A problem occurred while displaying the image."
 msgstr ""
 
 #. Little popup that appears when file was saved
 #: src/window.blp:141
+msgctxt "Toast"
 msgid "File saved successfully!"
 msgstr ""
 
 #. Little popup if the file wasn't saved correctly
 #: src/window.blp:146
+msgctxt "Toast"
 msgid "A problem occurred while saving the image."
 msgstr ""
 
 #. Little popup that appears when user cancells saving
 #: src/window.blp:150
+msgctxt "Toast"
 msgid "File saving cancelled"
 msgstr ""
 
 #. Text for the entry of image number that get's triggered with a keyboard shortcut
 #: src/window.blp:168
+msgctxt "Tooltip?"
 msgid "Enter Image Number:"
 msgstr ""
 
 #. Label for menu item
 #: src/window.blp:187
+msgctxt "Menu item"
 msgid "_Keyboard Shortcuts"
 msgstr ""
 
 #. Label for menu item
 #: src/window.blp:192
+msgctxt "Menu item"
 msgid "_About Kitties"
 msgstr ""

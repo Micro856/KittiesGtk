@@ -19,7 +19,7 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
                           Adw.PreferencesGroup {
                             Adw.ComboRow cat_selector {
                               // Title for selector of cats, this means the currently selected Cat is, kind of like "Cat:", but without ':'
-                              title: _("Cat");
+                              title: C_("Cat selector", "Cat");
                               model: StringList {
                                 strings: ["Garfield", "Gary", "Goober", "Gully", "Rory"];
                               };
@@ -27,7 +27,7 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
                             }
                             Adw.SpinRow cat_id_button {
                               // Title for the selector of the image, just like with the cat selector, this means ID number of the image to display
-                              title: _("Image Number");
+                              title: C_("Image selector", "Image Number");
                               adjustment: Adjustment {
                                 lower: 0;
                                 upper: 1000;
@@ -47,14 +47,14 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
           valign: end;
           icon-name: "dice-symbolic";
           // Tooltip for a button, which when pressesdwill display a random image
-          tooltip-text: _("Randomize Image");
+          tooltip-text: C_("Button tooltip", "Randomize Image");
         }
         Button getting {
           halign: center;
           valign: end;
           icon-name: "document-save-symbolic";
           // Tooltip for a button, which when pressed will save the currently visible image
-          tooltip-text: _("Save Image");
+          tooltip-text: C_("Button tooltip", "Save Image");
         }
       }
       [end]
@@ -70,28 +70,28 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
               Adw.ActionRow info_cat {
                 styles ["property"]
                 // An image property, works like "Cat:", for example if selected cat is Gary, it should be read as "Cat: Gary"
-                title: _("Cat");
+                title: C_("Image details", "Cat");
               }
               Adw.ActionRow info_id {
                 styles ["property"]
                 // An image property, works like "Cat:", for example if selected image is 2, it should be read as "Image number: 2"
-                title: _("Image Number");
+                title: C_("Image details", "Image Number");
               }
               Adw.ActionRow info_url {
                 styles ["property"]
-                title: _("Image URL");
+                title: C_("Image details", "Image URL");
                 use-markup: true;
               }
               Adw.ActionRow info_copying {
                 styles ["property"]
                 // An image property, licence/license of the image
-                title: _("Lincense");
+                title: C_("Image details", "Lincense");
                 use-markup: true;
               }
               Adw.ActionRow info_api {
                 styles ["property"]
                 // An image property, the API used to fetch the cat image, if Gary is selected, it should be read as "API: api.garythe.cat"
-                title: _("API");
+                title: C_("Image details", "API");
                 use-markup: true;
               }
             }
@@ -101,7 +101,7 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
           primary: true;
           icon-name: "open-menu-symbolic";
           // A tooltip for a button, which when pressed opens the main menu
-          tooltip-text: _("Main Menu");
+          tooltip-text: C_("Button tooltip", "Main Menu");
           menu-model: primary_menu;
         }
       }
@@ -111,15 +111,15 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
 
         Adw.Banner data_issue {
           // Text for the banner, which displays when the random image number or the image data could not be fetched
-          title: _("A problem occurred while getting the image.");
+          title: C_("Banner", "A problem occurred while getting the image.");
           // Button for the action of both banners
-          button-label: _("Try Again");
+          button-label: C_("Banner icon", "Try Again");
           revealed: false;
         }
         Adw.Banner image_issue {
           // Text for the banner, which displays when the image could not be displayed
-          title: _("A problem occurred while displaying the image.");
-          button-label: _("Try Again");
+          title: _C_("Banner", "A problem occurred while displaying the image.");
+          button-label: C_("Banner icon", "Try Again");
           revealed: false;
         }
         ProgressBar progress {
@@ -138,16 +138,16 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
 
 Adw.Toast file_saved {
   // Little popup that appears when file was saved
-  title: _("File saved successfully!");
+  title: C_("Toast", "File saved successfully!");
   timeout: 3;
 }
 Adw.Toast file_error {
   // Little popup if the file wasn't saved correctly
-  title: _("A problem occurred while saving the image.");
+  title: C_("Toast", "A problem occurred while saving the image.");
 }
 Adw.Toast file_cancelled {
   // Little popup that appears when user cancells saving
-  title: _("File saving cancelled");
+  title: C_("Toast", "File saving cancelled");
   timeout: 3;
 }
 
@@ -165,7 +165,7 @@ Adw.Dialog cat_selector_window {
         orientation: horizontal;
         Label {
           // Text for the entry of image number that get's triggered with a keyboard shortcut
-          label: _("Enter Image Number:");
+          label: C_("Tooltip?", "Enter Image Number:");
         }
         SpinButton cat_id_button_window {
           adjustment: Adjustment {
@@ -184,12 +184,12 @@ menu primary_menu {
   section {
     item {
       // Label for menu item
-      label: _("_Keyboard Shortcuts");
+      label: C_("Menu item", "_Keyboard Shortcuts");
       action: "app.shortcuts";
     }
     item {
       // Label for menu item
-      label: _("_About Kitties");
+      label: C_("Menu item", "_About Kitties");
       action: "app.about";
     }
   }
