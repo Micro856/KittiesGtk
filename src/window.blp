@@ -2,6 +2,7 @@ using Gtk 4.0;
 using Adw 1;
 
 template $KittiesgtkWindow: Adw.ApplicationWindow {
+  // This name is generic enough. Go ahead translate it.
   title: _("Kitties");
   default-width: 740;
   default-height: 600;
@@ -12,10 +13,12 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
       Adw.HeaderBar {
         title-widget: MenuButton cat_popover {
                         primary: false;
+                        // A tooltip
                         tooltip-text: _("Cat & Image Selector");
                         popover: Popover {
                           Adw.PreferencesGroup {
                             Adw.ComboRow cat_selector {
+                              // Title for selector of cats, this means the currently selected Cat is, kind of like "Cat:", but without ':'
                               title: _("Cat");
                               model: StringList {
                                 strings: ["Garfield", "Gary", "Goober", "Gully", "Rory"];
@@ -23,6 +26,7 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
                               selected: 1;
                             }
                             Adw.SpinRow cat_id_button {
+                              // Title for the selector of the image, just like with the cat selector, this means ID number of the image to display
                               title: _("Image Number");
                               adjustment: Adjustment {
                                 lower: 0;
@@ -42,12 +46,14 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
           halign: center;
           valign: end;
           icon-name: "dice-symbolic";
+          // Tooltip for a button, which when pressesdwill display a random image
           tooltip-text: _("Randomize Image");
         }
         Button getting {
           halign: center;
           valign: end;
           icon-name: "document-save-symbolic";
+          // Tooltip for a button, which when pressed will save the currently visible image
           tooltip-text: _("Save Image");
         }
       }
@@ -57,15 +63,18 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
         MenuButton {
           primary: false;
           icon-name: "info-outline-symbolic";
+          // Tooltip for a button, which when pressed will display the details of the image
           tooltip-text: _("Image Details");
           popover: Popover {
             Adw.PreferencesGroup {
               Adw.ActionRow info_cat {
                 styles ["property"]
+                // An image property, works like "Cat:", for example if selected cat is Gary, it should be read as "Cat: Gary"
                 title: _("Cat");
               }
               Adw.ActionRow info_id {
                 styles ["property"]
+                // An image property, works like "Cat:", for example if selected image is 2, it should be read as "Image number: 2"
                 title: _("Image Number");
               }
               Adw.ActionRow info_url {
@@ -75,11 +84,13 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
               }
               Adw.ActionRow info_copying {
                 styles ["property"]
+                // An image property, licence/license of the image
                 title: _("Lincense");
                 use-markup: true;
               }
               Adw.ActionRow info_api {
                 styles ["property"]
+                // An image property, the API used to fetch the cat image, if Gary is selected, it should be read as "API: api.garythe.cat"
                 title: _("API");
                 use-markup: true;
               }
@@ -89,6 +100,7 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
         MenuButton {
           primary: true;
           icon-name: "open-menu-symbolic";
+          // A tooltip for a button, which when pressed opens the main menu
           tooltip-text: _("Main Menu");
           menu-model: primary_menu;
         }
@@ -98,11 +110,14 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
         orientation: vertical;
 
         Adw.Banner data_issue {
+          // Text for the banner, which displays when the random image number or the image data could not be fetched
           title: _("A problem occurred while getting the image.");
+          // Button for the action of both banners
           button-label: _("Try Again");
           revealed: false;
         }
         Adw.Banner image_issue {
+          // Text for the banner, which displays when the image could not be displayed
           title: _("A problem occurred while displaying the image.");
           button-label: _("Try Again");
           revealed: false;
@@ -122,13 +137,16 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
 }
 
 Adw.Toast file_saved {
+  // Little popup that appears when file was saved
   title: _("File saved successfully!");
   timeout: 3;
 }
 Adw.Toast file_error {
+  // Little popup if the file wasn't saved correctly
   title: _("A problem occurred while saving the image.");
 }
 Adw.Toast file_cancelled {
+  // Little popup that appears when user cancells saving
   title: _("File saving cancelled");
   timeout: 3;
 }
@@ -146,6 +164,7 @@ Adw.Dialog cat_selector_window {
         valign: center;
         orientation: horizontal;
         Label {
+          // Text for the entry of image number that get's triggered with a keyboard shortcut
           label: _("Enter Image Number:");
         }
         SpinButton cat_id_button_window {
@@ -164,10 +183,12 @@ Adw.Dialog cat_selector_window {
 menu primary_menu {
   section {
     item {
+      // Label for menu item
       label: _("_Keyboard Shortcuts");
       action: "app.shortcuts";
     }
     item {
+      // Label for menu item
       label: _("_About Kitties");
       action: "app.about";
     }

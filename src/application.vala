@@ -56,6 +56,7 @@ public class Kittiesgtk.Application : Adw.Application {
             application_name = "Kitties",
             application_icon = "io.github.Micro856.KittiesGtk",
             developer_name = "Marcel Mrówka",
+            // Format: NAMES/NICKNAME <e-mail/website-url>, YEAR
             translator_credits = _("translator-credits"),
             version = "0.1.0",
             developers = developers,
