@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kittiesgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 16:52+0100\n"
-"PO-Revision-Date: 2026-10-27 22:21+0100\n"
+"POT-Creation-Date: 2026-10-31 17:47+0100\n"
+"PO-Revision-Date: 2026-10-31 17:49+0100\n"
 "Last-Translator: Marcel Mrówka <micro.mail88@gmail.com>\n"
 "Language-Team: Polish <https://l10n.gnome.org/teams/pl/>\n"
 "Language: pl\n"
@@ -50,6 +50,10 @@ msgstr ""
 #: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:15
 msgid "Marcel Mrówka"
 msgstr "Marcel Mrówka"
+
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:36
+msgid "Main Window of Kitties showing an image of Gary"
+msgstr "Główne okno aplikacji Kiciusie wyświetlające zdjęcie Gary'ego"
 
 #. This name is generic enough. Go ahead translate it.
 #: src/application.vala:56 src/window.blp:6
