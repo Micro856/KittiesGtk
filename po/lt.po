@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kittiesgtk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-10-31 18:12+0100\n"
-"PO-Revision-Date: 2026-10-30 19:30+0200\n"
+"PO-Revision-Date: 2026-10-31 19:45+0200\n"
 "Last-Translator: Gradient Man <rixthetyrunt@gmail.com>\n"
 "Language-Team: Lithuanian\n"
 "Language: lt\n"
@@ -50,20 +50,19 @@ msgstr ""
 
 #: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:13
 msgid "Features:"
-msgstr ""
+msgstr "Funkcijos:"
 
 #: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:15
 msgid "Support for Multiple APIs"
-msgstr ""
+msgstr "Kelių API palaikymas"
 
 #: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:16
-#, fuzzy
 msgid "Saving Cat Images"
-msgstr "Išsaugoti nuotrauką"
+msgstr "Saugojama nuotrauka"
 
 #: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:17
 msgid "Keyboard Navigation"
-msgstr ""
+msgstr "Klaviatūros navigacija"
 
 #: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:22
 msgid "Marcel Mrówka"
@@ -71,7 +70,7 @@ msgstr "Marcel Mrówka"
 
 #: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:43
 msgid "Main Window of Kitties showing an image of Gary"
-msgstr ""
+msgstr "Kačiukai pagrindinis langas, rodantis Gary vaizdą"
 
 #. Format: NAMES/NICKNAME <e-mail/website-url>, YEAR
 #: src/application.vala:60
