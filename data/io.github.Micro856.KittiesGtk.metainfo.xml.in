@@ -9,6 +9,13 @@
   <description>
     <p>Kitties is an app that lets you display a random image of one of the available cats.</p>
     <p>These pictures come from various APIs including api.garythe.cat and rory.cat.</p>
+    <p></p>
+    <p>Features:</p>
+    <ul>
+      <li>Support for Multiple APIs</li>
+      <li>Saving Cat Images</li>
+      <li>Keyboard Navigation</li>
+    </ul>
   </description>
 
   <developer id="tld.vendor">
@@ -41,11 +48,9 @@
     <release version="1.0.0" date="2026-10-00">
       <url type="details">https://github.com/Micro856/KittiesGtk/releases/tag/1.0.0</url>
       <description translate="no">
-        <p>Release description</p>
-        <ul>
-          <li>List of changes</li>
-          <li>List of changes</li>
-        </ul>
+        <p>Initial release</p>
+        <p>Kitties is an app that lets you display a random image of one of the available cats.</p>
+        <p>These pictures come from various APIs including api.garythe.cat and rory.cat.</p>
       </description>
     </release>
   </releases>
