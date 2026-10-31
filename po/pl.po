@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kittiesgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 18:02+0100\n"
+"POT-Creation-Date: 2026-10-31 18:12+0100\n"
 "PO-Revision-Date: 2026-10-31 18:05+0100\n"
 "Last-Translator: Marcel Mrówka <micro.mail88@gmail.com>\n"
 "Language-Team: Polish <https://l10n.gnome.org/teams/pl/>\n"
@@ -19,8 +19,10 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Gtranslator 51.0\n"
 
+#. This name is generic enough. Go ahead translate it.
 #: data/io.github.Micro856.KittiesGtk.desktop.in:2
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:7
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:7 src/application.vala:56
+#: src/window.blp:6
 msgid "Kitties"
 msgstr "Kiciusie"
 
@@ -70,12 +72,6 @@ msgstr "Marcel Mrówka"
 #: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:43
 msgid "Main Window of Kitties showing an image of Gary"
 msgstr "Główne okno aplikacji Kiciusie wyświetlające zdjęcie Gary'ego"
-
-#. This name is generic enough. Go ahead translate it.
-#: src/application.vala:56 src/window.blp:6
-msgctxt "App name"
-msgid "Kitties"
-msgstr "Kiciusie"
 
 #. Format: NAMES/NICKNAME <e-mail/website-url>, YEAR
 #: src/application.vala:60
@@ -315,3 +311,7 @@ msgstr "Skróty _klawiszowe"
 msgctxt "Menu item"
 msgid "_About Kitties"
 msgstr "O _aplikacji"
+
+#~ msgctxt "App name"
+#~ msgid "Kitties"
+#~ msgstr "Kiciusie"

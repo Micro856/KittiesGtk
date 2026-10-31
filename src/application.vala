@@ -53,7 +53,7 @@ public class Kittiesgtk.Application : Adw.Application {
     private void on_about_action () {
         string[] developers = { "Marcel Mrówka https://micro856.github.io" };
         var about = new Adw.AboutDialog () {
-            application_name = C_("App name", "Kitties"),
+            application_name = _("Kitties"),
             application_icon = "io.github.Micro856.KittiesGtk",
             developer_name = "Marcel Mrówka",
             // Format: NAMES/NICKNAME <e-mail/website-url>, YEAR

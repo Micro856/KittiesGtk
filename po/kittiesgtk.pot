@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kittiesgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 18:02+0100\n"
+"POT-Creation-Date: 2026-10-31 18:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#. This name is generic enough. Go ahead translate it.
 #: data/io.github.Micro856.KittiesGtk.desktop.in:2
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:7
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:7 src/application.vala:56
+#: src/window.blp:6
 msgid "Kitties"
 msgstr ""
 
@@ -63,12 +65,6 @@ msgstr ""
 
 #: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:43
 msgid "Main Window of Kitties showing an image of Gary"
-msgstr ""
-
-#. This name is generic enough. Go ahead translate it.
-#: src/application.vala:56 src/window.blp:6
-msgctxt "App name"
-msgid "Kitties"
 msgstr ""
 
 #. Format: NAMES/NICKNAME <e-mail/website-url>, YEAR

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kittiesgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 18:02+0100\n"
+"POT-Creation-Date: 2026-10-31 18:12+0100\n"
 "PO-Revision-Date: 2026-10-30 19:30+0200\n"
 "Last-Translator: Gradient Man <rixthetyrunt@gmail.com>\n"
 "Language-Team: Lithuanian\n"
@@ -20,8 +20,10 @@ msgstr ""
 "(n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Gtranslator 51.0\n"
 
+#. This name is generic enough. Go ahead translate it.
 #: data/io.github.Micro856.KittiesGtk.desktop.in:2
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:7
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:7 src/application.vala:56
+#: src/window.blp:6
 msgid "Kitties"
 msgstr "Kačiukai"
 
@@ -70,12 +72,6 @@ msgstr "Marcel Mrówka"
 #: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:43
 msgid "Main Window of Kitties showing an image of Gary"
 msgstr ""
-
-#. This name is generic enough. Go ahead translate it.
-#: src/application.vala:56 src/window.blp:6
-msgctxt "App name"
-msgid "Kitties"
-msgstr "Kačiukai"
 
 #. Format: NAMES/NICKNAME <e-mail/website-url>, YEAR
 #: src/application.vala:60
@@ -315,3 +311,7 @@ msgstr "Spartieji _klavišai"
 msgctxt "Menu item"
 msgid "_About Kitties"
 msgstr "_Apie Kačiukai"
+
+#~ msgctxt "App name"
+#~ msgid "Kitties"
+#~ msgstr "Kačiukai"
