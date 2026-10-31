@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kitties\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-27 22:21+0100\n"
+"POT-Creation-Date: 2026-10-31 16:52+0100\n"
 "PO-Revision-Date: 2026-10-30 19:30+0200\n"
 "Last-Translator: Gradient Man <rixthetyrunt@gmail.com>\n"
 "Language-Team: Lithuanian\n"
@@ -20,9 +20,8 @@ msgstr ""
 "(n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Gtranslator 51.0\n"
 
-#. This name is generic enough. Go ahead translate it.
 #: data/io.github.Micro856.KittiesGtk.desktop.in:2
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:7 src/window.blp:6
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:7
 msgid "Kitties"
 msgstr "Kačiukai"
 
@@ -51,8 +50,15 @@ msgstr ""
 msgid "Marcel Mrówka"
 msgstr "Marcel Mrówka"
 
+#. This name is generic enough. Go ahead translate it.
+#: src/application.vala:56 src/window.blp:6
+msgctxt "App name"
+msgid "Kitties"
+msgstr "Kačiukai"
+
 #. Format: NAMES/NICKNAME <e-mail/website-url>, YEAR
 #: src/application.vala:60
+msgctxt "credits"
 msgid "translator-credits"
 msgstr "Gradient Man <gradmna.com>, 2026"
 

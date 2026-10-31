@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kitties\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-27 22:21+0100\n"
+"POT-Creation-Date: 2026-10-31 16:52+0100\n"
 "PO-Revision-Date: 2026-10-27 22:21+0100\n"
 "Last-Translator: Marcel Mrówka <micro.mail88@gmail.com>\n"
 "Language-Team: Polish <https://l10n.gnome.org/teams/pl/>\n"
@@ -19,9 +19,8 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Gtranslator 51.0\n"
 
-#. This name is generic enough. Go ahead translate it.
 #: data/io.github.Micro856.KittiesGtk.desktop.in:2
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:7 src/window.blp:6
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:7
 msgid "Kitties"
 msgstr "Kiciusie"
 
@@ -52,8 +51,15 @@ msgstr ""
 msgid "Marcel Mrówka"
 msgstr "Marcel Mrówka"
 
+#. This name is generic enough. Go ahead translate it.
+#: src/application.vala:56 src/window.blp:6
+msgctxt "App name"
+msgid "Kitties"
+msgstr "Kiciusie"
+
 #. Format: NAMES/NICKNAME <e-mail/website-url>, YEAR
 #: src/application.vala:60
+msgctxt "credits"
 msgid "translator-credits"
 msgstr "Marcel Mrówka <micro.mail88@gmail.com>, 2026"
 
@@ -289,10 +295,3 @@ msgstr "Skróty _klawiszowe"
 msgctxt "Menu item"
 msgid "_About Kitties"
 msgstr "O _aplikacji"
-
-#, fuzzy
-#~ msgid "© 2026 Marcel Mrówka"
-#~ msgstr "Marcel Mrówka"
-
-#~ msgid "Shortcuts"
-#~ msgstr "Skróty klawiszowe"

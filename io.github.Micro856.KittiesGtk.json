@@ -38,7 +38,7 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "file:///var/home/microwave/Projekty/KittiesGtk"
+                    "url" : "https://github.com/Micro856/KittiesGtk"
                 }
             ]
         }
