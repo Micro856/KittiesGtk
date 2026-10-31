@@ -160,6 +160,8 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     }
 
     private async void image_get () {
+        progress.set_visible (true);
+        getting.set_sensitive (false);
         yield image_get_url();
         yield image_get_data ();
         image_render ();
@@ -172,6 +174,9 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
     private async void image_get_id () {
         data_issue.set_revealed (false);
+        image_issue.set_revealed (false);
+        getting.set_sensitive (false);
+        progress.set_visible (true);
         selection = cat_selector.get_selected_item () as Gtk.StringObject;
         stdout.printf("%s\n", selection.string);
         var backend = new Kittiesgtk.Backend ();
@@ -210,6 +215,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             progress.set_fraction (0);
         } catch {
             data_issue.set_revealed (true);
+            progress.set_visible (false);
             info_id.hide ();
             info_url.hide ();
             image_data = new GLib.Bytes(null);
@@ -225,6 +231,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             var to_display = GlyGtk4.frame_get_texture (frame);
             picture.set_paintable (to_display);
             progress.set_visible (false);
+            getting.set_sensitive (true);
         } catch {
             if (data_issue.get_revealed () == false) {
                 image_issue.set_revealed (true);
