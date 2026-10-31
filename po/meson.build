@@ -1,1 +1,1 @@
-i18n.gettext('kitties', preset: 'glib', args: '-c')
+i18n.gettext('kittiesgtk', preset: 'glib', args: '-c')
