@@ -1,0 +1,317 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the kittiesgtk package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# weenie mount <weeniemount@gmail.com>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: kittiesgtk\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-31 18:02+0100\n"
+"PO-Revision-Date: 2026-10-31 18:30+0100\n"
+"Last-Translator: weenie mount <weeniemount@gmail.com>\n"
+"Language-Team: Croatian\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Gtranslator 51.0\n"
+
+#: data/io.github.Micro856.KittiesGtk.desktop.in:2
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:7
+msgid "Kitties"
+msgstr "Mačkice"
+
+#: data/io.github.Micro856.KittiesGtk.desktop.in:8
+msgid "GTK;Cat;Cats;Kitty;Feline;Felines;Meow;Gary;Goober;Gully;Garfield;Rory;API;Image;Download;Random;"
+msgstr "GTK;Mačka;Mačke;Mačkica;Mačij;Mjau;Gary;Goober;Gully;Garfield;Rory;API;Slike;Preuzmi;Nasumično"
+
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:8
+msgid "View random images of felines"
+msgstr "Pogledaj nasumične slike mačija"
+
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:10
+msgid ""
+"Kitties is an app that lets you display a random image of one of the "
+"available cats."
+msgstr ""
+"Mačkice je aplikacija koja ti daje da pokažeš nasumičnu sliku od dostupnih "
+"mačka."
+
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:11
+msgid ""
+"These pictures come from various APIs including api.garythe.cat and rory.cat."
+msgstr ""
+"Ove slike dolaze sa raznim API-ovima uključujući api.garythe.cat i rory.cat."
+
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:13
+msgid "Features:"
+msgstr "Značajke"
+
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:15
+msgid "Support for Multiple APIs"
+msgstr "Podrška za više API-ova"
+
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:16
+msgid "Saving Cat Images"
+msgstr "Spremanje slike mačka"
+
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:17
+msgid "Keyboard Navigation"
+msgstr "Navigacije tipkovnicom"
+
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:22
+msgid "Marcel Mrówka"
+msgstr "Marcel Mrówka"
+
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:43
+msgid "Main Window of Kitties showing an image of Gary"
+msgstr "Glavni prozor Mačkica koja pokazuje sliku Garya"
+
+#. This name is generic enough. Go ahead translate it.
+#: src/application.vala:56 src/window.blp:6
+msgctxt "App name"
+msgid "Kitties"
+msgstr "Mačkice"
+
+#. Format: NAMES/NICKNAME <e-mail/website-url>, YEAR
+#: src/application.vala:60
+msgctxt "credits"
+msgid "translator-credits"
+msgstr "weeniemount <weeniemount@gmail.com>, 2026"
+
+#: src/application.vala:63
+msgid ""
+"© 2026 Marcel Mrówka\n"
+"\n"
+"This program is free software: you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation, either version 3 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"This program is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
+"See the GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with this program.  If not, see https://www.gnu.org/licenses/."
+msgstr ""
+"© 2026 Marcel Mrówka\n"
+"\n"
+"This program is free software: you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation, either version 3 of the License, or\n"
+"(at your option) any later version.\n"
+"\n"
+"This program is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
+"See the GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with this program.  If not, see https://www.gnu.org/licenses/."
+
+#. Title of the keyboard shortcut category
+#: src/shortcuts-dialog.blp:7
+msgctxt "Shortcut category"
+msgid "General"
+msgstr "Opće"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:10
+msgctxt "Shortcut"
+msgid "Show Shortcuts"
+msgstr "Pokaži prečace"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:15
+msgctxt "Shortcut"
+msgid "Quit"
+msgstr "Izađi"
+
+#. Tile of the keyboard shortcut category, things done to/with the image
+#: src/shortcuts-dialog.blp:21
+msgctxt "Shortcut category"
+msgid "Image"
+msgstr "Slika"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:24
+msgctxt "Shortcut"
+msgid "Enter Image Number"
+msgstr "Upiši broj slike"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:29
+msgctxt "Shortcut"
+msgid "Randomize Image"
+msgstr "Slučajno odaberi sliku"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:34
+msgctxt "Shortcut"
+msgid "Save Image"
+msgstr "Spremi Sliku"
+
+#. Name of the keyboard shortcut category, selecting cats form keyboard
+#: src/shortcuts-dialog.blp:40
+msgctxt "Shortcut category"
+msgid "Cat Selection"
+msgstr "Odabir mačka"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:43
+msgctxt "Shortcut"
+msgid "Switch to Garfield"
+msgstr "Promijeni na Garfield"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:48
+msgctxt "Shortcut"
+msgid "Switch to Gary"
+msgstr "Promijeni na Gary"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:53
+msgctxt "Shortcut"
+msgid "Switch to Goober"
+msgstr "Promijeni na Goober"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:58
+msgctxt "Shortcut"
+msgid "Switch to Gully"
+msgstr "Promjeni na Gully"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:63
+msgctxt "Shortcut"
+msgid "Switch to Rory"
+msgstr "Promjeni na Rory"
+
+#. A tooltip
+#: src/window.blp:17
+msgid "Cat & Image Selector"
+msgstr "Odabir mačke i slike"
+
+#. Title for selector of cats, this means the currently selected Cat is, kind of like "Cat:", but without ':'
+#: src/window.blp:22
+msgctxt "Cat selector"
+msgid "Cat"
+msgstr "Mačka"
+
+#. Title for the selector of the image, just like with the cat selector, this means ID number of the image to display
+#: src/window.blp:30
+msgctxt "Image selector"
+msgid "Image Number"
+msgstr "Broj slike"
+
+#. Tooltip for a button, which when pressesdwill display a random image
+#: src/window.blp:50
+msgctxt "Button tooltip"
+msgid "Randomize Image"
+msgstr "Nasumično odaberi sliku"
+
+#. Tooltip for a button, which when pressed will save the currently visible image
+#: src/window.blp:57
+msgctxt "Button tooltip"
+msgid "Save Image"
+msgstr "Spremi sliku"
+
+#. Tooltip for a button, which when pressed will display the details of the image
+#: src/window.blp:67
+msgid "Image Details"
+msgstr "Detalji slike"
+
+#. An image property, works like "Cat:", for example if selected cat is Gary, it should be read as "Cat: Gary"
+#: src/window.blp:73
+msgctxt "Image details"
+msgid "Cat"
+msgstr "Mačka"
+
+#. An image property, works like "Cat:", for example if selected image is 2, it should be read as "Image number: 2"
+#: src/window.blp:78
+msgctxt "Image details"
+msgid "Image Number"
+msgstr "Broj slike"
+
+#: src/window.blp:82
+msgctxt "Image details"
+msgid "Image URL"
+msgstr "URL slike"
+
+#. An image property, licence/license of the image
+#: src/window.blp:88
+msgctxt "Image details"
+msgid "Lincense"
+msgstr "Licensa"
+
+#. An image property, the API used to fetch the cat image, if Gary is selected, it should be read as "API: api.garythe.cat"
+#: src/window.blp:94
+msgctxt "Image details"
+msgid "API"
+msgstr "API"
+
+#. A tooltip for a button, which when pressed opens the main menu
+#: src/window.blp:104
+msgctxt "Button tooltip"
+msgid "Main Menu"
+msgstr "Glavni meni"
+
+#. Text for the banner, which displays when the random image number or the image data could not be fetched
+#: src/window.blp:114
+msgctxt "Banner"
+msgid "A problem occurred while getting the image."
+msgstr "Problem se dogodio tijekom uzimanja slike"
+
+#. Button for the action of both banners
+#: src/window.blp:116 src/window.blp:122
+msgctxt "Banner icon"
+msgid "Try Again"
+msgstr "Probaj opet"
+
+#. Text for the banner, which displays when the image could not be displayed
+#: src/window.blp:121
+msgctxt "Banner"
+msgid "A problem occurred while displaying the image."
+msgstr "Problem se dogodio tijekom pokazivanja slike"
+
+#. Little popup that appears when file was saved
+#: src/window.blp:141
+msgctxt "Toast"
+msgid "File saved successfully!"
+msgstr "Datoteka uspješno spremljena!"
+
+#. Little popup if the file wasn't saved correctly
+#: src/window.blp:146
+msgctxt "Toast"
+msgid "A problem occurred while saving the image."
+msgstr "Problem se dogodio tijekom spremanja slike"
+
+#. Little popup that appears when user cancells saving
+#: src/window.blp:150
+msgctxt "Toast"
+msgid "File saving cancelled"
+msgstr "Spremanje slike prekinuto"
+
+#. Text for the entry of image number that get's triggered with a keyboard shortcut
+#: src/window.blp:168
+msgctxt "Tooltip?"
+msgid "Enter Image Number:"
+msgstr "Upiši broj slike:"
+
+#. Label for menu item
+#: src/window.blp:187
+msgctxt "Menu item"
+msgid "_Keyboard Shortcuts"
+msgstr "_Prečaci tipkovnice"
+
+#. Label for menu item
+#: src/window.blp:192
+msgctxt "Menu item"
+msgid "_About Kitties"
+msgstr "_O Mačkice"
