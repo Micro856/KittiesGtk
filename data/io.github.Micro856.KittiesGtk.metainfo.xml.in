@@ -9,7 +9,6 @@
   <description>
     <p>Kitties is an app that lets you display a random image of one of the available cats.</p>
     <p>These pictures come from various APIs including api.garythe.cat and rory.cat.</p>
-    <p></p>
     <p>Features:</p>
     <ul>
       <li>Support for Multiple APIs</li>
@@ -22,11 +21,11 @@
     <name>Marcel Mrówka</name>
   </developer>
 
-  <url type="homepage">https://github.org/Micro856/KittiesGtk</url>
-  <url type="vcs-browser">https://github.org/Micro856/KittiesGtk</url>
-  <url type="bugtracker">https://github.org/Micro856/KittiesGtk/issues</url>
-  <url type="translate">https://github.org/Micro856/KittiesGtk/tree/main/po</url>
-  <url type="contribute">https://github.org/Micro856/KittiesGtk</url>
+  <url type="homepage">https://github.com/Micro856/KittiesGtk</url>
+  <url type="vcs-browser">https://github.com/Micro856/KittiesGtk</url>
+  <url type="bugtracker">https://github.com/Micro856/KittiesGtk/issues</url>
+  <url type="translate">https://github.com/Micro856/KittiesGtk/tree/master/po</url>
+  <url type="contribute">https://github.com/Micro856/KittiesGtk</url>
 
   <translation type="gettext">kittiesgtk</translation>
   <launchable type="desktop-id">io.github.Micro856.KittiesGtk.desktop</launchable>
