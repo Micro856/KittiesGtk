@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kittiesgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 18:12+0100\n"
+"POT-Creation-Date: 2026-11-07 15:40+0100\n"
 "PO-Revision-Date: 2026-10-31 19:45+0200\n"
 "Last-Translator: Gradient Man <rixthetyrunt@gmail.com>\n"
 "Language-Team: Lithuanian\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #. This name is generic enough. Go ahead translate it.
 #: data/io.github.Micro856.KittiesGtk.desktop.in:2
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:7 src/application.vala:56
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:7 src/application.vala:57
 #: src/window.blp:6
 msgid "Kitties"
 msgstr "Kačiukai"
@@ -48,37 +48,37 @@ msgstr ""
 "Šios nuotraukos yra kilę iš įvairių API, įskaitant api.garythe.cat ir "
 "rory.cat."
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:13
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:12
 msgid "Features:"
 msgstr "Funkcijos:"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:15
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:14
 msgid "Support for Multiple APIs"
 msgstr "Kelių API palaikymas"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:16
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:15
 msgid "Saving Cat Images"
 msgstr "Saugojama nuotrauka"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:17
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:16
 msgid "Keyboard Navigation"
 msgstr "Klaviatūros navigacija"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:22
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:21
 msgid "Marcel Mrówka"
 msgstr "Marcel Mrówka"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:43
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:42
 msgid "Main Window of Kitties showing an image of Gary"
 msgstr "Kačiukai pagrindinis langas, rodantis Gary vaizdą"
 
 #. Format: NAMES/NICKNAME <e-mail/website-url>, YEAR
-#: src/application.vala:60
+#: src/application.vala:61
 msgctxt "credits"
 msgid "translator-credits"
 msgstr "Gradient Man <gradmna.com>, 2026"
 
-#: src/application.vala:63
+#: src/application.vala:64
 msgid ""
 "© 2026 Marcel Mrówka\n"
 "\n"
@@ -136,54 +136,61 @@ msgstr "Nuotrauka…"
 
 #. Name of the keyboard shortcut
 #: src/shortcuts-dialog.blp:24
+#, fuzzy
+msgctxt "Shortcut"
+msgid "Copy Image"
+msgstr "Nuotrauka…"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:29
 msgctxt "Shortcut"
 msgid "Enter Image Number"
 msgstr "Įvesti nuotraukos numerį"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:29
+#: src/shortcuts-dialog.blp:34
 msgctxt "Shortcut"
 msgid "Randomize Image"
 msgstr "Parinkti atsitiktiną nuotrauką"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:34
+#: src/shortcuts-dialog.blp:39
 msgctxt "Shortcut"
 msgid "Save Image"
 msgstr "Išsaugoti nuotrauką"
 
 #. Name of the keyboard shortcut category, selecting cats form keyboard
-#: src/shortcuts-dialog.blp:40
+#: src/shortcuts-dialog.blp:45
 msgctxt "Shortcut category"
 msgid "Cat Selection"
 msgstr "Katinų pasirinkimai"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:43
+#: src/shortcuts-dialog.blp:48
 msgctxt "Shortcut"
 msgid "Switch to Garfield"
 msgstr "Garfield"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:48
+#: src/shortcuts-dialog.blp:53
 msgctxt "Shortcut"
 msgid "Switch to Gary"
 msgstr "Gary"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:53
+#: src/shortcuts-dialog.blp:58
 msgctxt "Shortcut"
 msgid "Switch to Goober"
 msgstr "Goober"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:58
+#: src/shortcuts-dialog.blp:63
 msgctxt "Shortcut"
 msgid "Switch to Gully"
 msgstr "Gully"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:63
+#: src/shortcuts-dialog.blp:68
 msgctxt "Shortcut"
 msgid "Switch to Rory"
 msgstr "Rory"
@@ -217,96 +224,109 @@ msgctxt "Button tooltip"
 msgid "Save Image"
 msgstr "Išsaugoti nuotrauką"
 
+#. Tooltip for a button, which when pressed will save the currently visible image
+#: src/window.blp:64
+#, fuzzy
+msgctxt "Button tooltip"
+msgid "Copy Image"
+msgstr "Nuotrauka…"
+
 #. Tooltip for a button, which when pressed will display the details of the image
-#: src/window.blp:67
+#: src/window.blp:74
 msgid "Image Details"
 msgstr "Nuotraukos informacija"
 
 #. An image property, works like "Cat:", for example if selected cat is Gary, it should be read as "Cat: Gary"
-#: src/window.blp:73
+#: src/window.blp:80
 msgctxt "Image details"
 msgid "Cat"
 msgstr "Katinas"
 
 #. An image property, works like "Cat:", for example if selected image is 2, it should be read as "Image number: 2"
-#: src/window.blp:78
+#: src/window.blp:85
 msgctxt "Image details"
 msgid "Image Number"
 msgstr "Nuotraukos numeris"
 
-#: src/window.blp:82
+#: src/window.blp:89
 msgctxt "Image details"
 msgid "Image URL"
 msgstr "Nuotraukos nuoroda"
 
 #. An image property, licence/license of the image
-#: src/window.blp:88
+#: src/window.blp:95
 msgctxt "Image details"
 msgid "Lincense"
 msgstr "Licencija"
 
 #. An image property, the API used to fetch the cat image, if Gary is selected, it should be read as "API: api.garythe.cat"
-#: src/window.blp:94
+#: src/window.blp:101
 msgctxt "Image details"
 msgid "API"
 msgstr "API"
 
 #. A tooltip for a button, which when pressed opens the main menu
-#: src/window.blp:104
+#: src/window.blp:111
 msgctxt "Button tooltip"
 msgid "Main Menu"
 msgstr "Pagrindinė meniu"
 
 #. Text for the banner, which displays when the random image number or the image data could not be fetched
-#: src/window.blp:114
+#: src/window.blp:121
 msgctxt "Banner"
 msgid "A problem occurred while getting the image."
 msgstr "Kažkas atsitiko bandant išgauti nuotrauką."
 
 #. Button for the action of both banners
-#: src/window.blp:116 src/window.blp:122
+#: src/window.blp:123 src/window.blp:129
 msgctxt "Banner icon"
 msgid "Try Again"
 msgstr "Bandyti iš naujo"
 
 #. Text for the banner, which displays when the image could not be displayed
-#: src/window.blp:121
+#: src/window.blp:128
 msgctxt "Banner"
 msgid "A problem occurred while displaying the image."
 msgstr "Kažkas atsitiko bandant rodyti nuotrauką."
 
 #. Little popup that appears when file was saved
-#: src/window.blp:141
+#: src/window.blp:148
 msgctxt "Toast"
 msgid "File saved successfully!"
 msgstr "Failas išsaugotas!"
 
 #. Little popup if the file wasn't saved correctly
-#: src/window.blp:146
+#: src/window.blp:153
 msgctxt "Toast"
 msgid "A problem occurred while saving the image."
 msgstr "Kažkas atsitiko bandant išsaugoti nuotrauką."
 
 #. Little popup that appears when user cancells saving
-#: src/window.blp:150
+#: src/window.blp:158
 msgctxt "Toast"
 msgid "File saving cancelled"
 msgstr "Failo išsaugojimas anuliuotas"
 
+#. Little popup that appears when user copies an image
+#: src/window.blp:163
+msgctxt "Toast"
+msgid "Copied to Clipboard!"
+msgstr ""
+
 #. Text for the entry of image number that get's triggered with a keyboard shortcut
-#: src/window.blp:168
+#: src/window.blp:181
 msgctxt "Tooltip?"
 msgid "Enter Image Number:"
 msgstr "Įveskite nuotraukos numerį:"
 
 #. Label for menu item
-#: src/window.blp:187
+#: src/window.blp:200
 msgctxt "Menu item"
 msgid "_Keyboard Shortcuts"
 msgstr "Spartieji _klavišai"
 
 #. Label for menu item
-#: src/window.blp:192
+#: src/window.blp:205
 msgctxt "Menu item"
 msgid "_About Kitties"
 msgstr "_Apie Kačiukai"

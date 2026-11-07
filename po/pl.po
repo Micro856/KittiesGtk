@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kittiesgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-31 18:12+0100\n"
+"POT-Creation-Date: 2026-11-07 15:40+0100\n"
 "PO-Revision-Date: 2026-10-31 18:05+0100\n"
 "Last-Translator: Marcel Mrówka <micro.mail88@gmail.com>\n"
 "Language-Team: Polish <https://l10n.gnome.org/teams/pl/>\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #. This name is generic enough. Go ahead translate it.
 #: data/io.github.Micro856.KittiesGtk.desktop.in:2
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:7 src/application.vala:56
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:7 src/application.vala:57
 #: src/window.blp:6
 msgid "Kitties"
 msgstr "Kiciusie"
@@ -49,37 +49,37 @@ msgstr ""
 "Te obrazy pochodzą z różnych interfejsów API w tym api.garythe.cat oraz "
 "rory.cat."
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:13
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:12
 msgid "Features:"
 msgstr "Funkcje:"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:15
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:14
 msgid "Support for Multiple APIs"
 msgstr "Obsługa wielu interfejsów API"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:16
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:15
 msgid "Saving Cat Images"
 msgstr "Zapisywanie zdjęć kotów"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:17
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:16
 msgid "Keyboard Navigation"
 msgstr "Nawigacja klawiaturą"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:22
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:21
 msgid "Marcel Mrówka"
 msgstr "Marcel Mrówka"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:43
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:42
 msgid "Main Window of Kitties showing an image of Gary"
 msgstr "Główne okno aplikacji Kiciusie wyświetlające zdjęcie Gary'ego"
 
 #. Format: NAMES/NICKNAME <e-mail/website-url>, YEAR
-#: src/application.vala:60
+#: src/application.vala:61
 msgctxt "credits"
 msgid "translator-credits"
 msgstr "Marcel Mrówka <micro.mail88@gmail.com>, 2026"
 
-#: src/application.vala:63
+#: src/application.vala:64
 msgid ""
 "© 2026 Marcel Mrówka\n"
 "\n"
@@ -137,54 +137,61 @@ msgstr "Zdjęcie"
 
 #. Name of the keyboard shortcut
 #: src/shortcuts-dialog.blp:24
+#, fuzzy
+msgctxt "Shortcut"
+msgid "Copy Image"
+msgstr "Zdjęcie"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:29
 msgctxt "Shortcut"
 msgid "Enter Image Number"
 msgstr "Wprowadzenie numeru zdjęcia"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:29
+#: src/shortcuts-dialog.blp:34
 msgctxt "Shortcut"
 msgid "Randomize Image"
 msgstr "Wylosowanie zdjęcia"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:34
+#: src/shortcuts-dialog.blp:39
 msgctxt "Shortcut"
 msgid "Save Image"
 msgstr "Zapisanie zdjęcia"
 
 #. Name of the keyboard shortcut category, selecting cats form keyboard
-#: src/shortcuts-dialog.blp:40
+#: src/shortcuts-dialog.blp:45
 msgctxt "Shortcut category"
 msgid "Cat Selection"
 msgstr "Wybór kota"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:43
+#: src/shortcuts-dialog.blp:48
 msgctxt "Shortcut"
 msgid "Switch to Garfield"
 msgstr "Przełączenie na Garfielda"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:48
+#: src/shortcuts-dialog.blp:53
 msgctxt "Shortcut"
 msgid "Switch to Gary"
 msgstr "Przełączenie na Gary'ego"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:53
+#: src/shortcuts-dialog.blp:58
 msgctxt "Shortcut"
 msgid "Switch to Goober"
 msgstr "Przełączenie na Goobera"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:58
+#: src/shortcuts-dialog.blp:63
 msgctxt "Shortcut"
 msgid "Switch to Gully"
 msgstr "Przełączenie na Gully'ego"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:63
+#: src/shortcuts-dialog.blp:68
 msgctxt "Shortcut"
 msgid "Switch to Rory"
 msgstr "Przełączenie na Rory'ego"
@@ -218,96 +225,109 @@ msgctxt "Button tooltip"
 msgid "Save Image"
 msgstr "Zapisz zdjęcie"
 
+#. Tooltip for a button, which when pressed will save the currently visible image
+#: src/window.blp:64
+#, fuzzy
+msgctxt "Button tooltip"
+msgid "Copy Image"
+msgstr "Zdjęcie"
+
 #. Tooltip for a button, which when pressed will display the details of the image
-#: src/window.blp:67
+#: src/window.blp:74
 msgid "Image Details"
 msgstr "Szczegóły zdjęcia"
 
 #. An image property, works like "Cat:", for example if selected cat is Gary, it should be read as "Cat: Gary"
-#: src/window.blp:73
+#: src/window.blp:80
 msgctxt "Image details"
 msgid "Cat"
 msgstr "Kot"
 
 #. An image property, works like "Cat:", for example if selected image is 2, it should be read as "Image number: 2"
-#: src/window.blp:78
+#: src/window.blp:85
 msgctxt "Image details"
 msgid "Image Number"
 msgstr "Numer zdjęcia"
 
-#: src/window.blp:82
+#: src/window.blp:89
 msgctxt "Image details"
 msgid "Image URL"
 msgstr "Adres URL zdjęcia"
 
 #. An image property, licence/license of the image
-#: src/window.blp:88
+#: src/window.blp:95
 msgctxt "Image details"
 msgid "Lincense"
 msgstr "Licencja"
 
 #. An image property, the API used to fetch the cat image, if Gary is selected, it should be read as "API: api.garythe.cat"
-#: src/window.blp:94
+#: src/window.blp:101
 msgctxt "Image details"
 msgid "API"
 msgstr "API"
 
 #. A tooltip for a button, which when pressed opens the main menu
-#: src/window.blp:104
+#: src/window.blp:111
 msgctxt "Button tooltip"
 msgid "Main Menu"
 msgstr "Menu główne"
 
 #. Text for the banner, which displays when the random image number or the image data could not be fetched
-#: src/window.blp:114
+#: src/window.blp:121
 msgctxt "Banner"
 msgid "A problem occurred while getting the image."
 msgstr "Wystąpił problem podczas pobierania zdjęcia."
 
 #. Button for the action of both banners
-#: src/window.blp:116 src/window.blp:122
+#: src/window.blp:123 src/window.blp:129
 msgctxt "Banner icon"
 msgid "Try Again"
 msgstr "Spróbuj ponownie"
 
 #. Text for the banner, which displays when the image could not be displayed
-#: src/window.blp:121
+#: src/window.blp:128
 msgctxt "Banner"
 msgid "A problem occurred while displaying the image."
 msgstr "Wystąpił problem podczas wyświetlania zdjęcia."
 
 #. Little popup that appears when file was saved
-#: src/window.blp:141
+#: src/window.blp:148
 msgctxt "Toast"
 msgid "File saved successfully!"
 msgstr "Plik został zapisany pomyślnie!!"
 
 #. Little popup if the file wasn't saved correctly
-#: src/window.blp:146
+#: src/window.blp:153
 msgctxt "Toast"
 msgid "A problem occurred while saving the image."
 msgstr "Wystąpił problem podczas zapisywania zdjęcia."
 
 #. Little popup that appears when user cancells saving
-#: src/window.blp:150
+#: src/window.blp:158
 msgctxt "Toast"
 msgid "File saving cancelled"
 msgstr "Anulowano zapisywanie pliku"
 
+#. Little popup that appears when user copies an image
+#: src/window.blp:163
+msgctxt "Toast"
+msgid "Copied to Clipboard!"
+msgstr ""
+
 #. Text for the entry of image number that get's triggered with a keyboard shortcut
-#: src/window.blp:168
+#: src/window.blp:181
 msgctxt "Tooltip?"
 msgid "Enter Image Number:"
 msgstr "Wprowadź numer zdjęcia:"
 
 #. Label for menu item
-#: src/window.blp:187
+#: src/window.blp:200
 msgctxt "Menu item"
 msgid "_Keyboard Shortcuts"
 msgstr "Skróty _klawiszowe"
 
 #. Label for menu item
-#: src/window.blp:192
+#: src/window.blp:205
 msgctxt "Menu item"
 msgid "_About Kitties"
 msgstr "O _aplikacji"
