@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kittiesgtk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-11-07 15:40+0100\n"
-"PO-Revision-Date: 2026-10-31 18:05+0100\n"
+"PO-Revision-Date: 2026-11-07 15:47+0100\n"
 "Last-Translator: Marcel Mrówka <micro.mail88@gmail.com>\n"
 "Language-Team: Polish <https://l10n.gnome.org/teams/pl/>\n"
 "Language: pl\n"
@@ -137,10 +137,9 @@ msgstr "Zdjęcie"
 
 #. Name of the keyboard shortcut
 #: src/shortcuts-dialog.blp:24
-#, fuzzy
 msgctxt "Shortcut"
 msgid "Copy Image"
-msgstr "Zdjęcie"
+msgstr "Skopiowanie zdjęcia"
 
 #. Name of the keyboard shortcut
 #: src/shortcuts-dialog.blp:29
@@ -227,10 +226,9 @@ msgstr "Zapisz zdjęcie"
 
 #. Tooltip for a button, which when pressed will save the currently visible image
 #: src/window.blp:64
-#, fuzzy
 msgctxt "Button tooltip"
 msgid "Copy Image"
-msgstr "Zdjęcie"
+msgstr "Skopiuj zdjęcie"
 
 #. Tooltip for a button, which when pressed will display the details of the image
 #: src/window.blp:74
@@ -312,7 +310,7 @@ msgstr "Anulowano zapisywanie pliku"
 #: src/window.blp:163
 msgctxt "Toast"
 msgid "Copied to Clipboard!"
-msgstr ""
+msgstr "Skopiowano do schowka!"
 
 #. Text for the entry of image number that get's triggered with a keyboard shortcut
 #: src/window.blp:181
