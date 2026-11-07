@@ -41,6 +41,7 @@ public class Kittiesgtk.Application : Adw.Application {
         this.set_accels_for_action ("win.randomize", {"<control>r"});
         this.set_accels_for_action ("win.img_number", {"<control><shift>r"});
         this.set_accels_for_action ("win.save", {"<control>s"});
+        this.set_accels_for_action ("win.copy", {"<control>c"});
         this.set_accels_for_action ("app.quit", {"<control>q"});
     }
 

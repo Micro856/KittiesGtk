@@ -83,6 +83,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             { "switch_to_rory", switch_to_rory },
             { "randomize", random_action },
             { "save", saving_action },
+            { "copy", copying_action },
             { "img_number", img_number_window }
         };
         this.add_action_entries (action_entries, this);
@@ -301,6 +302,13 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         var disabled = getting.get_sensitive ();
         if ( disabled ) {
             saving.begin();
+        }
+    }
+
+    private void copying_action () {
+        var disabled = clipboard.get_sensitive ();
+        if ( disabled ) {
+            copying();
         }
     }
 
