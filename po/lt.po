@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kittiesgtk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-11-07 15:40+0100\n"
-"PO-Revision-Date: 2026-10-31 19:45+0200\n"
+"PO-Revision-Date: 2026-11-07 16:52+0200\n"
 "Last-Translator: Gradient Man <rixthetyrunt@gmail.com>\n"
 "Language-Team: Lithuanian\n"
 "Language: lt\n"
@@ -136,10 +136,9 @@ msgstr "Nuotrauka…"
 
 #. Name of the keyboard shortcut
 #: src/shortcuts-dialog.blp:24
-#, fuzzy
 msgctxt "Shortcut"
 msgid "Copy Image"
-msgstr "Nuotrauka…"
+msgstr "Kopijuoti nuotrauką"
 
 #. Name of the keyboard shortcut
 #: src/shortcuts-dialog.blp:29
@@ -226,10 +225,9 @@ msgstr "Išsaugoti nuotrauką"
 
 #. Tooltip for a button, which when pressed will save the currently visible image
 #: src/window.blp:64
-#, fuzzy
 msgctxt "Button tooltip"
 msgid "Copy Image"
-msgstr "Nuotrauka…"
+msgstr "Kopijuoti nuotrauką"
 
 #. Tooltip for a button, which when pressed will display the details of the image
 #: src/window.blp:74
@@ -311,7 +309,7 @@ msgstr "Failo išsaugojimas anuliuotas"
 #: src/window.blp:163
 msgctxt "Toast"
 msgid "Copied to Clipboard!"
-msgstr ""
+msgstr "Nukopijuota į iškarpinę!"
 
 #. Text for the entry of image number that get's triggered with a keyboard shortcut
 #: src/window.blp:181
