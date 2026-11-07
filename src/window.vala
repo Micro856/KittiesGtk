@@ -27,6 +27,8 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     [GtkChild]
     private unowned Gtk.Button getting;
     [GtkChild]
+    private unowned Gtk.Button clipboard;
+    [GtkChild]
     private unowned Adw.ComboRow cat_selector;
     [GtkChild]
     private unowned Adw.Banner data_issue;
@@ -55,6 +57,8 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     [GtkChild]
     private unowned Adw.Toast file_cancelled;
     [GtkChild]
+    private unowned Adw.Toast file_copied;
+    [GtkChild]
     private unowned Gtk.MenuButton cat_popover;
     [GtkChild]
     private unowned Adw.Dialog cat_selector_window;
@@ -66,6 +70,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private GLib.Bytes image_data;
     private Gtk.StringObject selection;
     private GLib.File file;
+    private Gdk.Texture to_display;
 
     private Cancellable cancellable;
 
@@ -107,6 +112,10 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             saving ();
         });
 
+        clipboard.clicked.connect (() => {
+            copying ();
+        });
+
         data_issue.button_clicked.connect (() => {
             image_render_random ();
         });
@@ -114,8 +123,10 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         data_issue.notify["revealed"].connect (() => {
             if ( data_issue.get_revealed () == true ) {
                 getting.set_sensitive (false);
+                clipboard.set_sensitive (false);
             } else {
                 getting.set_sensitive (true);
+                clipboard.set_sensitive (true);
             }
         });
 
@@ -126,8 +137,10 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         image_issue.notify["revealed"].connect (() => {
             if ( image_issue.get_revealed () == true ) {
                 getting.set_sensitive (false);
+                clipboard.set_sensitive (false);
             } else {
                 getting.set_sensitive (true);
+                clipboard.set_sensitive (false);
             }
         });
 
@@ -162,6 +175,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private async void image_get () {
         progress.set_visible (true);
         getting.set_sensitive (false);
+        clipboard.set_sensitive (false);
         yield image_get_url();
         yield image_get_data ();
         image_render ();
@@ -176,6 +190,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         data_issue.set_revealed (false);
         image_issue.set_revealed (false);
         getting.set_sensitive (false);
+        clipboard.set_sensitive (false);
         progress.set_visible (true);
         selection = cat_selector.get_selected_item () as Gtk.StringObject;
         stdout.printf("%s\n", selection.string);
@@ -228,10 +243,11 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             var loader = new Gly.Loader.for_bytes (image_data);
             var img = loader.load ();
             var frame = img.next_frame ();
-            var to_display = GlyGtk4.frame_get_texture (frame);
+            to_display = GlyGtk4.frame_get_texture (frame);
             picture.set_paintable (to_display);
             progress.set_visible (false);
             getting.set_sensitive (true);
+            clipboard.set_sensitive (true);
         } catch {
             if (data_issue.get_revealed () == false) {
                 image_issue.set_revealed (true);
@@ -268,6 +284,13 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         } catch {
             file_action.add_toast (file_cancelled);
         }
+    }
+
+    private void copying () {
+        var display = Gdk.Display.get_default ();
+        var saver = display.get_clipboard ();
+        saver.set_texture(to_display);
+        file_action.add_toast (file_copied);
     }
 
     private void random_action () {

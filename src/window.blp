@@ -56,6 +56,13 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
           // Tooltip for a button, which when pressed will save the currently visible image
           tooltip-text: C_("Button tooltip", "Save Image");
         }
+        Button clipboard {
+          halign: center;
+          valign: end;
+          icon-name: "edit-copy-symbolic";
+          // Tooltip for a button, which when pressed will save the currently visible image
+          tooltip-text: C_("Button tooltip", "Copy Image");
+        }
       }
       [end]
       Box {
@@ -139,16 +146,22 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
 Adw.Toast file_saved {
   // Little popup that appears when file was saved
   title: C_("Toast", "File saved successfully!");
-  timeout: 3;
+  timeout: 5;
 }
 Adw.Toast file_error {
   // Little popup if the file wasn't saved correctly
   title: C_("Toast", "A problem occurred while saving the image.");
+  timeout: 10;
 }
 Adw.Toast file_cancelled {
   // Little popup that appears when user cancells saving
   title: C_("Toast", "File saving cancelled");
-  timeout: 3;
+  timeout: 5;
+}
+Adw.Toast file_copied {
+  // Little popup that appears when user copies an image
+  title: C_("Toast", "Copied to Clipboard!");
+  timeout: 5;
 }
 
 Adw.Dialog cat_selector_window {
