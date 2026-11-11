@@ -17,7 +17,7 @@
     </ul>
   </description>
 
-  <developer id="tld.vendor">
+  <developer id="io.github.Micro856">
     <name>Marcel Mrówka</name>
   </developer>
 
@@ -38,7 +38,7 @@
 
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/Micro856/KittiesGtk/refs/heads/master/data/screenshots/Main-UI.png</image>
+      <image>https://github.com/user-attachments/assets/f5b62ac2-671f-4586-85e5-803819248ba5</image>
       <caption>Main Window of Kitties showing an image of Gary</caption>
     </screenshot>
   </screenshots>
