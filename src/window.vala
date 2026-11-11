@@ -300,7 +300,10 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     }
 
     private void random_action () {
-        image_render_random.begin();
+        var disabled = dice.get_sensitive ();
+        if ( disabled ) {
+            image_render_random.begin();
+        }
     }
 
     private void saving_action () {
