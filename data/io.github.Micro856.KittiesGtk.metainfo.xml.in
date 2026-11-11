@@ -48,11 +48,11 @@
       <url type="details">https://github.com/Micro856/KittiesGtk/releases/tag/1.1.0</url>
       <description translate="no">
         <ul>
-          <li>Added the ability to copy displayed image to clipboard</li>
-          <li>Stopped images from disappearing when getting a new one, unless it comes form a diffrent API</li>
-          <li>Started disabling Details button when errors occured</li>
+          <li>Added the ability to copy displayed image to the clipboard</li>
+          <li>Stopped images from disappearing when getting a new one, unless it comes form a different API</li>
+          <li>Started disabling Details button when errors occur</li>
           <li>Started disabling Randomize button and keyboard shortcut to avoid many requests</li>
-          <li>App Icon was recreated</li>
+          <li>The App Icon was recreated</li>
           <li>Translations were updated</li>
         </ul>
       </description>
