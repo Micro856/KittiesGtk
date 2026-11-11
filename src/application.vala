@@ -59,7 +59,7 @@ public class Kittiesgtk.Application : Adw.Application {
             developer_name = "Marcel Mrówka",
             // Format: NAMES/NICKNAME <e-mail/website-url>, YEAR
             translator_credits = C_("credits", "translator-credits"),
-            version = "1.0.0",
+            version = "1.1.0",
             developers = developers,
             copyright = _("""© 2026 Marcel Mrówka
 
