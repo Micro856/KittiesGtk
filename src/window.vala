@@ -61,6 +61,8 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     [GtkChild]
     private unowned Gtk.MenuButton cat_popover;
     [GtkChild]
+    private unowned Gtk.MenuButton info_bttn;
+    [GtkChild]
     private unowned Adw.Dialog cat_selector_window;
     [GtkChild]
     private unowned Gtk.ProgressBar progress;
@@ -161,12 +163,9 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         if (selection.string == "Rory") {
             info_copying.show ();
             info_copying.set_subtitle ("<a href='https://rory.cat/license/'>CC BY 4.0</a>");
-        } else {
-            info_copying.hide ();
-        }
-        if (selection.string == "Rory") {
             info_api.set_subtitle ("<a href='https://rory.cat/'>rory.cat</a>");
         } else {
+            info_copying.hide ();
             info_api.set_subtitle ("<a href='https://api.garythe.cat/'>api.garythe.cat</a>");
         }
         yield image_get ();
@@ -196,6 +195,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         image_issue.set_revealed (false);
         getting.set_sensitive (false);
         clipboard.set_sensitive (false);
+        info_bttn.set_sensitive (false);
         progress.set_visible (true);
         selection = cat_selector.get_selected_item () as Gtk.StringObject;
         stdout.printf("%s\n", selection.string);
@@ -230,14 +230,11 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
                 progress.set_fraction (downloaded_prcnt);
             });
             image_data = yield session.send_and_read_async (image, GLib.Priority.DEFAULT, null);
-            info_id.show ();
-            info_url.show ();
             progress.set_fraction (0);
         } catch {
             data_issue.set_revealed (true);
             progress.set_visible (false);
-            info_id.hide ();
-            info_url.hide ();
+            info_bttn.set_sensitive (false);
             image_data = new GLib.Bytes(null);
         }
     }
@@ -253,6 +250,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             progress.set_visible (false);
             getting.set_sensitive (true);
             clipboard.set_sensitive (true);
+            info_bttn.set_sensitive (true);
         } catch {
             if (data_issue.get_revealed () == false) {
                 image_issue.set_revealed (true);
