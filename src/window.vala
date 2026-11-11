@@ -201,19 +201,19 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         info_bttn.set_sensitive (false);
         progress.set_visible (true);
         selection = cat_selector.get_selected_item () as Gtk.StringObject;
-        stdout.printf("%s\n", selection.string);
+        // stdout.printf("%s\n", selection.string);
         var backend = new Kittiesgtk.Backend ();
         cat_id = yield backend.refresh_id (selection.string, data_issue);
-        stdout.printf ("ID: %" + int64.FORMAT + "\n", cat_id);
+        // stdout.printf ("ID: %" + int64.FORMAT + "\n", cat_id);
         cat_id_button.set_value((double) cat_id);
     }
 
     private async void image_get_url () {
         selection = cat_selector.get_selected_item () as Gtk.StringObject;
-        stdout.printf("%s\n", selection.string);
+        // stdout.printf("%s\n", selection.string);
         var backend = new Kittiesgtk.Backend ();
         cat_url = yield backend.refresh_url (cat_id, selection.string);
-        stdout.printf ("%s\n", cat_url);
+        // stdout.printf ("%s\n", cat_url);
     }
 
     private async void image_get_data () {
@@ -276,7 +276,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         }
         try {
             file = yield dialog.save (this, cancellable);
-            stdout.printf ("%s\n", (string) file.get_path ());
+            // stdout.printf ("%s\n", (string) file.get_path ());
             try {
                 var file_stream = file.replace (null, false, FileCreateFlags.NONE);
                 if (file.query_exists ()) {
