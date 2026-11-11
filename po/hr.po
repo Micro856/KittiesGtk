@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kittiesgtk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-11-07 15:40+0100\n"
-"PO-Revision-Date: 2026-10-31 18:30+0100\n"
+"PO-Revision-Date: 2026-11-11 19:37+0100\n"
 "Last-Translator: weenie mount <weeniemount@gmail.com>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -137,10 +137,9 @@ msgstr "Slika"
 
 #. Name of the keyboard shortcut
 #: src/shortcuts-dialog.blp:24
-#, fuzzy
 msgctxt "Shortcut"
 msgid "Copy Image"
-msgstr "Slika"
+msgstr "Kopiraj sliku"
 
 #. Name of the keyboard shortcut
 #: src/shortcuts-dialog.blp:29
@@ -227,10 +226,9 @@ msgstr "Spremi sliku"
 
 #. Tooltip for a button, which when pressed will save the currently visible image
 #: src/window.blp:64
-#, fuzzy
 msgctxt "Button tooltip"
 msgid "Copy Image"
-msgstr "Slika"
+msgstr "Kopiraj sliku"
 
 #. Tooltip for a button, which when pressed will display the details of the image
 #: src/window.blp:74
@@ -312,7 +310,7 @@ msgstr "Spremanje slike prekinuto"
 #: src/window.blp:163
 msgctxt "Toast"
 msgid "Copied to Clipboard!"
-msgstr ""
+msgstr "Kopirano u međuspremnik!"
 
 #. Text for the entry of image number that get's triggered with a keyboard shortcut
 #: src/window.blp:181
