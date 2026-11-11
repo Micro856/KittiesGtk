@@ -127,6 +127,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             if ( data_issue.get_revealed () == true ) {
                 getting.set_sensitive (false);
                 clipboard.set_sensitive (false);
+                dice.set_sensitive (true);
             } else {
                 getting.set_sensitive (true);
                 clipboard.set_sensitive (true);
@@ -141,6 +142,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             if ( image_issue.get_revealed () == true ) {
                 getting.set_sensitive (false);
                 clipboard.set_sensitive (false);
+                dice.set_sensitive (true);
             } else {
                 getting.set_sensitive (true);
                 clipboard.set_sensitive (false);
@@ -182,6 +184,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     }
 
     private async void image_render_random () {
+        dice.set_sensitive (false);
         yield image_get_id ();
     }
 
@@ -251,6 +254,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             getting.set_sensitive (true);
             clipboard.set_sensitive (true);
             info_bttn.set_sensitive (true);
+            dice.set_sensitive (true);
         } catch {
             if (data_issue.get_revealed () == false) {
                 image_issue.set_revealed (true);
