@@ -102,7 +102,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
         cat_selector.notify["selected-item"].connect (() => {
             set_popover_title ();
-            image_render_random ();
+            image_render_random_erase ();
         });
 
         dice.clicked.connect (() => {
@@ -183,8 +183,12 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     }
 
     private async void image_render_random () {
-        picture.set_paintable (null);
         yield image_get_id ();
+    }
+
+    private async void image_render_random_erase () {
+        picture.set_paintable (null);
+        yield image_render_random ();
     }
 
     private async void image_get_id () {
@@ -253,7 +257,6 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             if (data_issue.get_revealed () == false) {
                 image_issue.set_revealed (true);
             }
-            picture.set_paintable (null);
             progress.set_visible (false);
         }
     }
