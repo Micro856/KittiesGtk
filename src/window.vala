@@ -94,6 +94,10 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     public Window (Gtk.Application app) {
         Object (application: app);
 
+        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
+            add_css_class ("devel");
+        }
+
         cat_id_button.notify["value"].connect (() => {
             set_spinner ();
         });
@@ -201,19 +205,27 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         info_bttn.set_sensitive (false);
         progress.set_visible (true);
         selection = cat_selector.get_selected_item () as Gtk.StringObject;
-        // stdout.printf("%s\n", selection.string);
+        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
+            stdout.printf("%s\n", selection.string);
+        }
         var backend = new Kittiesgtk.Backend ();
         cat_id = yield backend.refresh_id (selection.string, data_issue);
-        // stdout.printf ("ID: %" + int64.FORMAT + "\n", cat_id);
+        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
+            stdout.printf ("ID: %" + int64.FORMAT + "\n", cat_id);
+        }
         cat_id_button.set_value((double) cat_id);
     }
 
     private async void image_get_url () {
         selection = cat_selector.get_selected_item () as Gtk.StringObject;
-        // stdout.printf("%s\n", selection.string);
+        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
+            stdout.printf("%s\n", selection.string);
+        }
         var backend = new Kittiesgtk.Backend ();
         cat_url = yield backend.refresh_url (cat_id, selection.string);
-        // stdout.printf ("%s\n", cat_url);
+        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
+            stdout.printf ("%s\n", cat_url);
+        }
     }
 
     private async void image_get_data () {
@@ -276,7 +288,9 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         }
         try {
             file = yield dialog.save (this, cancellable);
-            // stdout.printf ("%s\n", (string) file.get_path ());
+            if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
+                stdout.printf ("%s\n", (string) file.get_path ());
+            }
             try {
                 var file_stream = file.replace (null, false, FileCreateFlags.NONE);
                 if (file.query_exists ()) {

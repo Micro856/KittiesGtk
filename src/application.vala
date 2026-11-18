@@ -21,7 +21,7 @@
 public class Kittiesgtk.Application : Adw.Application {
     public Application () {
         Object (
-            application_id: "io.github.Micro856.KittiesGtk",
+            application_id: Config.APP_ID,
             flags: ApplicationFlags.DEFAULT_FLAGS,
             resource_base_path: "/io/github/Micro856/KittiesGtk"
         );
@@ -55,11 +55,11 @@ public class Kittiesgtk.Application : Adw.Application {
         string[] developers = { "Marcel Mrówka https://micro856.github.io" };
         var about = new Adw.AboutDialog () {
             application_name = _("Kitties"),
-            application_icon = "io.github.Micro856.KittiesGtk",
+            application_icon = Config.APP_ID,
             developer_name = "Marcel Mrówka",
             // Format: NAMES/NICKNAME <e-mail/website-url>, YEAR
             translator_credits = C_("credits", "translator-credits"),
-            version = "1.1.0",
+            version = Config.PACKAGE_VERSION,
             developers = developers,
             copyright = _("""© 2026 Marcel Mrówka
 
