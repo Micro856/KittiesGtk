@@ -1,6 +1,14 @@
+conf = configuration_data()
+conf.set('bindir', get_option('prefix') / get_option('bindir'))
+conf.set('APP_ID', app_id)
+
 desktop_file = i18n.merge_file(
-        input: 'io.github.Micro856.KittiesGtk.desktop.in',
-       output: 'io.github.Micro856.KittiesGtk.desktop',
+        input: configure_file(
+        	input: 'io.github.Micro856.KittiesGtk.desktop.in.in',
+        	output: 'io.github.Micro856.KittiesGtk.desktop.in',
+        	configuration: conf,
+        	),
+       output: '@0@.desktop'.format(app_id),
          type: 'desktop',
        po_dir: '../po',
       install: true,
@@ -13,8 +21,12 @@ if desktop_utils.found()
 endif
 
 appstream_file = i18n.merge_file(
-        input: 'io.github.Micro856.KittiesGtk.metainfo.xml.in',
-       output: 'io.github.Micro856.KittiesGtk.metainfo.xml',
+        input: configure_file(
+        	input: 'io.github.Micro856.KittiesGtk.metainfo.xml.in.in',
+        	output: 'io.github.Micro856.KittiesGtk.metainfo.xml.in',
+        	configuration: conf,
+        	),
+       output: '@0@.metainfo.xml'.format(app_id),
        po_dir: '../po',
       install: true,
   install_dir: get_option('datadir') / 'metainfo'
@@ -33,13 +45,10 @@ test('Validate schema file',
      compile_schemas,
      args: ['--strict', '--dry-run', meson.current_source_dir()])
 
-
-service_conf = configuration_data()
-service_conf.set('bindir', get_option('prefix') / get_option('bindir'))
 configure_file(
   input: 'io.github.Micro856.KittiesGtk.service.in',
-  output: 'io.github.Micro856.KittiesGtk.service',
-  configuration: service_conf,
+  output: '@0@.service'.format(app_id),
+  configuration: conf,
   install_dir: get_option('datadir') / 'dbus-1' / 'services'
 )
 
