@@ -71,6 +71,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private string cat_url;
     private GLib.Bytes image_data;
     private Gtk.StringObject selection;
+    private uint selection_id;
     private GLib.File file;
     private Gdk.Texture to_display;
 
@@ -156,10 +157,14 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
         get_cat_dconf ();
         set_popover_title ();
+        if ( selection_id == 0 ) {
+            image_render_random ();
         }
+}
 
     private void set_popover_title () {
         selection = cat_selector.get_selected_item () as Gtk.StringObject;
+        selection_id = cat_selector.get_selected ();
         cat_popover.set_label(selection.string);
     }
 
