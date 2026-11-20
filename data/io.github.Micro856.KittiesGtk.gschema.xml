@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schemalist gettext-domain="kittiesgtk">
 	<schema id="io.github.Micro856.KittiesGtk" path="/io/github/Micro856/KittiesGtk/">
+	  <key name="selected-cat" type="s">
+	    <default>"Gary"</default>
+      <summary>Currently selected cat</summary>
+	    <description>
+	      Name of the currently selected cat
+	    </description>
+	  </key>
 	</schema>
 </schemalist>
