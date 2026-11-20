@@ -108,6 +108,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
         cat_selector.notify["selected-item"].connect (() => {
             set_popover_title ();
+            set_cat_dconf ();
             image_render_random_erase ();
         });
 
@@ -153,8 +154,8 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             }
         });
 
+        get_cat_dconf ();
         set_popover_title ();
-        image_render_random ();
         }
 
     private void set_popover_title () {
@@ -311,6 +312,34 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         var saver = display.get_clipboard ();
         saver.set_texture(to_display);
         file_action.add_toast (file_copied);
+    }
+
+    private void get_cat_dconf () {
+        var dconf = new Settings ("io.github.Micro856.KittiesGtk");
+        var cat = dconf.get_string ("selected-cat");
+
+        if ( cat  == "Gary" ) {
+            switch_to_gary ();
+        } else if ( cat  == "Garfield" ) {
+            switch_to_garfield ();
+        } else if ( cat  == "Goober" ) {
+            switch_to_goober ();
+        } else if ( cat  == "Gully" ) {
+            switch_to_gully ();
+        } else if ( cat  == "Rory" ) {
+            switch_to_rory ();
+        } else {
+            switch_to_gary ();
+        }
+    }
+
+    private void set_cat_dconf () {
+        var dconf = new Settings ("io.github.Micro856.KittiesGtk");
+
+        dconf.set_string ("selected-cat", selection.string);
+        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
+            stdout.printf("Saved value: %s\n", dconf.get_string ("selected-cat"));
+        }
     }
 
     private void random_action () {
