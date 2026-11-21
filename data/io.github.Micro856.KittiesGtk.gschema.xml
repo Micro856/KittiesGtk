@@ -2,10 +2,17 @@
 <schemalist gettext-domain="kittiesgtk">
 	<schema id="io.github.Micro856.KittiesGtk" path="/io/github/Micro856/KittiesGtk/">
 	  <key name="selected-cat" type="s">
-	    <default>"Gary"</default>
+	    <default>"Surprise"</default>
       <summary>Currently selected cat</summary>
 	    <description>
 	      Name of the currently selected cat
+	    </description>
+	  </key>
+	  <key name="starred-cats" type="as">
+	    <default>[]</default>
+	    <summary>Starred Images</summary>
+	    <description>
+	      Starred Images as an array. Format: (cats-name)(id)
 	    </description>
 	  </key>
 	</schema>

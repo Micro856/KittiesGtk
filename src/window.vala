@@ -66,6 +66,12 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private unowned Adw.Dialog cat_selector_window;
     [GtkChild]
     private unowned Gtk.ProgressBar progress;
+    [GtkChild]
+    private unowned Adw.NavigationView navigation;
+    [GtkChild]
+    private unowned Gtk.ScrolledWindow star_list;
+    [GtkChild]
+    private unowned Gtk.Button mark;
 
     private int64 cat_id;
     private string cat_url;
@@ -75,8 +81,13 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private uint selection_id;
     private GLib.File file;
     private Gdk.Texture to_display;
+    private bool checked;
+
+    private string change_method = "manual";
+    private GenericArray<string> bookmarks_array = new GenericArray<string> ();
 
     private Kittiesgtk.Backend backend = new Kittiesgtk.Backend ();
+    private Kittiesgtk.Arrays arrays = new Kittiesgtk.Arrays ();
 
     private Cancellable cancellable;
 
@@ -91,7 +102,8 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             { "randomize", random_action },
             { "save", saving_action },
             { "copy", copying_action },
-            { "img_number", img_number_window }
+            { "img_number", img_number_window },
+            { "open_starred", open_starred },
         };
         this.add_action_entries (action_entries, this);
     }
@@ -110,7 +122,9 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         cat_selector.notify["selected-item"].connect (() => {
             set_popover_title ();
             set_cat_dconf ();
-            image_render_random_erase ();
+            if (change_method == "manual") {
+                image_render_random_erase ();
+            }
         });
 
         dice.clicked.connect (() => {
@@ -123,6 +137,10 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
         clipboard.clicked.connect (() => {
             copying ();
+        });
+
+        mark.clicked.connect (() => {
+            mark_starred (checked);
         });
 
         data_issue.button_clicked.connect (() => {
@@ -173,6 +191,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         image_issue.set_revealed (false);
         getting.set_sensitive (false);
         clipboard.set_sensitive (false);
+        mark.set_sensitive (false);
         info_bttn.set_sensitive (false);
 
         cat_url = yield backend.image_get_url(cat_id, actual_selection);
@@ -218,9 +237,12 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         } else {
             picture.set_paintable (to_display);
         }
+        checked = backend.check_mark (actual_selection, cat_id, bookmarks_array);
+        mark_appearance (checked);
         progress.set_visible (false);
         getting.set_sensitive (true);
         clipboard.set_sensitive (true);
+        mark.set_sensitive (true);
         info_bttn.set_sensitive (true);
         dice.set_sensitive (true);
     }
@@ -339,8 +361,44 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     }
 
     private void img_number_window () {
-        var current_value = cat_id_button.get_value ();
-        cat_id_button_window.set_value (current_value);
-        cat_selector_window.present (this);
+        if (selection.string != "Surprise") {
+            var current_value = cat_id_button.get_value ();
+            cat_id_button_window.set_value (current_value);
+            cat_selector_window.present (this);
+        }
+    }
+
+    private void open_starred () {
+        if (navigation.get_visible_page_tag () != "stars") {
+            bookmarks_array = new GenericArray<string> ();
+            arrays.starred_widget (bookmarks_array, star_list);
+            navigation.push_by_tag ("stars");
+            // if (change_method == "manual") {
+            //     change_method = "via-bookmark";
+            // } else if (change_method == "via-bookmark") {
+            //     change_method = "manual";
+            // }
+        }
+    }
+
+    private void mark_appearance (bool result) {
+        if (result == false) {
+            mark.set_icon_name ("non-starred-symbolic");
+            mark.set_tooltip_text (C_("Button tooltip", "Mark as Starred"));
+        } else {
+            mark.set_icon_name ("starred-symbolic");
+            mark.set_tooltip_text (C_("Button tooltip", "Unmark as Starred"));
+        }
+    }
+
+    private void mark_starred (bool result) {
+        string current = @"$actual_selection$cat_id";
+        if (result == false) {
+            arrays.add_bookmark (current, bookmarks_array);
+        } else {
+            arrays.remove_bookmark (current, bookmarks_array);
+        }
+        checked = backend.check_mark (actual_selection, cat_id, bookmarks_array);
+        mark_appearance (checked);
     }
 }
