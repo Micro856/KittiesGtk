@@ -185,7 +185,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private async void image_get () {
         getting.set_sensitive (false);
         clipboard.set_sensitive (false);
-        yield image_get_url();
+        cat_url = yield backend.image_get_url(cat_id, selection);
         yield image_get_data ();
         image_render ();
     }
@@ -206,17 +206,6 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private async void image_render_random_erase () {
         picture.set_paintable (null);
         yield image_render_random ();
-    }
-
-    private async void image_get_url () {
-        selection = cat_selector.get_selected_item () as Gtk.StringObject;
-        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
-            stdout.printf("GET URL: Read selection: %s\n", selection.string);
-        }
-        cat_url = yield backend.refresh_url (cat_id, selection.string);
-        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
-            stdout.printf ("GET URL: Read URL: %s\n", cat_url);
-        }
     }
 
     private async void image_get_data () {

@@ -30,6 +30,18 @@ public class Kittiesgtk.Backend {
         return cat_id;
     }
 
+    public async string image_get_url (int64 cat_id, Gtk.StringObject selection) {
+        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
+            stdout.printf("GET URL: Read selection: %s\n", selection.string);
+        }
+        var cat_url = yield refresh_url (cat_id, selection.string);
+        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
+            stdout.printf ("GET URL: Read URL: %s\n", cat_url);
+        }
+
+        return cat_url;
+    }
+
     private async int64 refresh_id (string cat_name, Adw.Banner data_issue) {
         var gary = new Kittiesgtk.GaryApi ();
         var rory = new Kittiesgtk.RoryApi ();
