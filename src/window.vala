@@ -127,30 +127,8 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             image_render_random ();
         });
 
-        data_issue.notify["revealed"].connect (() => {
-            if ( data_issue.get_revealed () == true ) {
-                getting.set_sensitive (false);
-                clipboard.set_sensitive (false);
-                dice.set_sensitive (true);
-            } else {
-                getting.set_sensitive (true);
-                clipboard.set_sensitive (true);
-            }
-        });
-
         image_issue.button_clicked.connect (() => {
             image_render ();
-        });
-
-        image_issue.notify["revealed"].connect (() => {
-            if ( image_issue.get_revealed () == true ) {
-                getting.set_sensitive (false);
-                clipboard.set_sensitive (false);
-                dice.set_sensitive (true);
-            } else {
-                getting.set_sensitive (true);
-                clipboard.set_sensitive (false);
-            }
         });
 
         get_cat_dconf ();
@@ -183,22 +161,6 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     }
 
     private async void image_get () {
-        getting.set_sensitive (false);
-        clipboard.set_sensitive (false);
-
-        cat_url = yield backend.image_get_url(cat_id, selection);
-
-        image_data = yield backend.image_get_data (cat_url, progress);
-
-        if (image_data == null) {
-            data_issue.set_revealed (true);
-            info_bttn.set_sensitive (false);
-        }
-
-        image_render ();
-    }
-
-    private async void image_render_random () {
         dice.set_sensitive (false);
         data_issue.set_revealed (false);
         image_issue.set_revealed (false);
@@ -206,6 +168,22 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         clipboard.set_sensitive (false);
         info_bttn.set_sensitive (false);
 
+        cat_url = yield backend.image_get_url(cat_id, selection);
+
+        if (cat_url != "https://example.org") {
+            image_data = yield backend.image_get_data (cat_url, progress);
+
+            if (image_data == null) {
+                data_issue.set_revealed (true);
+            }
+
+            image_render ();
+        } else {
+            data_issue.set_revealed (true);
+        }
+    }
+
+    private async void image_render_random () {
         cat_id = yield backend.image_get_id (selection, data_issue);
 
         cat_id_button.set_value((double) cat_id);
