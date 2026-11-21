@@ -3,6 +3,9 @@ name: Build Nightly
 on:
   push:
     branches: [master]
+    paths-ignore:
+      - "**/README.md"
+      - "**/CONTRIBUTING.md"
   pull_request:
   workflow_dispatch:
 
