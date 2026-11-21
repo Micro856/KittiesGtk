@@ -21,9 +21,14 @@
 public class Kittiesgtk.GlycinRender {
     public Gdk.Texture render (GLib.Bytes image_data) {
         var loader = new Gly.Loader.for_bytes (image_data);
-        var img = loader.load ();
-        var frame = img.next_frame ();
-        var to_display = GlyGtk4.frame_get_texture (frame);
+        Gdk.Texture to_display;
+        try {
+            var img = loader.load ();
+            var frame = img.next_frame ();
+            to_display = GlyGtk4.frame_get_texture (frame);
+        } catch {
+            to_display = null;
+        }
         return to_display;
     }
 }
