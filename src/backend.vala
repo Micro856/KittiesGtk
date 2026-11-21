@@ -19,22 +19,41 @@
  */
 
 public class Kittiesgtk.Backend {
-    public async int64 image_get_id (Gtk.StringObject selection, Adw.Banner data_issue) {
-        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
-            stdout.printf("GET ID: Read selection: %s\n", selection.string);
+    public string image_get_cat () {
+        int number = Random.int_range (0, 5); // 2nd digit must be Max +1
+        string cat = "Gary";
+
+        if (number == 0) {
+            cat = "Garfield";
+        } else if (number == 1) {
+            cat = "Gary";
+        } else if (number == 2) {
+            cat = "Goober";
+        } else if (number == 3) {
+            cat = "Gully";
+        } else if (number == 4) {
+            cat = "Rory";
         }
-        var cat_id = yield refresh_id (selection.string, data_issue);
+
+        return cat;
+    }
+
+    public async int64 image_get_id (string selection, Adw.Banner data_issue) {
+        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
+            stdout.printf("GET ID: Read selection: %s\n", selection);
+        }
+        var cat_id = yield refresh_id (selection, data_issue);
         if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
             stdout.printf ("GET ID: ID: %" + int64.FORMAT + "\n", cat_id);
         }
         return cat_id;
     }
 
-    public async string image_get_url (int64 cat_id, Gtk.StringObject selection) {
+    public async string image_get_url (int64 cat_id, string selection) {
         if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
-            stdout.printf("GET URL: Read selection: %s\n", selection.string);
+            stdout.printf("GET URL: Read selection: %s\n", selection);
         }
-        var cat_url = yield refresh_url (cat_id, selection.string);
+        var cat_url = yield refresh_url (cat_id, selection);
         if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
             stdout.printf ("GET URL: Read URL: %s\n", cat_url);
         }
