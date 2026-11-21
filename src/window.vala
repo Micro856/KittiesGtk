@@ -75,6 +75,8 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private GLib.File file;
     private Gdk.Texture to_display;
 
+    private Kittiesgtk.Backend backend = new Kittiesgtk.Backend ();
+
     private Cancellable cancellable;
 
     construct {
@@ -103,10 +105,6 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             set_spinner ();
         });
 
-        cat_id_button_window.notify["value"].connect (() => {
-            cat_id_button.set_value (cat_id_button_window.get_value ());
-        });
-
         cat_selector.notify["selected-item"].connect (() => {
             set_popover_title ();
             set_cat_dconf ();
@@ -129,30 +127,8 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             image_render_random ();
         });
 
-        data_issue.notify["revealed"].connect (() => {
-            if ( data_issue.get_revealed () == true ) {
-                getting.set_sensitive (false);
-                clipboard.set_sensitive (false);
-                dice.set_sensitive (true);
-            } else {
-                getting.set_sensitive (true);
-                clipboard.set_sensitive (true);
-            }
-        });
-
         image_issue.button_clicked.connect (() => {
             image_render ();
-        });
-
-        image_issue.notify["revealed"].connect (() => {
-            if ( image_issue.get_revealed () == true ) {
-                getting.set_sensitive (false);
-                clipboard.set_sensitive (false);
-                dice.set_sensitive (true);
-            } else {
-                getting.set_sensitive (true);
-                clipboard.set_sensitive (false);
-            }
         });
 
         get_cat_dconf ();
@@ -185,17 +161,32 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     }
 
     private async void image_get () {
-        progress.set_visible (true);
+        dice.set_sensitive (false);
+        data_issue.set_revealed (false);
+        image_issue.set_revealed (false);
         getting.set_sensitive (false);
         clipboard.set_sensitive (false);
-        yield image_get_url();
-        yield image_get_data ();
-        image_render ();
+        info_bttn.set_sensitive (false);
+
+        cat_url = yield backend.image_get_url(cat_id, selection);
+
+        if (cat_url != "https://example.org") {
+            image_data = yield backend.image_get_data (cat_url, progress);
+
+            if (image_data == null) {
+                data_issue.set_revealed (true);
+            }
+
+            image_render ();
+        } else {
+            data_issue.set_revealed (true);
+        }
     }
 
     private async void image_render_random () {
-        dice.set_sensitive (false);
-        yield image_get_id ();
+        cat_id = yield backend.image_get_id (selection, data_issue);
+
+        cat_id_button.set_value((double) cat_id);
     }
 
     private async void image_render_random_erase () {
@@ -203,82 +194,22 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         yield image_render_random ();
     }
 
-    private async void image_get_id () {
-        data_issue.set_revealed (false);
-        image_issue.set_revealed (false);
-        getting.set_sensitive (false);
-        clipboard.set_sensitive (false);
-        info_bttn.set_sensitive (false);
-        progress.set_visible (true);
-        selection = cat_selector.get_selected_item () as Gtk.StringObject;
-        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
-            stdout.printf("%s\n", selection.string);
-        }
-        var backend = new Kittiesgtk.Backend ();
-        cat_id = yield backend.refresh_id (selection.string, data_issue);
-        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
-            stdout.printf ("ID: %" + int64.FORMAT + "\n", cat_id);
-        }
-        cat_id_button.set_value((double) cat_id);
-    }
-
-    private async void image_get_url () {
-        selection = cat_selector.get_selected_item () as Gtk.StringObject;
-        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
-            stdout.printf("%s\n", selection.string);
-        }
-        var backend = new Kittiesgtk.Backend ();
-        cat_url = yield backend.refresh_url (cat_id, selection.string);
-        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
-            stdout.printf ("%s\n", cat_url);
-        }
-    }
-
-    private async void image_get_data () {
-        var session = new Soup.Session ();
-        var image = new Soup.Message ("GET", @cat_url);
-        try {
-            progress.set_visible (true);
-            double downloaded = 0;
-            double to_download = 0;
-            data_issue.set_revealed (false);
-            image.got_headers.connect (() => {
-                to_download = image.response_headers.get_content_length ();
-            });
-            image.got_body_data.connect ((read) => {
-                downloaded += read;
-                var downloaded_prcnt = ( downloaded / to_download );
-                progress.set_fraction (downloaded_prcnt);
-            });
-            image_data = yield session.send_and_read_async (image, GLib.Priority.DEFAULT, null);
-            progress.set_fraction (0);
-        } catch {
-            data_issue.set_revealed (true);
-            progress.set_visible (false);
-            info_bttn.set_sensitive (false);
-            image_data = new GLib.Bytes(null);
-        }
-    }
-
     private void image_render () {
-        try {
-            image_issue.set_revealed (false);
-            var loader = new Gly.Loader.for_bytes (image_data);
-            var img = loader.load ();
-            var frame = img.next_frame ();
-            to_display = GlyGtk4.frame_get_texture (frame);
-            picture.set_paintable (to_display);
-            progress.set_visible (false);
-            getting.set_sensitive (true);
-            clipboard.set_sensitive (true);
-            info_bttn.set_sensitive (true);
-            dice.set_sensitive (true);
-        } catch {
+        image_issue.set_revealed (false);
+        var renderer = new Kittiesgtk.GlycinRender ();
+        to_display = renderer.render (image_data);
+        if (to_display == null) {
             if (data_issue.get_revealed () == false) {
                 image_issue.set_revealed (true);
             }
-            progress.set_visible (false);
+        } else {
+            picture.set_paintable (to_display);
         }
+        progress.set_visible (false);
+        getting.set_sensitive (true);
+        clipboard.set_sensitive (true);
+        info_bttn.set_sensitive (true);
+        dice.set_sensitive (true);
     }
 
     private async void saving () {
@@ -295,7 +226,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         try {
             file = yield dialog.save (this, cancellable);
             if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
-                stdout.printf ("%s\n", (string) file.get_path ());
+                stdout.printf ("SAVING: Read path: %s\n", (string) file.get_path ());
             }
             try {
                 var file_stream = file.replace (null, false, FileCreateFlags.NONE);
