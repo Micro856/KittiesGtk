@@ -211,7 +211,7 @@ msgctxt "Image selector"
 msgid "Image Number"
 msgstr "Nuotraukos numeris"
 
-#. Tooltip for a button, which when pressesdwill display a random image
+#. Tooltip for a button, which when pressed will display a random image
 #: src/window.blp:50
 msgctxt "Button tooltip"
 msgid "Randomize Image"
