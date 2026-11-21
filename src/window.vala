@@ -103,10 +103,6 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             set_spinner ();
         });
 
-        cat_id_button_window.notify["value"].connect (() => {
-            cat_id_button.set_value (cat_id_button_window.get_value ());
-        });
-
         cat_selector.notify["selected-item"].connect (() => {
             set_popover_title ();
             set_cat_dconf ();
