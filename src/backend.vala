@@ -19,7 +19,18 @@
  */
 
 public class Kittiesgtk.Backend {
-    public async int64 refresh_id (string cat_name, Adw.Banner data_issue) {
+    public async int64 image_get_id (Gtk.StringObject selection, Adw.Banner data_issue) {
+        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
+            stdout.printf("GET ID: Read selection: %s\n", selection.string);
+        }
+        var cat_id = yield refresh_id (selection.string, data_issue);
+        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
+            stdout.printf ("GET ID: ID: %" + int64.FORMAT + "\n", cat_id);
+        }
+        return cat_id;
+    }
+
+    private async int64 refresh_id (string cat_name, Adw.Banner data_issue) {
         var gary = new Kittiesgtk.GaryApi ();
         var rory = new Kittiesgtk.RoryApi ();
         int64 cat_id = 0;

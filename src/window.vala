@@ -75,6 +75,8 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private GLib.File file;
     private Gdk.Texture to_display;
 
+    private Kittiesgtk.Backend backend = new Kittiesgtk.Backend ();
+
     private Cancellable cancellable;
 
     construct {
@@ -191,7 +193,16 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
     private async void image_render_random () {
         dice.set_sensitive (false);
-        yield image_get_id ();
+        data_issue.set_revealed (false);
+        image_issue.set_revealed (false);
+        getting.set_sensitive (false);
+        clipboard.set_sensitive (false);
+        info_bttn.set_sensitive (false);
+        progress.set_visible (true);
+
+        cat_id = yield backend.image_get_id (selection, data_issue);
+
+        cat_id_button.set_value((double) cat_id);
     }
 
     private async void image_render_random_erase () {
@@ -199,31 +210,12 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         yield image_render_random ();
     }
 
-    private async void image_get_id () {
-        data_issue.set_revealed (false);
-        image_issue.set_revealed (false);
-        getting.set_sensitive (false);
-        clipboard.set_sensitive (false);
-        info_bttn.set_sensitive (false);
-        progress.set_visible (true);
-        selection = cat_selector.get_selected_item () as Gtk.StringObject;
-        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
-            stdout.printf("GET ID: Read selection: %s\n", selection.string);
-        }
-        var backend = new Kittiesgtk.Backend ();
-        cat_id = yield backend.refresh_id (selection.string, data_issue);
-        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
-            stdout.printf ("GET ID: ID: %" + int64.FORMAT + "\n", cat_id);
-        }
-        cat_id_button.set_value((double) cat_id);
-    }
-
     private async void image_get_url () {
         selection = cat_selector.get_selected_item () as Gtk.StringObject;
         if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
             stdout.printf("GET URL: Read selection: %s\n", selection.string);
         }
-        var backend = new Kittiesgtk.Backend ();
+        // var backend = new Kittiesgtk.Backend ();
         cat_url = yield backend.refresh_url (cat_id, selection.string);
         if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
             stdout.printf ("GET URL: Read URL: %s\n", cat_url);
