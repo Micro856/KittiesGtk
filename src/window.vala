@@ -183,7 +183,6 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     }
 
     private async void image_get () {
-        progress.set_visible (true);
         getting.set_sensitive (false);
         clipboard.set_sensitive (false);
         yield image_get_url();
@@ -198,7 +197,6 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         getting.set_sensitive (false);
         clipboard.set_sensitive (false);
         info_bttn.set_sensitive (false);
-        progress.set_visible (true);
 
         cat_id = yield backend.image_get_id (selection, data_issue);
 
@@ -215,7 +213,6 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
             stdout.printf("GET URL: Read selection: %s\n", selection.string);
         }
-        // var backend = new Kittiesgtk.Backend ();
         cat_url = yield backend.refresh_url (cat_id, selection.string);
         if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
             stdout.printf ("GET URL: Read URL: %s\n", cat_url);
