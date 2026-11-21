@@ -42,6 +42,32 @@ public class Kittiesgtk.Backend {
         return cat_url;
     }
 
+    public async GLib.Bytes image_get_data (string cat_url, Gtk.ProgressBar progress) {
+        var session = new Soup.Session ();
+        var image = new Soup.Message ("GET", @cat_url);
+        var image_data = new GLib.Bytes(null);
+        try {
+            double downloaded = 0;
+            double to_download = 0;
+            image.got_headers.connect (() => {
+                to_download = image.response_headers.get_content_length ();
+            });
+            progress.set_visible (true);
+            image.got_body_data.connect ((read) => {
+                downloaded += read;
+                var downloaded_prcnt = ( downloaded / to_download );
+                progress.set_fraction (downloaded_prcnt);
+            });
+            image_data = yield session.send_and_read_async (image, GLib.Priority.DEFAULT, null);
+            progress.set_fraction (0);
+        } catch {
+            //data_issue.set_revealed (true);
+            progress.set_visible (false);
+            //info_bttn.set_sensitive (false);
+        }
+        return image_data;
+    }
+
     private async int64 refresh_id (string cat_name, Adw.Banner data_issue) {
         var gary = new Kittiesgtk.GaryApi ();
         var rory = new Kittiesgtk.RoryApi ();
@@ -58,7 +84,7 @@ public class Kittiesgtk.Backend {
         }
     }
 
-    public async string refresh_url (int64 cat_id, string cat_name) {
+    private async string refresh_url (int64 cat_id, string cat_name) {
         var gary = new Kittiesgtk.GaryApi ();
         var rory = new Kittiesgtk.RoryApi ();
         var url = "https://example.org";

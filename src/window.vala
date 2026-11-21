@@ -185,8 +185,16 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private async void image_get () {
         getting.set_sensitive (false);
         clipboard.set_sensitive (false);
+
         cat_url = yield backend.image_get_url(cat_id, selection);
-        yield image_get_data ();
+
+        image_data = yield backend.image_get_data (cat_url, progress);
+
+        if (image_data == null) {
+            data_issue.set_revealed (true);
+            info_bttn.set_sensitive (false);
+        }
+
         image_render ();
     }
 
@@ -208,49 +216,22 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         yield image_render_random ();
     }
 
-    private async void image_get_data () {
-        var session = new Soup.Session ();
-        var image = new Soup.Message ("GET", @cat_url);
-        try {
-            progress.set_visible (true);
-            double downloaded = 0;
-            double to_download = 0;
-            data_issue.set_revealed (false);
-            image.got_headers.connect (() => {
-                to_download = image.response_headers.get_content_length ();
-            });
-            image.got_body_data.connect ((read) => {
-                downloaded += read;
-                var downloaded_prcnt = ( downloaded / to_download );
-                progress.set_fraction (downloaded_prcnt);
-            });
-            image_data = yield session.send_and_read_async (image, GLib.Priority.DEFAULT, null);
-            progress.set_fraction (0);
-        } catch {
-            data_issue.set_revealed (true);
-            progress.set_visible (false);
-            info_bttn.set_sensitive (false);
-            image_data = new GLib.Bytes(null);
-        }
-    }
-
     private void image_render () {
-        try {
-            image_issue.set_revealed (false);
-            var renderer = new Kittiesgtk.GlycinRender ();
-            to_display = renderer.render (image_data);
-            picture.set_paintable (to_display);
-            progress.set_visible (false);
-            getting.set_sensitive (true);
-            clipboard.set_sensitive (true);
-            info_bttn.set_sensitive (true);
-            dice.set_sensitive (true);
-        } catch {
+        image_issue.set_revealed (false);
+        var renderer = new Kittiesgtk.GlycinRender ();
+        to_display = renderer.render (image_data);
+        if (to_display == null) {
             if (data_issue.get_revealed () == false) {
                 image_issue.set_revealed (true);
             }
-            progress.set_visible (false);
+        } else {
+            picture.set_paintable (to_display);
         }
+        progress.set_visible (false);
+        getting.set_sensitive (true);
+        clipboard.set_sensitive (true);
+        info_bttn.set_sensitive (true);
+        dice.set_sensitive (true);
     }
 
     private async void saving () {
