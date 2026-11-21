@@ -208,12 +208,12 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         progress.set_visible (true);
         selection = cat_selector.get_selected_item () as Gtk.StringObject;
         if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
-            stdout.printf("%s\n", selection.string);
+            stdout.printf("GET ID: Read selection: %s\n", selection.string);
         }
         var backend = new Kittiesgtk.Backend ();
         cat_id = yield backend.refresh_id (selection.string, data_issue);
         if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
-            stdout.printf ("ID: %" + int64.FORMAT + "\n", cat_id);
+            stdout.printf ("GET ID: ID: %" + int64.FORMAT + "\n", cat_id);
         }
         cat_id_button.set_value((double) cat_id);
     }
@@ -221,12 +221,12 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private async void image_get_url () {
         selection = cat_selector.get_selected_item () as Gtk.StringObject;
         if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
-            stdout.printf("%s\n", selection.string);
+            stdout.printf("GET URL: Read selection: %s\n", selection.string);
         }
         var backend = new Kittiesgtk.Backend ();
         cat_url = yield backend.refresh_url (cat_id, selection.string);
         if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
-            stdout.printf ("%s\n", cat_url);
+            stdout.printf ("GET URL: Read URL: %s\n", cat_url);
         }
     }
 
@@ -291,7 +291,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         try {
             file = yield dialog.save (this, cancellable);
             if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
-                stdout.printf ("%s\n", (string) file.get_path ());
+                stdout.printf ("SAVING: Read path: %s\n", (string) file.get_path ());
             }
             try {
                 var file_stream = file.replace (null, false, FileCreateFlags.NONE);
