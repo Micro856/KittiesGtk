@@ -8,137 +8,165 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
   default-height: 600;
 
   Adw.ToastOverlay file_action {
-    Adw.ToolbarView {
-      [top]
-      Adw.HeaderBar {
-        title-widget: MenuButton cat_popover {
-                        primary: false;
-                        // A tooltip
-                        tooltip-text: _("Cat & Image Selector");
-                        popover: Popover {
-                          Adw.PreferencesGroup {
-                            Adw.ComboRow cat_selector {
-                              // Title for selector of cats, this means the currently selected Cat is, kind of like "Cat:", but without ':'
-                              title: C_("Cat selector", "Cat");
-                              model: StringList {
-                                strings: ["Garfield", "Gary", "Goober", "Gully", "Rory", "Surprise"];
-                              };
-                            }
-                            Adw.SpinRow cat_id_button {
-                              // Title for the selector of the image, just like with the cat selector, this means ID number of the image to display
-                              title: C_("Image selector", "Image Number");
-                              adjustment: Adjustment {
-                                lower: 0;
-                                upper: 1000;
-                              step-increment: 1;
-                              };
-                              digits: 0;
-                              wrap: true;
-                            }
-                          }
-                        };
-        };
-      [start]
-      Box {
-        spacing: 6;
-        Button dice {
-          halign: center;
-          valign: end;
-          icon-name: "dice-symbolic";
-          // Tooltip for a button, which when pressed will display a random image
-          tooltip-text: C_("Button tooltip", "Randomize Image");
-        }
-        Button getting {
-          halign: center;
-          valign: end;
-          icon-name: "document-save-symbolic";
-          // Tooltip for a button, which when pressed will save the currently visible image
-          tooltip-text: C_("Button tooltip", "Save Image");
-        }
-        Button clipboard {
-          halign: center;
-          valign: end;
-          icon-name: "edit-copy-symbolic";
-          // Tooltip for a button, which when pressed will save the currently visible image
-          tooltip-text: C_("Button tooltip", "Copy Image");
-        }
-      }
-      [end]
-      Box {
-        spacing: 6;
-        MenuButton info_bttn {
-          primary: false;
-          icon-name: "info-outline-symbolic";
-          // Tooltip for a button, which when pressed will display the details of the image
-          tooltip-text: _("Image Details");
-          popover: Popover {
-            Adw.PreferencesGroup {
-              Adw.ActionRow info_cat {
-                styles ["property"]
-                // An image property, works like "Cat:", for example if selected cat is Gary, it should be read as "Cat: Gary"
-                title: C_("Image details", "Cat");
-              }
-              Adw.ActionRow info_id {
-                styles ["property"]
-                // An image property, works like "Cat:", for example if selected image is 2, it should be read as "Image number: 2"
-                title: C_("Image details", "Image Number");
-              }
-              Adw.ActionRow info_url {
-                styles ["property"]
-                title: C_("Image details", "Image URL");
-                use-markup: true;
-              }
-              Adw.ActionRow info_copying {
-                styles ["property"]
-                // An image property, licence/license of the image
-                title: C_("Image details", "Lincense");
-                use-markup: true;
-              }
-              Adw.ActionRow info_api {
-                styles ["property"]
-                // An image property, the API used to fetch the cat image, if Gary is selected, it should be read as "API: api.garythe.cat"
-                title: C_("Image details", "API");
-                use-markup: true;
-              }
+    Adw.NavigationView navigation {
+      Adw.NavigationPage {
+        title: _("Kitties");
+        tag: "main";
+        child: Adw.ToolbarView {
+          [top]
+          Adw.HeaderBar {
+            title-widget: MenuButton cat_popover {
+                            primary: false;
+                            // A tooltip
+                            tooltip-text: _("Cat & Image Selector");
+                            popover: Popover {
+                              Adw.PreferencesGroup {
+                                Adw.ComboRow cat_selector {
+                                  // Title for selector of cats, this means the currently selected Cat is, kind of like "Cat:", but without ':'
+                                  title: C_("Cat selector", "Cat");
+                                  model: StringList names {
+                                    strings: ["Garfield", "Gary", "Goober", "Gully", "Rory"];
+                                  };
+                                }
+                                Adw.SpinRow cat_id_button {
+                                  // Title for the selector of the image, just like with the cat selector, this means ID number of the image to display
+                                  title: C_("Image selector", "Image Number");
+                                  adjustment: Adjustment {
+                                    lower: 0;
+                                    upper: 1000;
+                                  step-increment: 1;
+                                  };
+                                  digits: 0;
+                                  wrap: true;
+                                }
+                              }
+                            };
+            };
+          [start]
+          Box {
+            spacing: 6;
+            Button dice {
+              halign: center;
+              valign: end;
+              icon-name: "dice-symbolic";
+              // Tooltip for a button, which when pressed will display a random image
+              tooltip-text: C_("Button tooltip", "Randomize Image");
             }
-          };
+            Button getting {
+              halign: center;
+              valign: end;
+              icon-name: "document-save-symbolic";
+              // Tooltip for a button, which when pressed will save the currently visible image
+              tooltip-text: C_("Button tooltip", "Save Image");
+            }
+            Button clipboard {
+              halign: center;
+              valign: end;
+              icon-name: "edit-copy-symbolic";
+              // Tooltip for a button, which when pressed will save the currently visible image
+              tooltip-text: C_("Button tooltip", "Copy Image");
+            }
+          }
+          [end]
+          Box {
+            spacing: 6;
+            Button mark {
+              halign: center;
+              valign: end;
+              icon-name: "non-starred-symbolic";
+              // Tooltip for a button, which when pressed will add image to "Starred"
+              tooltip-text: C_("Button tooltip", "Mark as Starred");
+            }
+            MenuButton info_bttn {
+              primary: false;
+              icon-name: "info-outline-symbolic";
+              // Tooltip for a button, which when pressed will display the details of the image
+              tooltip-text: _("Image Details");
+              popover: Popover {
+                Adw.PreferencesGroup {
+                  Adw.ActionRow info_cat {
+                    styles ["property"]
+                    // An image property, works like "Cat:", for example if selected cat is Gary, it should be read as "Cat: Gary"
+                    title: C_("Image details", "Cat");
+                  }
+                  Adw.ActionRow info_id {
+                    styles ["property"]
+                    // An image property, works like "Cat:", for example if selected image is 2, it should be read as "Image number: 2"
+                    title: C_("Image details", "Image Number");
+                  }
+                  Adw.ActionRow info_url {
+                    styles ["property"]
+                    title: C_("Image details", "Image URL");
+                    use-markup: true;
+                  }
+                  Adw.ActionRow info_copying {
+                    styles ["property"]
+                    // An image property, licence/license of the image
+                    title: C_("Image details", "Lincense");
+                    use-markup: true;
+                  }
+                  Adw.ActionRow info_api {
+                    styles ["property"]
+                    // An image property, the API used to fetch the cat image, if Gary is selected, it should be read as "API: api.garythe.cat"
+                    title: C_("Image details", "API");
+                    use-markup: true;
+                  }
+                }
+              };
+            }
+            MenuButton {
+              primary: true;
+              icon-name: "open-menu-symbolic";
+              // A tooltip for a button, which when pressed opens the main menu
+              tooltip-text: C_("Button tooltip", "Main Menu");
+              menu-model: primary_menu;
+            }
+          }
         }
-        MenuButton {
-          primary: true;
-          icon-name: "open-menu-symbolic";
-          // A tooltip for a button, which when pressed opens the main menu
-          tooltip-text: C_("Button tooltip", "Main Menu");
-          menu-model: primary_menu;
-        }
+          Box {
+            orientation: vertical;
+
+            Adw.Banner data_issue {
+              // Text for the banner, which displays when the random image number or the image data could not be fetched
+              title: C_("Banner", "A problem occurred while getting the image.");
+              // Button for the action of both banners
+              button-label: C_("Banner icon", "Try Again");
+              revealed: false;
+            }
+            Adw.Banner image_issue {
+              // Text for the banner, which displays when the image could not be displayed
+              title: C_("Banner", "A problem occurred while displaying the image.");
+              button-label: C_("Banner icon", "Try Again");
+              revealed: false;
+            }
+            ProgressBar progress {
+
+            }
+            Picture picture {
+              can-shrink: true;
+              content-fit: contain;
+              halign: center;
+              valign: center;
+              hexpand: true;
+              vexpand: true;
+            }
+          }
+        };
       }
-    }
-      Box {
-        orientation: vertical;
-
-        Adw.Banner data_issue {
-          // Text for the banner, which displays when the random image number or the image data could not be fetched
-          title: C_("Banner", "A problem occurred while getting the image.");
-          // Button for the action of both banners
-          button-label: C_("Banner icon", "Try Again");
-          revealed: false;
-        }
-        Adw.Banner image_issue {
-          // Text for the banner, which displays when the image could not be displayed
-          title: C_("Banner", "A problem occurred while displaying the image.");
-          button-label: C_("Banner icon", "Try Again");
-          revealed: false;
-        }
-        ProgressBar progress {
-
-        }
-        Picture picture {
-          can-shrink: true;
-          content-fit: contain;
-          halign: center;
-          valign: center;
-          hexpand: true;
-          vexpand: true;
-        }
+      Adw.NavigationPage {
+        title: C_("Starred Page Title", "Starred");
+        tag: "stars";
+        child: Adw.ToolbarView {
+          [top]
+          Adw.HeaderBar {
+          }
+          ScrolledWindow star_list {
+            margin-top: 16;
+            margin-bottom: 16;
+            margin-start: 16;
+            margin-end: 16;
+          }
+        };
       }
     }
   }
@@ -163,6 +191,12 @@ Adw.Toast file_copied {
   // Little popup that appears when user copies an image
   title: C_("Toast", "Copied to Clipboard!");
   timeout: 5;
+}
+
+Adw.StatusPage empty_starred {
+  icon-name: "non-starred-symbolic";
+  title: C_("Starred", "No Starred Images");
+  description:  C_("Starred", "Try using the “Mark as Starred” button");
 }
 
 Adw.Dialog cat_selector_window {
@@ -195,6 +229,13 @@ Adw.Dialog cat_selector_window {
 }
 
 menu primary_menu {
+  section {
+    item {
+      // Label for menu item
+      label: C_("Menu item", "_Starred");
+      action: "win.open_starred";
+    }
+  }
   section {
     item {
       // Label for menu item

@@ -87,6 +87,17 @@ public class Kittiesgtk.Backend {
         return image_data;
     }
 
+    public bool check_mark (string selection, int64 id, GenericArray<string> array) {
+        string current = @"$selection$id";
+        bool result = false;
+        if (array.find_with_equal_func (current, str_equal) == false) {
+            result = false;
+        } else {
+            result = true;
+        }
+        return result;
+    }
+
     private async int64 refresh_id (string cat_name, Adw.Banner data_issue) {
         var gary = new Kittiesgtk.GaryApi ();
         var rory = new Kittiesgtk.RoryApi ();

@@ -7,6 +7,11 @@ Adw.ShortcutsDialog shortcuts_dialog {
             title: C_("Shortcut category", "General");
             Adw.ShortcutsItem {
                   // Name of the keyboard shortcut
+                  title: C_("Shortcut", "Show Starred");
+                  action-name: "win.open_starred";
+                }
+            Adw.ShortcutsItem {
+                  // Name of the keyboard shortcut
                   title: C_("Shortcut", "Show Shortcuts");
                   action-name: "app.shortcuts";
                 }
@@ -28,6 +33,11 @@ Adw.ShortcutsDialog shortcuts_dialog {
                   // Name of the keyboard shortcut
                   title: C_("Shortcut", "Enter Image Number");
                   action-name: "win.img_number";
+                }
+            Adw.ShortcutsItem {
+                  // Name of the keyboard shortcut
+                  title: C_("Shortcut", "Mark/Unmark as Starred");
+                  action-name: "win.mark_starred";
                 }
             Adw.ShortcutsItem {
                   // Name of the keyboard shortcut

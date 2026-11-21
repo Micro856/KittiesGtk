@@ -66,17 +66,32 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private unowned Adw.Dialog cat_selector_window;
     [GtkChild]
     private unowned Gtk.ProgressBar progress;
+    [GtkChild]
+    private unowned Adw.NavigationView navigation;
+    [GtkChild]
+    private unowned Gtk.ScrolledWindow star_list;
+    [GtkChild]
+    private unowned Gtk.Button mark;
+    [GtkChild]
+    private unowned Adw.StatusPage empty_starred;
+    [GtkChild]
+    private unowned Gtk.StringList names;
 
     private int64 cat_id;
     private string cat_url;
     private GLib.Bytes image_data;
     private Gtk.StringObject selection;
     private string actual_selection;
-    private uint selection_id;
+    private uint selection_id; // 5 is Surprise
     private GLib.File file;
     private Gdk.Texture to_display;
+    private bool checked;
+
+    private string change_method = "manual";
+    private GenericArray<string> bookmarks_array = new GenericArray<string> ();
 
     private Kittiesgtk.Backend backend = new Kittiesgtk.Backend ();
+    private Kittiesgtk.Arrays arrays = new Kittiesgtk.Arrays ();
 
     private Cancellable cancellable;
 
@@ -91,7 +106,9 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             { "randomize", random_action },
             { "save", saving_action },
             { "copy", copying_action },
-            { "img_number", img_number_window }
+            { "img_number", img_number_window },
+            { "open_starred", open_starred },
+            { "mark_starred", mark_starred },
         };
         this.add_action_entries (action_entries, this);
     }
@@ -110,7 +127,9 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         cat_selector.notify["selected-item"].connect (() => {
             set_popover_title ();
             set_cat_dconf ();
-            image_render_random_erase ();
+            if (change_method == "manual") {
+                image_render_random_erase ();
+            }
         });
 
         dice.clicked.connect (() => {
@@ -125,6 +144,10 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             copying ();
         });
 
+        mark.clicked.connect (() => {
+            mark_starred ();
+        });
+
         data_issue.button_clicked.connect (() => {
             image_render_random ();
         });
@@ -133,6 +156,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             image_render ();
         });
 
+        names.append (_("Surprise"));
         get_cat_dconf ();
         set_popover_title ();
         if ( selection_id == 0 ) {
@@ -144,7 +168,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         selection = cat_selector.get_selected_item () as Gtk.StringObject;
         selection_id = cat_selector.get_selected ();
         cat_popover.set_label(selection.string);
-        if (selection.string == "Surprise") {
+        if (selection_id == 5) {
             cat_id_button.set_sensitive (false);
         } else {
             cat_id_button.set_sensitive (true);
@@ -173,6 +197,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         image_issue.set_revealed (false);
         getting.set_sensitive (false);
         clipboard.set_sensitive (false);
+        mark.set_sensitive (false);
         info_bttn.set_sensitive (false);
 
         cat_url = yield backend.image_get_url(cat_id, actual_selection);
@@ -191,7 +216,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     }
 
     private async void image_render_random () {
-        if (selection.string == "Surprise") {
+        if (selection_id == 5) {
             actual_selection = backend.image_get_cat ();
         } else {
             actual_selection = selection.string;
@@ -218,9 +243,12 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         } else {
             picture.set_paintable (to_display);
         }
+        checked = backend.check_mark (actual_selection, cat_id, bookmarks_array);
+        mark_appearance ();
         progress.set_visible (false);
         getting.set_sensitive (true);
         clipboard.set_sensitive (true);
+        mark.set_sensitive (true);
         info_bttn.set_sensitive (true);
         dice.set_sensitive (true);
     }
@@ -287,7 +315,23 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private void set_cat_dconf () {
         var dconf = new Settings ("io.github.Micro856.KittiesGtk");
 
-        dconf.set_string ("selected-cat", selection.string);
+        string value = "Surprise";
+
+        if ( selection_id  == 1 ) {
+            value = "Gary";
+        } else if ( selection_id  == 0 ) {
+            value = "Garfield";
+        } else if ( selection_id  == 2 ) {
+            value = "Gober";
+        } else if ( selection_id  == 3 ) {
+            value = "Gully";
+        } else if ( selection_id  == 4 ) {
+            value = "Rory";
+        } else if ( selection_id  == 5 ) {
+            value = "Surprise";
+        }
+
+        dconf.set_string ("selected-cat", value);
         if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
             stdout.printf("Saved value: %s\n", dconf.get_string ("selected-cat"));
         }
@@ -339,8 +383,66 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     }
 
     private void img_number_window () {
-        var current_value = cat_id_button.get_value ();
-        cat_id_button_window.set_value (current_value);
-        cat_selector_window.present (this);
+        if (selection_id != 5) {
+            var current_value = cat_id_button.get_value ();
+            cat_id_button_window.set_value (current_value);
+            cat_selector_window.present (this);
+        }
+    }
+
+    private void open_starred () {
+        if (navigation.get_visible_page_tag () != "stars") {
+            bookmarks_array = new GenericArray<string> ();
+            arrays.starred_widget (bookmarks_array, star_list, empty_starred, this);
+            navigation.push_by_tag ("stars");
+        } else {
+            navigation.pop_to_tag ("main");
+        }
+    }
+
+    private void mark_appearance () {
+        if (checked == false) {
+            mark.set_icon_name ("non-starred-symbolic");
+            mark.set_tooltip_text (C_("Button tooltip", "Mark as Starred"));
+        } else {
+            mark.set_icon_name ("starred-symbolic");
+            mark.set_tooltip_text (C_("Button tooltip", "Unmark as Starred"));
+        }
+    }
+
+    private void mark_starred () {
+        string current = @"$actual_selection$cat_id";
+        if (checked == false) {
+            arrays.add_bookmark (current, bookmarks_array);
+        } else {
+            arrays.remove_bookmark (current, bookmarks_array);
+        }
+        checked = backend.check_mark (actual_selection, cat_id, bookmarks_array);
+        mark_appearance ();
+    }
+
+    public void show_cat (string cat, int64 id) {
+        change_method = "auto";
+        if ( cat  == "Gary" ) {
+            switch_to_gary ();
+        } else if ( cat  == "Garfield" ) {
+            switch_to_garfield ();
+        } else if ( cat  == "Goober" ) {
+            switch_to_goober ();
+        } else if ( cat  == "Gully" ) {
+            switch_to_gully ();
+        } else if ( cat  == "Rory" ) {
+            switch_to_rory ();
+        } else {
+            switch_to_gary ();
+        }
+        set_popover_title ();
+        actual_selection = cat;
+        change_method = "manual";
+        cat_id_button.set_value((double) id);
+        set_spinner ();
+        if (navigation.get_visible_page_tag () == "stars") {
+            navigation.pop_to_tag ("main");
+        }
     }
 }
