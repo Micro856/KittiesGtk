@@ -82,7 +82,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private GLib.Bytes image_data;
     private Gtk.StringObject selection;
     private string actual_selection;
-    private uint selection_id;
+    private uint selection_id; // 5 is Surprise
     private GLib.File file;
     private Gdk.Texture to_display;
     private bool checked;
@@ -168,7 +168,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         selection = cat_selector.get_selected_item () as Gtk.StringObject;
         selection_id = cat_selector.get_selected ();
         cat_popover.set_label(selection.string);
-        if (selection.string == "Surprise") {
+        if (selection_id == 5) {
             cat_id_button.set_sensitive (false);
         } else {
             cat_id_button.set_sensitive (true);
@@ -216,7 +216,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     }
 
     private async void image_render_random () {
-        if (selection.string == "Surprise") {
+        if (selection_id == 5) {
             actual_selection = backend.image_get_cat ();
         } else {
             actual_selection = selection.string;
@@ -315,7 +315,23 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private void set_cat_dconf () {
         var dconf = new Settings ("io.github.Micro856.KittiesGtk");
 
-        dconf.set_string ("selected-cat", selection.string);
+        string value = "Surprise";
+
+        if ( selection_id  == 1 ) {
+            value = "Gary";
+        } else if ( selection_id  == 0 ) {
+            value = "Garfield";
+        } else if ( selection_id  == 2 ) {
+            value = "Gober";
+        } else if ( selection_id  == 3 ) {
+            value = "Gully";
+        } else if ( selection_id  == 4 ) {
+            value = "Rory";
+        } else if ( selection_id  == 5 ) {
+            value = "Surprise";
+        }
+
+        dconf.set_string ("selected-cat", value);
         if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
             stdout.printf("Saved value: %s\n", dconf.get_string ("selected-cat"));
         }
@@ -367,7 +383,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     }
 
     private void img_number_window () {
-        if (selection.string != "Surprise") {
+        if (selection_id != 5) {
             var current_value = cat_id_button.get_value ();
             cat_id_button_window.set_value (current_value);
             cat_selector_window.present (this);
