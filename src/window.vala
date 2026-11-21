@@ -72,6 +72,10 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private unowned Gtk.ScrolledWindow star_list;
     [GtkChild]
     private unowned Gtk.Button mark;
+    [GtkChild]
+    private unowned Adw.StatusPage empty_starred;
+    [GtkChild]
+    private unowned Gtk.StringList names;
 
     private int64 cat_id;
     private string cat_url;
@@ -104,6 +108,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             { "copy", copying_action },
             { "img_number", img_number_window },
             { "open_starred", open_starred },
+            { "mark_starred", mark_starred },
         };
         this.add_action_entries (action_entries, this);
     }
@@ -140,7 +145,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         });
 
         mark.clicked.connect (() => {
-            mark_starred (checked);
+            mark_starred ();
         });
 
         data_issue.button_clicked.connect (() => {
@@ -151,6 +156,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             image_render ();
         });
 
+        names.append (_("Surprise"));
         get_cat_dconf ();
         set_popover_title ();
         if ( selection_id == 0 ) {
@@ -238,7 +244,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             picture.set_paintable (to_display);
         }
         checked = backend.check_mark (actual_selection, cat_id, bookmarks_array);
-        mark_appearance (checked);
+        mark_appearance ();
         progress.set_visible (false);
         getting.set_sensitive (true);
         clipboard.set_sensitive (true);
@@ -371,18 +377,20 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private void open_starred () {
         if (navigation.get_visible_page_tag () != "stars") {
             bookmarks_array = new GenericArray<string> ();
-            arrays.starred_widget (bookmarks_array, star_list);
+            arrays.starred_widget (bookmarks_array, star_list, empty_starred);
             navigation.push_by_tag ("stars");
             // if (change_method == "manual") {
             //     change_method = "via-bookmark";
             // } else if (change_method == "via-bookmark") {
             //     change_method = "manual";
             // }
+        } else {
+            navigation.pop_to_tag ("main");
         }
     }
 
-    private void mark_appearance (bool result) {
-        if (result == false) {
+    private void mark_appearance () {
+        if (checked == false) {
             mark.set_icon_name ("non-starred-symbolic");
             mark.set_tooltip_text (C_("Button tooltip", "Mark as Starred"));
         } else {
@@ -391,14 +399,14 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         }
     }
 
-    private void mark_starred (bool result) {
+    private void mark_starred () {
         string current = @"$actual_selection$cat_id";
-        if (result == false) {
+        if (checked == false) {
             arrays.add_bookmark (current, bookmarks_array);
         } else {
             arrays.remove_bookmark (current, bookmarks_array);
         }
         checked = backend.check_mark (actual_selection, cat_id, bookmarks_array);
-        mark_appearance (checked);
+        mark_appearance ();
     }
 }

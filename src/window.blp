@@ -11,6 +11,7 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
     Adw.NavigationView navigation {
       Adw.NavigationPage {
         title: _("Kitties");
+        tag: "main";
         child: Adw.ToolbarView {
           [top]
           Adw.HeaderBar {
@@ -23,8 +24,8 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
                                 Adw.ComboRow cat_selector {
                                   // Title for selector of cats, this means the currently selected Cat is, kind of like "Cat:", but without ':'
                                   title: C_("Cat selector", "Cat");
-                                  model: StringList {
-                                    strings: ["Garfield", "Gary", "Goober", "Gully", "Rory", "Surprise"];
+                                  model: StringList names {
+                                    strings: ["Garfield", "Gary", "Goober", "Gully", "Rory"];
                                   };
                                 }
                                 Adw.SpinRow cat_id_button {
@@ -190,6 +191,12 @@ Adw.Toast file_copied {
   // Little popup that appears when user copies an image
   title: C_("Toast", "Copied to Clipboard!");
   timeout: 5;
+}
+
+Adw.StatusPage empty_starred {
+  icon-name: "non-starred-symbolic";
+  title: C_("Starred", "No Starred Images");
+  description:  C_("Starred", "Try using the “Mark as Starred” button");
 }
 
 Adw.Dialog cat_selector_window {
