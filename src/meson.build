@@ -4,7 +4,8 @@ kittiesgtk_sources = [
   'window.vala',
   'backend.vala',
   'gary_api.vala',
-  'rory_api.vala'
+  'rory_api.vala',
+  'glycin-render.vala',
 ]
 
 kittiesgtk_deps = [

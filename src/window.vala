@@ -259,10 +259,8 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private void image_render () {
         try {
             image_issue.set_revealed (false);
-            var loader = new Gly.Loader.for_bytes (image_data);
-            var img = loader.load ();
-            var frame = img.next_frame ();
-            to_display = GlyGtk4.frame_get_texture (frame);
+            var renderer = new Kittiesgtk.GlycinRender ();
+            to_display = renderer.render (image_data);
             picture.set_paintable (to_display);
             progress.set_visible (false);
             getting.set_sensitive (true);
