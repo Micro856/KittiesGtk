@@ -21,7 +21,7 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
                               // Title for selector of cats, this means the currently selected Cat is, kind of like "Cat:", but without ':'
                               title: C_("Cat selector", "Cat");
                               model: StringList {
-                                strings: ["Garfield", "Gary", "Goober", "Gully", "Rory"];
+                                strings: ["Garfield", "Gary", "Goober", "Gully", "Rory", "Surprise"];
                               };
                             }
                             Adw.SpinRow cat_id_button {
@@ -136,6 +136,8 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
           content-fit: contain;
           halign: center;
           valign: center;
+          hexpand: true;
+          vexpand: true;
         }
       }
     }

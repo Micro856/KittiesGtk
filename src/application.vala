@@ -38,6 +38,7 @@ public class Kittiesgtk.Application : Adw.Application {
         this.set_accels_for_action ("win.switch_to_goober", {"<control>3"});
         this.set_accels_for_action ("win.switch_to_gully", {"<control>4"});
         this.set_accels_for_action ("win.switch_to_rory", {"<control>5"});
+        this.set_accels_for_action ("win.switch_to_surprise", {"<control>0"});
         this.set_accels_for_action ("win.randomize", {"<control>r"});
         this.set_accels_for_action ("win.img_number", {"<control><shift>r"});
         this.set_accels_for_action ("win.save", {"<control>s"});

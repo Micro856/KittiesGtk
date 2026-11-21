@@ -71,6 +71,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private string cat_url;
     private GLib.Bytes image_data;
     private Gtk.StringObject selection;
+    private string actual_selection;
     private uint selection_id;
     private GLib.File file;
     private Gdk.Texture to_display;
@@ -86,6 +87,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             { "switch_to_goober", switch_to_goober },
             { "switch_to_gully", switch_to_gully },
             { "switch_to_rory", switch_to_rory },
+            { "switch_to_surprise", switch_to_surprise },
             { "randomize", random_action },
             { "save", saving_action },
             { "copy", copying_action },
@@ -142,13 +144,18 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         selection = cat_selector.get_selected_item () as Gtk.StringObject;
         selection_id = cat_selector.get_selected ();
         cat_popover.set_label(selection.string);
+        if (selection.string == "Surprise") {
+            cat_id_button.set_sensitive (false);
+        } else {
+            cat_id_button.set_sensitive (true);
+        }
     }
 
     private async void set_spinner () {
         cat_id = (int64) cat_id_button.get_value ();
-        info_cat.set_subtitle (selection.string);
+        info_cat.set_subtitle (actual_selection);
         info_id.set_subtitle (cat_id.to_string ());
-        if (selection.string == "Rory") {
+        if (actual_selection == "Rory") {
             info_copying.show ();
             info_copying.set_subtitle ("<a href='https://rory.cat/license/'>CC BY 4.0</a>");
             info_api.set_subtitle ("<a href='https://rory.cat/'>rory.cat</a>");
@@ -168,7 +175,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         clipboard.set_sensitive (false);
         info_bttn.set_sensitive (false);
 
-        cat_url = yield backend.image_get_url(cat_id, selection);
+        cat_url = yield backend.image_get_url(cat_id, actual_selection);
 
         if (cat_url != "https://example.org") {
             image_data = yield backend.image_get_data (cat_url, progress);
@@ -184,7 +191,13 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     }
 
     private async void image_render_random () {
-        cat_id = yield backend.image_get_id (selection, data_issue);
+        if (selection.string == "Surprise") {
+            actual_selection = backend.image_get_cat ();
+        } else {
+            actual_selection = selection.string;
+        }
+
+        cat_id = yield backend.image_get_id (actual_selection, data_issue);
 
         cat_id_button.set_value((double) cat_id);
     }
@@ -214,7 +227,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
     private async void saving () {
         var dialog = new Gtk.FileDialog ();
-        var cat_name = selection.string;
+        var cat_name = actual_selection;
         if (cat_name == "Rory") {
             var initial_url = GLib.Path.get_basename (cat_url);
             var final_url = @"$cat_name$cat_id - $initial_url";
@@ -264,6 +277,8 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             switch_to_gully ();
         } else if ( cat  == "Rory" ) {
             switch_to_rory ();
+        } else if ( cat  == "Surprise" ) {
+            switch_to_surprise ();
         } else {
             switch_to_gary ();
         }
@@ -317,6 +332,10 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
     private void switch_to_rory () {
         cat_selector.set_selected (4);
+    }
+
+    private void switch_to_surprise () {
+        cat_selector.set_selected (5);
     }
 
     private void img_number_window () {
