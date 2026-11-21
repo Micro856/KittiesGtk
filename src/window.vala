@@ -393,13 +393,8 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private void open_starred () {
         if (navigation.get_visible_page_tag () != "stars") {
             bookmarks_array = new GenericArray<string> ();
-            arrays.starred_widget (bookmarks_array, star_list, empty_starred);
+            arrays.starred_widget (bookmarks_array, star_list, empty_starred, this);
             navigation.push_by_tag ("stars");
-            // if (change_method == "manual") {
-            //     change_method = "via-bookmark";
-            // } else if (change_method == "via-bookmark") {
-            //     change_method = "manual";
-            // }
         } else {
             navigation.pop_to_tag ("main");
         }
@@ -424,5 +419,30 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         }
         checked = backend.check_mark (actual_selection, cat_id, bookmarks_array);
         mark_appearance ();
+    }
+
+    public void show_cat (string cat, int64 id) {
+        change_method = "auto";
+        if ( cat  == "Gary" ) {
+            switch_to_gary ();
+        } else if ( cat  == "Garfield" ) {
+            switch_to_garfield ();
+        } else if ( cat  == "Goober" ) {
+            switch_to_goober ();
+        } else if ( cat  == "Gully" ) {
+            switch_to_gully ();
+        } else if ( cat  == "Rory" ) {
+            switch_to_rory ();
+        } else {
+            switch_to_gary ();
+        }
+        set_popover_title ();
+        actual_selection = cat;
+        change_method = "manual";
+        cat_id_button.set_value((double) id);
+        set_spinner ();
+        if (navigation.get_visible_page_tag () == "stars") {
+            navigation.pop_to_tag ("main");
+        }
     }
 }
