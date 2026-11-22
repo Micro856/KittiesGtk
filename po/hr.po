@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kittiesgtk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-11-22 18:26+0100\n"
-"PO-Revision-Date: 2026-11-22 18:42+0100\n"
+"PO-Revision-Date: 2026-11-22 18:57+0100\n"
 "Last-Translator: weenie mount <weeniemount@gmail.com>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -51,7 +51,7 @@ msgstr ""
 
 #: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:12
 msgid "Features:"
-msgstr "Značajke"
+msgstr "Značajke:"
 
 #: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:14
 msgid "Support for Multiple APIs"
@@ -253,7 +253,7 @@ msgstr "Spusti broj slike"
 #: src/shortcuts-dialog.blp:68
 msgctxt "Shortcut"
 msgid "Mark/Unmark as Starred"
-msgstr "Dodaj/Makni zvjezdicu"
+msgstr "Označi/Makni oznaku zvjedice"
 
 #. Name of the keyboard shortcut
 #: src/shortcuts-dialog.blp:73
