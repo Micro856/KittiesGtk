@@ -84,9 +84,10 @@ public class Kittiesgtk.Arrays {
                 int64 id = int64.parse(id_str);
                 var new_url = history[2];
 
-                new_widget.set_title (cat);
-                new_widget.set_subtitle (id.to_string ());
+                new_widget.set_title (@"$cat • $id_str");
+                new_widget.set_subtitle (new_url);
                 new_widget.add_suffix (new_box);
+                new_widget.set_activatable_widget (new_suffix);
                 bookmarks.add (new_widget);
 
                 new_suffix.clicked.connect (() => {
