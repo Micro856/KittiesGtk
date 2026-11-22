@@ -111,6 +111,13 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private uint last_cat_last_indexer = 0;
     private int max_last;
 
+    private int CatID_Garfield = 0;
+    private int CatID_Gary = 1;
+    private int CatID_Goober = 2;
+    private int CatID_Gully = 3;
+    private int CatID_Rory = 4;
+    private int CatID_Surprise = 5;
+
     private Kittiesgtk.Backend backend = new Kittiesgtk.Backend ();
     private Kittiesgtk.Arrays arrays = new Kittiesgtk.Arrays ();
 
@@ -228,7 +235,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         selection = cat_selector.get_selected_item () as Gtk.StringObject;
         selection_id = cat_selector.get_selected ();
         cat_popover.set_label(selection.string);
-        if (selection_id == 5) {
+        if (selection_id == CatID_Surprise) {
             cat_id_button.set_sensitive (false);
         } else {
             cat_id_button.set_sensitive (true);
@@ -290,7 +297,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     }
 
     private async void image_render_random () {
-        if (selection_id == 5) {
+        if (selection_id == CatID_Surprise) {
             actual_selection = backend.image_get_cat ();
         } else {
             actual_selection = selection.string;
@@ -319,7 +326,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
             if (render_method == "render") {
                 string sel;
-                if ( selection_id  == 5 ) {
+                if ( selection_id  == CatID_Surprise ) {
                     sel = "Surprise";
                 } else {
                     sel = selection.string;
@@ -416,7 +423,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
         string value = "Surprise";
 
-        if ( selection_id  == 5 ) {
+        if ( selection_id  == CatID_Surprise ) {
             value = "Surprise";
         } else {
             value = selection.string;
@@ -459,31 +466,31 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     }
 
     private void switch_to_garfield () {
-        cat_selector.set_selected (0);
+        cat_selector.set_selected (CatID_Garfield);
     }
 
     private void switch_to_gary () {
-        cat_selector.set_selected (1);
+        cat_selector.set_selected (CatID_Gary);
     }
 
     private void switch_to_goober () {
-        cat_selector.set_selected (2);
+        cat_selector.set_selected (CatID_Goober);
     }
 
     private void switch_to_gully () {
-        cat_selector.set_selected (3);
+        cat_selector.set_selected (CatID_Gully);
     }
 
     private void switch_to_rory () {
-        cat_selector.set_selected (4);
+        cat_selector.set_selected (CatID_Rory);
     }
 
     private void switch_to_surprise () {
-        cat_selector.set_selected (5);
+        cat_selector.set_selected (CatID_Surprise);
     }
 
     private void img_number_window () {
-        if (selection_id != 5) {
+        if (selection_id != CatID_Surprise) {
             var current_value = cat_id_button.get_value ();
             cat_id_button_window.set_value (current_value);
             cat_selector_window.present (this);
@@ -672,7 +679,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
     private void add_one_action () {
         var disabled = dice.get_sensitive ();
-        if ( disabled && selection_id != 5) {
+        if ( disabled && selection_id != CatID_Surprise) {
             cat_id++;
             cat_id_button.set_value((double) cat_id);
         }
@@ -680,7 +687,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
     private void rm_one_action () {
         var disabled = dice.get_sensitive ();
-        if ( disabled && selection_id != 5) {
+        if ( disabled && selection_id != CatID_Surprise) {
             cat_id--;
             cat_id_button.set_value((double) cat_id);
         }
