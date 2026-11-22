@@ -1,7 +1,7 @@
 # List of source files containing translatable strings.
 # Please keep this file sorted alphabetically.
-data/io.github.Micro856.KittiesGtk.desktop.in
-data/io.github.Micro856.KittiesGtk.metainfo.xml.in
+data/io.github.Micro856.KittiesGtk.desktop.in.in
+data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in
 data/io.github.Micro856.KittiesGtk.gschema.xml
 src/application.vala
 src/main.vala
