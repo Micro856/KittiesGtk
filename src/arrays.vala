@@ -78,8 +78,11 @@ public class Kittiesgtk.Arrays {
                 new_suffix.set_tooltip_text (C_("Button tooltip", "Show Image"));
                 new_suffix.set_css_classes ({"flat"});
 
-                var cat = cat_name_from_array (str);
-                var id = cat_id_from_array (str);
+                var history = regex (str);
+                var cat = history[0];
+                var id_str = history[1];
+                int64 id = int64.parse(id_str);
+                var url = history[2];
 
                 new_widget.set_title (cat);
                 new_widget.set_subtitle (id.to_string ());
@@ -87,7 +90,7 @@ public class Kittiesgtk.Arrays {
                 bookmarks.add (new_widget);
 
                 new_suffix.clicked.connect (() => {
-                    win.show_cat (cat, id);
+                    win.show_cat (cat, id, url);
                 });
             });
         } else {
@@ -95,20 +98,7 @@ public class Kittiesgtk.Arrays {
         }
     }
 
-    public string cat_name_from_array (string str) {
-        var no_num = new Regex ("\\d");
-        string cat = no_num.replace_literal (str, -1, 0, "");
-        return cat;
-    }
-
-    public int64 cat_id_from_array (string str) {
-        var no_txt = new Regex ("[^0-9]");
-        var id_str = no_txt.replace_literal (str, -1, 0, "");
-        int64 id = id_str.to_int64 ();
-        return id;
-    }
-
-    public string[] history_regex (string str) {
+    public string[] regex (string str) {
         var regex = new Regex ("-");
         var history = regex.split (str, 0);
         return history;

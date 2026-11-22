@@ -216,7 +216,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
     private async void set_spinner_online () {
         cat_id = (int64) cat_id_button.get_value ();
-        set_spinner();
+        set_spinner ();
         yield image_get ();
         info_url.set_subtitle (@"<a href='$cat_url'>$cat_url</a>");
     }
@@ -286,7 +286,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
             control_navigation ();
 
-            checked = backend.check_mark (actual_selection, cat_id, bookmarks_array);
+            checked = backend.check_mark (actual_selection, cat_id, cat_url, bookmarks_array);
             mark_appearance ();
             getting.set_enabled (true);
             clipboard.set_enabled (true);
@@ -456,17 +456,17 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     }
 
     private void mark_starred () {
-        string current = @"$actual_selection$cat_id";
+        string current = @"$actual_selection-$cat_id-$cat_url";
         if (checked == false) {
             arrays.add_bookmark (current, bookmarks_array);
         } else {
             arrays.remove_bookmark (current, bookmarks_array);
         }
-        checked = backend.check_mark (actual_selection, cat_id, bookmarks_array);
+        checked = backend.check_mark (actual_selection, cat_id, cat_url, bookmarks_array);
         mark_appearance ();
     }
 
-    public void show_cat (string cat, int64 id) {
+    public void show_cat (string cat, int64 id, string url) {
         change_method = "auto";
         if ( cat  == "Gary" ) {
             switch_to_gary ();
@@ -483,8 +483,29 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         }
         set_popover_title ();
         actual_selection = cat;
-        change_method = "manual";
-        cat_id_button.set_value((double) id);
+        var looked = @"$cat-$cat-$id-$url";
+        var looked_result = last_cats.find_with_equal_func(looked, str_equal);
+        var looked2 = @"Surprise-$cat-$id-$url";
+        var looked2_result = last_cats.find_with_equal_func(looked2, str_equal);
+        stdout.printf ("%b %b\n", looked_result, looked2_result);
+
+        if (looked_result == true || looked2_result == true) {
+            for (int i = 0; i < last_cats.length; i++) {
+                if (last_cats.get (i) == looked) {
+                    var history = arrays.regex (last_cats.get (i));
+                    info_url.set_subtitle (@"<a href='$url'>$url</a>");
+                    cat_id_button.set_value((double) id);
+                    cat_id = (int64) cat_id_button.get_value ();
+                    image_data = last_cats_data.get (i);
+                    set_spinner ();
+                    image_render ();
+                    change_method = "manual";
+                }
+            }
+        } else {
+            change_method = "manual";
+            cat_id_button.set_value((double) id);
+        }
         if (navigation.get_visible_page_tag () == "stars") {
             navigation.pop_to_tag ("main");
         }
@@ -513,11 +534,11 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         last_cat_last_indexer = last_cat_indexer;
         last_cat_indexer++;
         var str = last_cats.get (last_cats.length - 1 - last_cat_indexer);
-        var history = arrays.history_regex (str);
+        var history = arrays.regex (str);
         var select = history[0];
         var act_select = history[1];
         var id_str = history[2];
-        int64 id = id_str.to_int64 ();
+        int64 id = int64.parse(id_str);
         var url = history[3];
         var img = last_cats_data.get (last_cats_data.length - 1 - last_cat_indexer);
         show_cat_history (select, act_select, id, url, img);
@@ -527,11 +548,11 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         last_cat_last_indexer = last_cat_indexer;
         last_cat_indexer--;
         var str = last_cats.get (last_cats.length - 1 - last_cat_indexer);
-        var history = arrays.history_regex (str);
+        var history = arrays.regex (str);
         var select = history[0];
         var act_select = history[1];
         var id_str = history[2];
-        int64 id = id_str.to_int64 ();
+        int64 id = int64.parse(id_str);
         var url = history[3];
         var img = last_cats_data.get (last_cats_data.length - 1 - last_cat_indexer);
         show_cat_history (select, act_select, id, url, img);
@@ -558,11 +579,11 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         actual_selection = act_select;
         info_url.set_subtitle (@"<a href='$url'>$url</a>");
         cat_id_button.set_value((double) id);
+        cat_id = (int64) cat_id_button.get_value ();
         image_data = img;
         set_spinner ();
         render_method = "history";
         image_render ();
-        stdout.printf ("%d\n", (int) last_cat_indexer);
         change_method = "manual";
     }
 
