@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kittiesgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-07 15:40+0100\n"
-"PO-Revision-Date: 2026-11-11 19:37+0100\n"
+"POT-Creation-Date: 2026-11-22 18:26+0100\n"
+"PO-Revision-Date: 2026-11-22 18:42+0100\n"
 "Last-Translator: weenie mount <weeniemount@gmail.com>\n"
 "Language-Team: Croatian\n"
 "Language: hr\n"
@@ -21,21 +21,21 @@ msgstr ""
 "X-Generator: Gtranslator 51.0\n"
 
 #. This name is generic enough. Go ahead translate it.
-#: data/io.github.Micro856.KittiesGtk.desktop.in:2
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:7 src/application.vala:57
-#: src/window.blp:6
+#: data/io.github.Micro856.KittiesGtk.desktop.in.in:2
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:7
+#: src/application.vala:65 src/window.blp:6 src/window.blp:13
 msgid "Kitties"
 msgstr "Mačkice"
 
-#: data/io.github.Micro856.KittiesGtk.desktop.in:8
+#: data/io.github.Micro856.KittiesGtk.desktop.in.in:8
 msgid "GTK;Cat;Cats;Kitty;Feline;Felines;Meow;Gary;Goober;Gully;Garfield;Rory;API;Image;Download;Random;"
 msgstr "GTK;Mačka;Mačke;Mačkica;Mačij;Mjau;Gary;Goober;Gully;Garfield;Rory;API;Slike;Preuzmi;Nasumično"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:8
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:8
 msgid "View random images of felines"
 msgstr "Pogledaj nasumične slike mačija"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:10
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:10
 msgid ""
 "Kitties is an app that lets you display a random image of one of the "
 "available cats."
@@ -43,43 +43,83 @@ msgstr ""
 "Mačkice je aplikacija koja ti daje da pokažeš nasumičnu sliku od dostupnih "
 "mačka."
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:11
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:11
 msgid ""
 "These pictures come from various APIs including api.garythe.cat and rory.cat."
 msgstr ""
 "Ove slike dolaze sa raznim API-ovima uključujući api.garythe.cat i rory.cat."
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:12
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:12
 msgid "Features:"
 msgstr "Značajke"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:14
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:14
 msgid "Support for Multiple APIs"
 msgstr "Podrška za više API-ova"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:15
-msgid "Saving Cat Images"
-msgstr "Spremanje slike mačka"
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:15
+msgid "Saving & Copying Cat Images"
+msgstr "Spremanje i kopiranje slike mačka"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:16
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:16
 msgid "Keyboard Navigation"
 msgstr "Navigacije tipkovnicom"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:21
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:21
 msgid "Marcel Mrówka"
 msgstr "Marcel Mrówka"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:42
-msgid "Main Window of Kitties showing an image of Gary"
-msgstr "Glavni prozor Mačkica koja pokazuje sliku Garya"
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:42
+msgid "Main Window of Kitties showing an image of Rory"
+msgstr "Glavni prozor Mačkica koja pokazuje sliku Rorya"
+
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:46
+msgid ""
+"Main Window of Kitties showing an image of Goober with “Cat & Image Picker” "
+"Menu open"
+msgstr ""
+"Glavni prozor Mačkica koja pokazuje sliku Goober sa meni \"Odabir mačke i "
+"slike\" otvorenim"
+
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:50
+msgid ""
+"Main Window of Kitties showing an image of Gary with “Cat & Image Picker” "
+"Menu and Cat Picker open"
+msgstr ""
+"Glavni prozor Mačkica koja pokazuje sliku Garya sa meni \"Odabir mačke i "
+"slike\" i Odabrač Mačke otvorenim"
+
+#: data/io.github.Micro856.KittiesGtk.gschema.xml:6
+msgid "Currently selected cat"
+msgstr "Trenutačno odabrana slika"
+
+#: data/io.github.Micro856.KittiesGtk.gschema.xml:7
+msgid "Name of the currently selected cat"
+msgstr "Ime trenutačno odabrane mačke"
+
+#: data/io.github.Micro856.KittiesGtk.gschema.xml:13
+msgid "Starred Images"
+msgstr "Slike sa zvjedicom"
+
+#: data/io.github.Micro856.KittiesGtk.gschema.xml:14
+msgid "Starred Images as an array. Format: (cats-name)(id)"
+msgstr "Slike sa zvjedicom kao niz. Format: (ime-mačke)(broj)"
+
+#: data/io.github.Micro856.KittiesGtk.gschema.xml:20
+msgid "Amount of Images to store"
+msgstr "Količina slika za spremiti"
+
+#: data/io.github.Micro856.KittiesGtk.gschema.xml:21
+msgid "How much cat images should be stored in history"
+msgstr "Koliko slika mačka bih se trebalo spremiti u povijest"
 
 #. Format: NAMES/NICKNAME <e-mail/website-url>, YEAR
-#: src/application.vala:61
+#: src/application.vala:69
 msgctxt "credits"
 msgid "translator-credits"
 msgstr "weeniemount <weeniemount@gmail.com>, 2026"
 
-#: src/application.vala:64
+#: src/application.vala:72
 msgid ""
 "© 2026 Marcel Mrówka\n"
 "\n"
@@ -110,6 +150,26 @@ msgstr ""
 "\n"
 "You should have received a copy of the GNU General Public License\n"
 "along with this program.  If not, see https://www.gnu.org/licenses/."
+
+#: src/window.vala:219
+msgid "Surprise"
+msgstr "Iznenađenje"
+
+#. Tooltip for a button, which when pressed will add image to "Starred"
+#: src/window.vala:506 src/window.blp:80
+msgctxt "Button tooltip"
+msgid "Mark as Starred"
+msgstr "Označi sa zvjedicom"
+
+#: src/window.vala:509
+msgctxt "Button tooltip"
+msgid "Unmark as Starred"
+msgstr "Makni oznaku zvjezdice"
+
+#: src/arrays.vala:78
+msgctxt "Button tooltip"
+msgid "Show Image"
+msgstr "Pokaži sliku"
 
 #. Title of the keyboard shortcut category
 #: src/shortcuts-dialog.blp:7
@@ -120,215 +180,359 @@ msgstr "Opće"
 #. Name of the keyboard shortcut
 #: src/shortcuts-dialog.blp:10
 msgctxt "Shortcut"
+msgid "Show Starred"
+msgstr "Pokaži zvjezdano"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:15
+msgctxt "Shortcut"
+msgid "Show Preferences"
+msgstr "Pokaži preferencije"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:20
+msgctxt "Shortcut"
 msgid "Show Shortcuts"
 msgstr "Pokaži prečace"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:15
+#: src/shortcuts-dialog.blp:25
 msgctxt "Shortcut"
 msgid "Quit"
 msgstr "Izađi"
 
 #. Tile of the keyboard shortcut category, things done to/with the image
-#: src/shortcuts-dialog.blp:21
+#: src/shortcuts-dialog.blp:31
+msgctxt "Shortcut category"
+msgid "Image History"
+msgstr "Povijest slika"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:34
+msgctxt "Shortcut"
+msgid "Go Back"
+msgstr "Odi nazad"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:39
+msgctxt "Shortcut"
+msgid "Go Forward"
+msgstr "Odi dalje"
+
+#. Tile of the keyboard shortcut category, things done to/with the image
+#: src/shortcuts-dialog.blp:45
 msgctxt "Shortcut category"
 msgid "Image"
 msgstr "Slika"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:24
+#: src/shortcuts-dialog.blp:48
 msgctxt "Shortcut"
 msgid "Copy Image"
 msgstr "Kopiraj sliku"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:29
+#: src/shortcuts-dialog.blp:53
 msgctxt "Shortcut"
 msgid "Enter Image Number"
 msgstr "Upiši broj slike"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:34
+#: src/shortcuts-dialog.blp:58
+msgctxt "Shortcut"
+msgid "Increase Image Number"
+msgstr "Podigni broj slike"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:63
+msgctxt "Shortcut"
+msgid "Decrease Image Number"
+msgstr "Spusti broj slike"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:68
+msgctxt "Shortcut"
+msgid "Mark/Unmark as Starred"
+msgstr "Dodaj/Makni zvjezdicu"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:73
 msgctxt "Shortcut"
 msgid "Randomize Image"
 msgstr "Slučajno odaberi sliku"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:39
+#: src/shortcuts-dialog.blp:78
 msgctxt "Shortcut"
 msgid "Save Image"
 msgstr "Spremi Sliku"
 
 #. Name of the keyboard shortcut category, selecting cats form keyboard
-#: src/shortcuts-dialog.blp:45
+#: src/shortcuts-dialog.blp:84
 msgctxt "Shortcut category"
 msgid "Cat Selection"
 msgstr "Odabir mačka"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:48
+#: src/shortcuts-dialog.blp:87
 msgctxt "Shortcut"
 msgid "Switch to Garfield"
 msgstr "Promijeni na Garfield"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:53
+#: src/shortcuts-dialog.blp:92
 msgctxt "Shortcut"
 msgid "Switch to Gary"
 msgstr "Promijeni na Gary"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:58
+#: src/shortcuts-dialog.blp:97
 msgctxt "Shortcut"
 msgid "Switch to Goober"
 msgstr "Promijeni na Goober"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:63
+#: src/shortcuts-dialog.blp:102
 msgctxt "Shortcut"
 msgid "Switch to Gully"
 msgstr "Promjeni na Gully"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:68
+#: src/shortcuts-dialog.blp:107
 msgctxt "Shortcut"
 msgid "Switch to Rory"
 msgstr "Promjeni na Rory"
 
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:112
+msgctxt "Shortcut"
+msgid "Switch to Surprise"
+msgstr "Promijeni na Iznenađenje"
+
 #. A tooltip
-#: src/window.blp:17
-msgid "Cat & Image Selector"
+#: src/window.blp:21
+msgid "Cat & Image Picker"
 msgstr "Odabir mačke i slike"
 
 #. Title for selector of cats, this means the currently selected Cat is, kind of like "Cat:", but without ':'
-#: src/window.blp:22
+#: src/window.blp:26
 msgctxt "Cat selector"
 msgid "Cat"
 msgstr "Mačka"
 
 #. Title for the selector of the image, just like with the cat selector, this means ID number of the image to display
-#: src/window.blp:30
+#: src/window.blp:33
 msgctxt "Image selector"
 msgid "Image Number"
 msgstr "Broj slike"
 
+#. Tooltip for a button, which when pressed will go Backwards 1 step
+#: src/window.blp:53
+msgctxt "Button tooltip"
+msgid "Back"
+msgstr "Nazad"
+
+#. Tooltip for a button, which when pressed will go Forwards 1 step
+#: src/window.blp:61
+msgctxt "Button tooltip"
+msgid "Forward"
+msgstr "Sljedeće"
+
 #. Tooltip for a button, which when pressed will display a random image
-#: src/window.blp:50
+#: src/window.blp:69
 msgctxt "Button tooltip"
 msgid "Randomize Image"
 msgstr "Nasumično odaberi sliku"
 
-#. Tooltip for a button, which when pressed will save the currently visible image
-#: src/window.blp:57
-msgctxt "Button tooltip"
-msgid "Save Image"
-msgstr "Spremi sliku"
-
-#. Tooltip for a button, which when pressed will save the currently visible image
-#: src/window.blp:64
-msgctxt "Button tooltip"
-msgid "Copy Image"
-msgstr "Kopiraj sliku"
-
 #. Tooltip for a button, which when pressed will display the details of the image
-#: src/window.blp:74
+#: src/window.blp:86
 msgid "Image Details"
 msgstr "Detalji slike"
 
 #. An image property, works like "Cat:", for example if selected cat is Gary, it should be read as "Cat: Gary"
-#: src/window.blp:80
+#: src/window.blp:92
 msgctxt "Image details"
 msgid "Cat"
 msgstr "Mačka"
 
 #. An image property, works like "Cat:", for example if selected image is 2, it should be read as "Image number: 2"
-#: src/window.blp:85
+#: src/window.blp:97
 msgctxt "Image details"
 msgid "Image Number"
 msgstr "Broj slike"
 
-#: src/window.blp:89
+#: src/window.blp:101
 msgctxt "Image details"
 msgid "Image URL"
 msgstr "URL slike"
 
 #. An image property, licence/license of the image
-#: src/window.blp:95
+#: src/window.blp:107
 msgctxt "Image details"
 msgid "License"
 msgstr "Licensa"
 
 #. An image property, the API used to fetch the cat image, if Gary is selected, it should be read as "API: api.garythe.cat"
-#: src/window.blp:101
+#: src/window.blp:113
 msgctxt "Image details"
 msgid "API"
 msgstr "API"
 
 #. A tooltip for a button, which when pressed opens the main menu
-#: src/window.blp:111
+#: src/window.blp:123
 msgctxt "Button tooltip"
 msgid "Main Menu"
 msgstr "Glavni meni"
 
 #. Text for the banner, which displays when the random image number or the image data could not be fetched
-#: src/window.blp:121
+#: src/window.blp:133
 msgctxt "Banner"
 msgid "A problem occurred while getting the image."
 msgstr "Problem se dogodio tijekom uzimanja slike"
 
 #. Button for the action of both banners
-#: src/window.blp:123 src/window.blp:129
+#: src/window.blp:135 src/window.blp:148
 msgctxt "Banner icon"
 msgid "Try Again"
 msgstr "Probaj opet"
 
+#. Text for the banner, which displays when the output is a 404 page
+#: src/window.blp:140
+msgctxt "Banner"
+msgid "This Image does not exist."
+msgstr "Ova slike ne postoji."
+
+#. Button for the action of the banner
+#: src/window.blp:142
+msgctxt "Banner icon"
+msgid "Randomize"
+msgstr "Slučajni odabir"
+
 #. Text for the banner, which displays when the image could not be displayed
-#: src/window.blp:128
+#: src/window.blp:147
 msgctxt "Banner"
 msgid "A problem occurred while displaying the image."
 msgstr "Problem se dogodio tijekom pokazivanja slike"
 
+#: src/window.blp:166
+msgctxt "Starred Page Title"
+msgid "Starred"
+msgstr "Zvjezdano"
+
 #. Little popup that appears when file was saved
-#: src/window.blp:148
+#: src/window.blp:186
 msgctxt "Toast"
 msgid "File saved successfully!"
 msgstr "Datoteka uspješno spremljena!"
 
 #. Little popup if the file wasn't saved correctly
-#: src/window.blp:153
+#: src/window.blp:191
 msgctxt "Toast"
 msgid "A problem occurred while saving the image."
 msgstr "Problem se dogodio tijekom spremanja slike"
 
 #. Little popup that appears when user cancells saving
-#: src/window.blp:158
+#: src/window.blp:196
 msgctxt "Toast"
 msgid "File saving cancelled"
 msgstr "Spremanje slike prekinuto"
 
 #. Little popup that appears when user copies an image
-#: src/window.blp:163
+#: src/window.blp:201
 msgctxt "Toast"
 msgid "Copied to Clipboard!"
 msgstr "Kopirano u međuspremnik!"
 
+#: src/window.blp:207
+msgctxt "Starred"
+msgid "No Starred Images"
+msgstr "Nema zvjezdanih slika"
+
+#: src/window.blp:208
+msgctxt "Starred"
+msgid "Try using the “Mark as Starred” button"
+msgstr "Probajte koristi gumb \"Označi sa zvjedicom\""
+
 #. Text for the entry of image number that get's triggered with a keyboard shortcut
-#: src/window.blp:181
+#: src/window.blp:225
 msgctxt "Tooltip?"
 msgid "Enter Image Number:"
 msgstr "Upiši broj slike:"
 
+#: src/window.blp:243
+msgctxt "Window Title"
+msgid "Preferences"
+msgstr "Preferencije"
+
+#: src/window.blp:245
+msgctxt "Preferences Group Title"
+msgid "History Management"
+msgstr "Upravljenje povijesti"
+
+#: src/window.blp:247
+msgctxt "Preference Title"
+msgid "Amount of Images to store"
+msgstr "Količina slika da se spremi"
+
+#: src/window.blp:248
+msgctxt "Preference Subtitle"
+msgid "How much cat images should be stored in history."
+msgstr "Koliko slika mačka bih se trebalo spremiti u povijest"
+
+#: src/window.blp:263 src/window.blp:269
+msgctxt "Preference Title"
+msgid "Did you know?"
+msgstr "Jeste li znali?"
+
+#: src/window.blp:264
+msgctxt "Preference Subitle"
+msgid "The cat on the app’s icon is named Rudi? He was my cat."
+msgstr "Mačka na ikonu aplikacije se zove Rudi? On je bio moja mačka."
+
+#: src/window.blp:270
+msgctxt "Preference Subitle"
+msgid "The cat on the app’s icon is named Miziany? He is my cat."
+msgstr "Mačka na ikonu aplikacije se zove Miziany? On je moja mačka."
+
 #. Label for menu item
-#: src/window.blp:200
+#: src/window.blp:281
+msgctxt "Menu item"
+msgid "_Save Image"
+msgstr "_Spremi Sliku"
+
+#. Label for menu item
+#: src/window.blp:286
+msgctxt "Menu item"
+msgid "_Copy Image"
+msgstr "_Kopiraj sliku"
+
+#. Label for menu item
+#: src/window.blp:293
+msgctxt "Menu item"
+msgid "S_tarred"
+msgstr "Z_vjezdano"
+
+#. Label for menu item
+#: src/window.blp:300
 msgctxt "Menu item"
 msgid "_Keyboard Shortcuts"
 msgstr "_Prečaci tipkovnice"
 
 #. Label for menu item
-#: src/window.blp:205
+#: src/window.blp:305
+msgctxt "Menu item"
+msgid "_Preferences"
+msgstr "_Preferencije"
+
+#. Label for menu item
+#: src/window.blp:310
 msgctxt "Menu item"
 msgid "_About Kitties"
 msgstr "_O Mačkice"
+
+#~ msgctxt "Button tooltip"
+#~ msgid "Copy Image"
+#~ msgstr "Kopiraj sliku"
 
 #~ msgctxt "App name"
 #~ msgid "Kitties"
