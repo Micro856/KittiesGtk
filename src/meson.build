@@ -23,7 +23,7 @@ kittiesgtk_deps = [
 blueprints = custom_target('blueprints',
   input: files(
     'window.blp',
-    'shortcuts-dialog.blp'
+    'shortcuts-dialog.blp',
   ),
   output: '.',
   command: [find_program('blueprint-compiler'), 'batch-compile', '--minify', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],

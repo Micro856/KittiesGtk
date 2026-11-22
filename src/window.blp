@@ -237,6 +237,43 @@ Adw.Dialog cat_selector_window {
   }
 }
 
+Adw.PreferencesDialog pref_window {
+    search-enabled: true;
+    Adw.PreferencesPage {
+        title: C_("Window Title", "Preferences");
+        Adw.PreferencesGroup {
+             title: C_("Preferences Group Title", "History Management");
+             Adw.SpinRow history_spinner {
+                   title: C_("Preference Title", "Amount of Images to store");
+                   subtitle: C_("Preference Subtitle", "How much cat images should be stored in history.");
+                   adjustment: Adjustment {
+                      lower: 1;
+                      upper: 50;
+                      step-increment: 1;
+                   };
+                   digits: 0;
+             }
+        }
+        Adw.PreferencesGroup cat_fact {}
+    }
+}
+
+Adw.ActionRow rudi_fact {
+     styles ["property"]
+     title: C_("Preference Title", "Did you know?");
+     subtitle: C_("Preference Subitle", "The cat on the app’s icon is named Rudi? He was my cat.");
+}
+
+Adw.ActionRow miziany_fact {
+     styles ["property"]
+     title: C_("Preference Title", "Did you know?");
+     subtitle: C_("Preference Subitle", "The cat on the app’s icon is named Miziany? He is my cat.");
+}
+
+Gtk.Image cat_fact_img {
+  pixel-size: 48;
+}
+
 menu primary_menu {
   section {
     item {
@@ -262,6 +299,11 @@ menu primary_menu {
       // Label for menu item
       label: C_("Menu item", "_Keyboard Shortcuts");
       action: "app.shortcuts";
+    }
+    item {
+      // Label for menu item
+      label: C_("Menu item", "_Preferences");
+      action: "win.preferences";
     }
     item {
       // Label for menu item

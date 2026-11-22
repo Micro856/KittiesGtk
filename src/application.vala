@@ -49,6 +49,7 @@ public class Kittiesgtk.Application : Adw.Application {
         this.set_accels_for_action ("win.go_next", {"<alt>Right"});
         this.set_accels_for_action ("win.add_one", {"<alt>Up"});
         this.set_accels_for_action ("win.rm_one", {"<alt>Down"});
+        this.set_accels_for_action ("win.preferences", {"<control>p"});
         this.set_accels_for_action ("app.quit", {"<control>q"});
     }
 
