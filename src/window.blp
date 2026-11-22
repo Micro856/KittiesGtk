@@ -45,26 +45,26 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
           [start]
           Box {
             spacing: 6;
+            Button back {
+              halign: center;
+              valign: end;
+              icon-name: "go-previous-symbolic";
+              // Tooltip for a button, which when pressed will go Backwards 1 step
+              tooltip-text: C_("Button tooltip", "Back");
+            }
+            Button next {
+              halign: center;
+              valign: end;
+              icon-name: "go-next-symbolic";
+              // Tooltip for a button, which when pressed will go Forwards 1 step
+              tooltip-text: C_("Button tooltip", "Forward");
+            }
             Button dice {
               halign: center;
               valign: end;
               icon-name: "dice-symbolic";
               // Tooltip for a button, which when pressed will display a random image
               tooltip-text: C_("Button tooltip", "Randomize Image");
-            }
-            Button getting {
-              halign: center;
-              valign: end;
-              icon-name: "document-save-symbolic";
-              // Tooltip for a button, which when pressed will save the currently visible image
-              tooltip-text: C_("Button tooltip", "Save Image");
-            }
-            Button clipboard {
-              halign: center;
-              valign: end;
-              icon-name: "edit-copy-symbolic";
-              // Tooltip for a button, which when pressed will save the currently visible image
-              tooltip-text: C_("Button tooltip", "Copy Image");
             }
           }
           [end]
@@ -232,7 +232,19 @@ menu primary_menu {
   section {
     item {
       // Label for menu item
-      label: C_("Menu item", "_Starred");
+      label: C_("Menu item", "_Save Image");
+      action: "win.save";
+    }
+    item {
+      // Label for menu item
+      label: C_("Menu item", "_Copy Image");
+      action: "win.copy";
+    }
+  }
+  section {
+    item {
+      // Label for menu item
+      label: C_("Menu item", "S_tarred");
       action: "win.open_starred";
     }
   }

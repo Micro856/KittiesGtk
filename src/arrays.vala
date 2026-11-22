@@ -107,4 +107,10 @@ public class Kittiesgtk.Arrays {
         int64 id = id_str.to_int64 ();
         return id;
     }
+
+    public string[] history_regex (string str) {
+        var regex = new Regex ("-");
+        var history = regex.split (str, 0);
+        return history;
+    }
 }

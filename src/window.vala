@@ -25,9 +25,9 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     [GtkChild]
     private unowned Gtk.Button dice;
     [GtkChild]
-    private unowned Gtk.Button getting;
+    private unowned Gtk.Button back;
     [GtkChild]
-    private unowned Gtk.Button clipboard;
+    private unowned Gtk.Button next;
     [GtkChild]
     private unowned Adw.ComboRow cat_selector;
     [GtkChild]
@@ -90,6 +90,12 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private string change_method = "manual";
     private GenericArray<string> bookmarks_array = new GenericArray<string> ();
 
+    private GenericArray<string> last_cats = new GenericArray<string> ();
+    private GenericArray<GLib.Bytes> last_cats_data = new GenericArray<GLib.Bytes> ();
+    private uint last_cat_indexer = 0;
+    private uint last_cat_last_indexer = 0;
+    private int max_last = 15;
+
     private Kittiesgtk.Backend backend = new Kittiesgtk.Backend ();
     private Kittiesgtk.Arrays arrays = new Kittiesgtk.Arrays ();
 
@@ -111,7 +117,12 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             { "mark_starred", mark_starred },
         };
         this.add_action_entries (action_entries, this);
+        getting = lookup_action ("save") as SimpleAction;
+        clipboard = lookup_action ("copy") as SimpleAction;
     }
+
+    private SimpleAction getting;
+    private SimpleAction clipboard;
 
     public Window (Gtk.Application app) {
         Object (application: app);
@@ -121,7 +132,9 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         }
 
         cat_id_button.notify["value"].connect (() => {
-            set_spinner ();
+            if (change_method == "manual") {
+                set_spinner_online ();
+            }
         });
 
         cat_selector.notify["selected-item"].connect (() => {
@@ -136,12 +149,12 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             image_render_random ();
         });
 
-        getting.clicked.connect (() => {
-            saving ();
+        back.clicked.connect (() => {
+            go_back_one ();
         });
 
-        clipboard.clicked.connect (() => {
-            copying ();
+        next.clicked.connect (() => {
+            go_forward_one ();
         });
 
         mark.clicked.connect (() => {
@@ -152,8 +165,20 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             image_render_random ();
         });
 
+        data_issue.notify["revealed"].connect (() => {
+            if ( data_issue.get_revealed () == true ) {
+                dice.set_sensitive (true);
+            }
+        });
+
         image_issue.button_clicked.connect (() => {
             image_render ();
+        });
+
+        image_issue.notify["revealed"].connect (() => {
+            if ( image_issue.get_revealed () == true ) {
+                dice.set_sensitive (true);
+            }
         });
 
         names.append (_("Surprise"));
@@ -175,8 +200,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         }
     }
 
-    private async void set_spinner () {
-        cat_id = (int64) cat_id_button.get_value ();
+    private void set_spinner () {
         info_cat.set_subtitle (actual_selection);
         info_id.set_subtitle (cat_id.to_string ());
         if (actual_selection == "Rory") {
@@ -187,6 +211,11 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             info_copying.hide ();
             info_api.set_subtitle ("<a href='https://api.garythe.cat/'>api.garythe.cat</a>");
         }
+    }
+
+    private async void set_spinner_online () {
+        cat_id = (int64) cat_id_button.get_value ();
+        set_spinner();
         yield image_get ();
         info_url.set_subtitle (@"<a href='$cat_url'>$cat_url</a>");
     }
@@ -195,14 +224,14 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         dice.set_sensitive (false);
         data_issue.set_revealed (false);
         image_issue.set_revealed (false);
-        getting.set_sensitive (false);
-        clipboard.set_sensitive (false);
+        getting.set_enabled (false);
+        clipboard.set_enabled (false);
         mark.set_sensitive (false);
         info_bttn.set_sensitive (false);
 
         cat_url = yield backend.image_get_url(cat_id, actual_selection);
 
-        if (cat_url != "https://example.org") {
+        if (cat_url != "https://example.org" && cat_id != 0) {
             image_data = yield backend.image_get_data (cat_url, progress);
 
             if (image_data == null) {
@@ -242,14 +271,24 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             }
         } else {
             picture.set_paintable (to_display);
+
+            if (cat_id != 0 && last_cat_indexer == 0 && last_cat_last_indexer == 0) {
+                clean_last_override();
+                var sel = selection.string;
+                last_cats.add (@"$sel-$actual_selection-$cat_id-$cat_url");
+                last_cats_data.add (image_data);
+                clean_last_above();
+            }
+
+            checked = backend.check_mark (actual_selection, cat_id, bookmarks_array);
+            mark_appearance ();
+            getting.set_enabled (true);
+            clipboard.set_enabled (true);
+            mark.set_sensitive (true);
+            info_bttn.set_sensitive (true);
+            image_issue.set_revealed (false);
         }
-        checked = backend.check_mark (actual_selection, cat_id, bookmarks_array);
-        mark_appearance ();
         progress.set_visible (false);
-        getting.set_sensitive (true);
-        clipboard.set_sensitive (true);
-        mark.set_sensitive (true);
-        info_bttn.set_sensitive (true);
         dice.set_sensitive (true);
     }
 
@@ -345,15 +384,15 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     }
 
     private void saving_action () {
-        var disabled = getting.get_sensitive ();
-        if ( disabled ) {
+        var disabled = getting.get_enabled ();
+        if ( disabled != false ) {
             saving.begin();
         }
     }
 
     private void copying_action () {
-        var disabled = clipboard.get_sensitive ();
-        if ( disabled ) {
+        var disabled = clipboard.get_enabled ();
+        if ( disabled != false ) {
             copying();
         }
     }
@@ -440,9 +479,80 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         actual_selection = cat;
         change_method = "manual";
         cat_id_button.set_value((double) id);
-        set_spinner ();
+        set_spinner_online ();
         if (navigation.get_visible_page_tag () == "stars") {
             navigation.pop_to_tag ("main");
         }
+    }
+
+    private void clean_last_above () {
+        if (last_cats.length > max_last) {
+            last_cats.remove_index (0);
+            last_cats_data.remove_index (0);
+        }
+    }
+
+    private void clean_last_override () {
+        if (last_cat_indexer > 0) {
+            for (int i = 0; i < last_cat_indexer; i++) {
+                last_cats.remove_index (last_cats.length - 1 - i);
+                last_cats_data.remove_index (last_cats.length - 1 - i);
+            }
+        }
+    }
+
+    private void go_back_one () {
+        last_cat_last_indexer = last_cat_indexer;
+        last_cat_indexer++;
+        var str = last_cats.get (last_cats.length - 1 - last_cat_indexer);
+        var history = arrays.history_regex (str);
+        var select = history[0];
+        var act_select = history[1];
+        var id_str = history[2];
+        int64 id = id_str.to_int64 ();
+        var url = history[3];
+        var img = last_cats_data.get (last_cats_data.length - 1 - last_cat_indexer);
+        show_cat_history (select, act_select, id, url, img);
+    }
+
+    private void go_forward_one () {
+        last_cat_last_indexer = last_cat_indexer;
+        last_cat_indexer--;
+        var str = last_cats.get (last_cats.length - 1 - last_cat_indexer);
+        var history = arrays.history_regex (str);
+        var select = history[0];
+        var act_select = history[1];
+        var id_str = history[2];
+        int64 id = id_str.to_int64 ();
+        var url = history[3];
+        var img = last_cats_data.get (last_cats_data.length - 1 - last_cat_indexer);
+        show_cat_history (select, act_select, id, url, img);
+    }
+
+    private void show_cat_history (string select, string act_select, int64 id, string url, GLib.Bytes img) {
+        change_method = "auto";
+        if ( select  == "Gary" ) {
+            switch_to_gary ();
+        } else if ( select  == "Garfield" ) {
+            switch_to_garfield ();
+        } else if ( select  == "Goober" ) {
+            switch_to_goober ();
+        } else if ( select  == "Gully" ) {
+            switch_to_gully ();
+        } else if ( select  == "Rory" ) {
+            switch_to_rory ();
+        } else if ( select  == "Surprise" ) {
+            switch_to_surprise ();
+        } else {
+            switch_to_gary ();
+        }
+        set_popover_title ();
+        actual_selection = act_select;
+        info_url.set_subtitle (@"<a href='$url'>$url</a>");
+        cat_id_button.set_value((double) id);
+        image_data = img;
+        set_spinner ();
+        image_render ();
+        change_method = "manual";
     }
 }
