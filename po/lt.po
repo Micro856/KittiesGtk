@@ -254,7 +254,7 @@ msgstr "Nuotraukos nuoroda"
 #. An image property, licence/license of the image
 #: src/window.blp:95
 msgctxt "Image details"
-msgid "Lincense"
+msgid "License"
 msgstr "Licencija"
 
 #. An image property, the API used to fetch the cat image, if Gary is selected, it should be read as "API: api.garythe.cat"
