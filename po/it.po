@@ -114,7 +114,7 @@ msgstr "Quante immagini di gatti conservare nella cronologia"
 #: src/application.vala:69
 msgctxt "credits"
 msgid "translator-credits"
-msgstr ""
+msgstr "Albano Battistella"
 
 #: src/application.vala:72
 msgid ""
