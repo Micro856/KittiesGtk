@@ -78,6 +78,18 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private unowned Adw.StatusPage empty_starred;
     [GtkChild]
     private unowned Gtk.StringList names;
+    [GtkChild]
+    private unowned Adw.Dialog pref_window;
+    [GtkChild]
+    private unowned Adw.SpinRow history_spinner;
+    [GtkChild]
+    private unowned Adw.PreferencesGroup cat_fact;
+    [GtkChild]
+    private unowned Adw.ActionRow rudi_fact;
+    [GtkChild]
+    private unowned Adw.ActionRow miziany_fact;
+    [GtkChild]
+    private unowned Gtk.Image cat_fact_img;
 
     private int64 cat_id;
     private string cat_url;
@@ -97,7 +109,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private GenericArray<GLib.Bytes> last_cats_data = new GenericArray<GLib.Bytes> ();
     private uint last_cat_indexer = 0;
     private uint last_cat_last_indexer = 0;
-    private int max_last = 15;
+    private int max_last;
 
     private Kittiesgtk.Backend backend = new Kittiesgtk.Backend ();
     private Kittiesgtk.Arrays arrays = new Kittiesgtk.Arrays ();
@@ -122,6 +134,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             { "go_next", go_next_action },
             { "add_one", add_one_action },
             { "rm_one", rm_one_action },
+            { "preferences", pref_window_action },
         };
         this.add_action_entries (action_entries, this);
         getting = lookup_action ("save") as SimpleAction;
@@ -137,6 +150,11 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
             add_css_class ("devel");
         }
+
+        history_spinner.notify["value"].connect (() => {
+            max_last = (int)  history_spinner.get_value ();
+            set_history_dconf ();
+        });
 
         cat_id_button.notify["value"].connect (() => {
             if (change_method == "manual") {
@@ -361,6 +379,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private void get_cat_dconf () {
         var dconf = new Settings ("io.github.Micro856.KittiesGtk");
         var cat = dconf.get_string ("selected-cat");
+        var history = dconf.get_int ("history");
 
         if ( cat  == "Gary" ) {
             switch_to_gary ();
@@ -377,6 +396,14 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         } else {
             switch_to_gary ();
         }
+
+        if ( history <= 0 || history > 50 ) {
+            max_last = 15;
+        } else {
+            max_last = history;
+        }
+
+        history_spinner.set_value (max_last);
     }
 
     private void set_cat_dconf () {
@@ -401,6 +428,15 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         dconf.set_string ("selected-cat", value);
         if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
             stdout.printf("Saved value: %s\n", dconf.get_string ("selected-cat"));
+        }
+    }
+
+    private void set_history_dconf () {
+        var dconf = new Settings ("io.github.Micro856.KittiesGtk");
+
+        dconf.set_int ("history", max_last);
+        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
+            stdout.printf("Saved history value: %d\n", dconf.get_int ("history"));
         }
     }
 
@@ -651,5 +687,17 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             cat_id--;
             cat_id_button.set_value((double) cat_id);
         }
+    }
+
+    private void pref_window_action () {
+        cat_fact_img.set_from_icon_name (Config.APP_ID);
+        if (Config.APP_ID == "io.github.Micro856.KittiesGtkDevel") {
+            miziany_fact.add_prefix (cat_fact_img);
+            cat_fact.add (miziany_fact);
+        } else {
+            rudi_fact.add_prefix (cat_fact_img);
+            cat_fact.add (rudi_fact);
+        }
+        pref_window.present (this);
     }
 }

@@ -15,5 +15,12 @@
 	      Starred Images as an array. Format: (cats-name)(id)
 	    </description>
 	  </key>
+	  <key name="history" type="i">
+	    <default>15</default>
+      <summary>Amount of Images to store</summary>
+	    <description>
+	      How much cat images should be stored in history
+	    </description>
+	  </key>
 	</schema>
 </schemalist>
