@@ -485,7 +485,6 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         actual_selection = cat;
         change_method = "manual";
         cat_id_button.set_value((double) id);
-        set_spinner_online ();
         if (navigation.get_visible_page_tag () == "stars") {
             navigation.pop_to_tag ("main");
         }
