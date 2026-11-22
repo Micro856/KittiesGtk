@@ -12,7 +12,7 @@
     <p>Features:</p>
     <ul>
       <li>Support for Multiple APIs</li>
-      <li>Saving Cat Images</li>
+      <li>Saving &amp; Copying Cat Images</li>
       <li>Keyboard Navigation</li>
     </ul>
   </description>
@@ -38,12 +38,32 @@
 
   <screenshots>
     <screenshot type="default">
-      <image>https://github.com/user-attachments/assets/f5b62ac2-671f-4586-85e5-803819248ba5</image>
-      <caption>Main Window of Kitties showing an image of Gary</caption>
+      <image>https://raw.githubusercontent.com/Micro856/KittiesGtk/refs/heads/master/data/screenshots/1-rory.png</image>
+      <caption>Main Window of Kitties showing an image of Rory</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/Micro856/KittiesGtk/refs/heads/master/data/screenshots/2-goober.png</image>
+      <caption>Main Window of Kitties showing an image of Goober with “Cat &amp; Image Picker” Menu open</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/Micro856/KittiesGtk/refs/heads/master/data/screenshots/3-gary.png</image>
+      <caption>Main Window of Kitties showing an image of Gary with “Cat &amp; Image Picker” Menu and Cat Picker open</caption>
     </screenshot>
   </screenshots>
 
   <releases>
+    <release version="1.2.0" date="2026-11-23">
+      <url type="details">https://github.com/Micro856/KittiesGtk/releases/tag/1.2.0</url>
+      <description translate="no">
+        <ul>
+          <li>Added the ability to mark images as Starred</li>
+          <li>Added the ability to switch between recent images</li>
+          <li>Improved Keyboard Navigation</li>
+          <li>New Translations were added</li>
+          <li>Translations were updated</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.1.0" date="2026-11-11">
       <url type="details">https://github.com/Micro856/KittiesGtk/releases/tag/1.1.0</url>
       <description translate="no">
