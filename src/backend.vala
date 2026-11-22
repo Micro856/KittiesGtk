@@ -87,8 +87,8 @@ public class Kittiesgtk.Backend {
         return image_data;
     }
 
-    public bool check_mark (string selection, int64 id, string url, GenericArray<string> array) {
-        string current = @"$selection-$id-$url";
+    public bool check_mark (string sel, int64 id, string url, GenericArray<string> array) {
+        string current = @"$sel-$id-$url";
         bool result = false;
         if (array.find_with_equal_func (current, str_equal) == false) {
             result = false;
