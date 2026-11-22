@@ -88,6 +88,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private bool checked;
 
     private string change_method = "manual";
+    private string render_method = "render";
     private GenericArray<string> bookmarks_array = new GenericArray<string> ();
 
     private GenericArray<string> last_cats = new GenericArray<string> ();
@@ -229,6 +230,8 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         mark.set_sensitive (false);
         info_bttn.set_sensitive (false);
 
+        render_method = "render";
+
         cat_url = yield backend.image_get_url(cat_id, actual_selection);
 
         if (cat_url != "https://example.org" && cat_id != 0) {
@@ -236,6 +239,8 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
             if (image_data == null) {
                 data_issue.set_revealed (true);
+            } else {
+                clean_last_override ();
             }
 
             image_render ();
@@ -272,13 +277,14 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         } else {
             picture.set_paintable (to_display);
 
-            if (cat_id != 0 && last_cat_indexer == 0 && last_cat_last_indexer == 0) {
-                clean_last_override();
+            if (render_method == "render") {
                 var sel = selection.string;
                 last_cats.add (@"$sel-$actual_selection-$cat_id-$cat_url");
                 last_cats_data.add (image_data);
                 clean_last_above();
             }
+
+            control_navigation ();
 
             checked = backend.check_mark (actual_selection, cat_id, bookmarks_array);
             mark_appearance ();
@@ -494,10 +500,13 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
     private void clean_last_override () {
         if (last_cat_indexer > 0) {
-            for (int i = 0; i < last_cat_indexer; i++) {
-                last_cats.remove_index (last_cats.length - 1 - i);
-                last_cats_data.remove_index (last_cats.length - 1 - i);
+            var i = last_cats.length - 1 - last_cat_indexer;
+            while (last_cats.length != i + 1) {
+                last_cats.remove_index (i + 1);
+                last_cats_data.remove_index (i + 1);
             }
+            last_cat_indexer = 0;
+            last_cat_last_indexer = 1;
         }
     }
 
@@ -552,7 +561,20 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         cat_id_button.set_value((double) id);
         image_data = img;
         set_spinner ();
+        render_method = "history";
         image_render ();
+        stdout.printf ("%d\n", (int) last_cat_indexer);
         change_method = "manual";
+    }
+
+    private void control_navigation () {
+        back.set_sensitive (false);
+        next.set_sensitive (false);
+        if (last_cat_indexer < (last_cats.length - 1) && last_cats.length != 1) {
+            back.set_sensitive (true);
+        }
+        if (last_cat_indexer != 0 && last_cat_indexer < last_cats.length) {
+            next.set_sensitive (true);
+        }
     }
 }

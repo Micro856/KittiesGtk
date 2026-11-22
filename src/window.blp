@@ -51,6 +51,7 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
               icon-name: "go-previous-symbolic";
               // Tooltip for a button, which when pressed will go Backwards 1 step
               tooltip-text: C_("Button tooltip", "Back");
+              sensitive: false;
             }
             Button next {
               halign: center;
@@ -58,6 +59,7 @@ template $KittiesgtkWindow: Adw.ApplicationWindow {
               icon-name: "go-next-symbolic";
               // Tooltip for a button, which when pressed will go Forwards 1 step
               tooltip-text: C_("Button tooltip", "Forward");
+              sensitive: false;
             }
             Button dice {
               halign: center;
