@@ -318,7 +318,12 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             picture.set_paintable (to_display);
 
             if (render_method == "render") {
-                var sel = selection.string;
+                string sel;
+                if ( selection_id  == 5 ) {
+                    sel = "Surprise";
+                } else {
+                    sel = selection.string;
+                }
                 last_cats.add (@"$sel-$actual_selection-$cat_id-$cat_url");
                 last_cats_data.add (image_data);
                 clean_last_above();
@@ -411,18 +416,10 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
         string value = "Surprise";
 
-        if ( selection_id  == 1 ) {
-            value = "Gary";
-        } else if ( selection_id  == 0 ) {
-            value = "Garfield";
-        } else if ( selection_id  == 2 ) {
-            value = "Gober";
-        } else if ( selection_id  == 3 ) {
-            value = "Gully";
-        } else if ( selection_id  == 4 ) {
-            value = "Rory";
-        } else if ( selection_id  == 5 ) {
+        if ( selection_id  == 5 ) {
             value = "Surprise";
+        } else {
+            value = selection.string;
         }
 
         dconf.set_string ("selected-cat", value);
