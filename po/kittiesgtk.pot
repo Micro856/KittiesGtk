@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kittiesgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-22 15:27+0100\n"
+"POT-Creation-Date: 2026-11-22 18:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,7 +52,7 @@ msgid "Support for Multiple APIs"
 msgstr ""
 
 #: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:15
-msgid "Saving Cat Images"
+msgid "Saving & Copying Cat Images"
 msgstr ""
 
 #: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:16
@@ -64,7 +64,19 @@ msgid "Marcel Mrówka"
 msgstr ""
 
 #: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:42
-msgid "Main Window of Kitties showing an image of Gary"
+msgid "Main Window of Kitties showing an image of Rory"
+msgstr ""
+
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:46
+msgid ""
+"Main Window of Kitties showing an image of Goober with “Cat & Image Picker” "
+"Menu open"
+msgstr ""
+
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:50
+msgid ""
+"Main Window of Kitties showing an image of Gary with “Cat & Image Picker” "
+"Menu and Cat Picker open"
 msgstr ""
 
 #: data/io.github.Micro856.KittiesGtk.gschema.xml:6
@@ -120,12 +132,12 @@ msgid "Surprise"
 msgstr ""
 
 #. Tooltip for a button, which when pressed will add image to "Starred"
-#: src/window.vala:509 src/window.blp:80
+#: src/window.vala:506 src/window.blp:80
 msgctxt "Button tooltip"
 msgid "Mark as Starred"
 msgstr ""
 
-#: src/window.vala:512
+#: src/window.vala:509
 msgctxt "Button tooltip"
 msgid "Unmark as Starred"
 msgstr ""
@@ -275,7 +287,7 @@ msgstr ""
 
 #. A tooltip
 #: src/window.blp:21
-msgid "Cat & Image Selector"
+msgid "Cat & Image Picker"
 msgstr ""
 
 #. Title for selector of cats, this means the currently selected Cat is, kind of like "Cat:", but without ':'
