@@ -87,8 +87,8 @@ public class Kittiesgtk.Backend {
         return image_data;
     }
 
-    public bool check_mark (string selection, int64 id, GenericArray<string> array) {
-        string current = @"$selection$id";
+    public bool check_mark (string selection, int64 id, string url, GenericArray<string> array) {
+        string current = @"$selection-$id-$url";
         bool result = false;
         if (array.find_with_equal_func (current, str_equal) == false) {
             result = false;
@@ -120,6 +120,7 @@ public class Kittiesgtk.Backend {
         var url = "https://example.org";
         if (cat_name == "Rory") {
             url = yield rory.get_rory_url (cat_id);
+            stdout.printf("%s\n", url);
         } else  {
             url = gary.get_gary_url (cat_id, cat_name);
         }

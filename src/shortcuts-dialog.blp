@@ -23,6 +23,20 @@ Adw.ShortcutsDialog shortcuts_dialog {
           }
       Adw.ShortcutsSection {
             // Tile of the keyboard shortcut category, things done to/with the image
+            title: C_("Shortcut category", "Image History");
+             Adw.ShortcutsItem {
+                  // Name of the keyboard shortcut
+                  title: C_("Shortcut", "Go Back");
+                  action-name: "win.go_back";
+                }
+            Adw.ShortcutsItem {
+                  // Name of the keyboard shortcut
+                  title: C_("Shortcut", "Go Forward");
+                  action-name: "win.go_next";
+                }
+          }
+      Adw.ShortcutsSection {
+            // Tile of the keyboard shortcut category, things done to/with the image
             title: C_("Shortcut category", "Image");
              Adw.ShortcutsItem {
                   // Name of the keyboard shortcut
@@ -34,6 +48,16 @@ Adw.ShortcutsDialog shortcuts_dialog {
                   title: C_("Shortcut", "Enter Image Number");
                   action-name: "win.img_number";
                 }
+            Adw.ShortcutsItem {
+                  // Name of the keyboard shortcut
+                  title: C_("Shortcut", "Increase Image Number");
+                  action-name: "win.add_one";
+            }
+            Adw.ShortcutsItem {
+                  // Name of the keyboard shortcut
+                  title: C_("Shortcut", "Decrease Image Number");
+                  action-name: "win.rm_one";
+            }
             Adw.ShortcutsItem {
                   // Name of the keyboard shortcut
                   title: C_("Shortcut", "Mark/Unmark as Starred");
