@@ -120,6 +120,7 @@ public class Kittiesgtk.Backend {
         var url = "https://example.org";
         if (cat_name == "Rory") {
             url = yield rory.get_rory_url (cat_id);
+            stdout.printf("%s\n", url);
         } else  {
             url = gary.get_gary_url (cat_id, cat_name);
         }

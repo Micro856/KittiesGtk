@@ -45,14 +45,24 @@ public class Kittiesgtk.RoryApi {
         var session = new Soup.Session ();
         var url = "https://rory.cat/purr/" + cat_id.to_string ();
         var json_get = new Soup.Message ("GET", @url);
+        GLib.Bytes raw_json_response_data;
         try {
-            GLib.Bytes raw_json_response_data = yield session.send_and_read_async (json_get, GLib.Priority.DEFAULT, null);
+            raw_json_response_data = yield session.send_and_read_async (json_get, GLib.Priority.DEFAULT, null);
+        } catch {
+            warning ("Can't get the picture URL");
+            return "https://example.org";
+        }
+        try {
             string json_response_data = (string) raw_json_response_data.get_data ();
 
             var parser = new Json.Parser ();
             parser.load_from_data (json_response_data);
             Json.Object json_root_object = parser.get_root ().get_object ();
 	        var final_url = json_root_object.get_string_member ("url");
+
+	        if (final_url == null) {
+                final_url = json_root_object.get_string_member ("error");
+            }
 
             return final_url;
         } catch {

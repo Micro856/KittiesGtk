@@ -35,6 +35,8 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     [GtkChild]
     private unowned Adw.Banner image_issue;
     [GtkChild]
+    private unowned Adw.Banner data_404;
+    [GtkChild]
     private unowned Adw.SpinRow cat_id_button;
     [GtkChild]
     private unowned Gtk.SpinButton cat_id_button_window;
@@ -116,6 +118,10 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             { "img_number", img_number_window },
             { "open_starred", open_starred },
             { "mark_starred", mark_starred },
+            { "go_back", go_back_action },
+            { "go_next", go_next_action },
+            { "add_one", add_one_action },
+            { "rm_one", rm_one_action },
         };
         this.add_action_entries (action_entries, this);
         getting = lookup_action ("save") as SimpleAction;
@@ -172,6 +178,16 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             }
         });
 
+        data_404.button_clicked.connect (() => {
+            image_render_random ();
+        });
+
+        data_404.notify["revealed"].connect (() => {
+            if ( data_404.get_revealed () == true ) {
+                dice.set_sensitive (true);
+            }
+        });
+
         image_issue.button_clicked.connect (() => {
             image_render ();
         });
@@ -224,6 +240,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
     private async void image_get () {
         dice.set_sensitive (false);
         data_issue.set_revealed (false);
+        data_404.set_revealed (false);
         image_issue.set_revealed (false);
         getting.set_enabled (false);
         clipboard.set_enabled (false);
@@ -234,16 +251,21 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
 
         cat_url = yield backend.image_get_url(cat_id, actual_selection);
 
-        if (cat_url != "https://example.org" && cat_id != 0) {
+        if (cat_url == "this rory does not exist") {
+            data_404.set_revealed (true);
+            progress.set_visible (false);
+        } else if (cat_url != "https://example.org" && cat_id != 0) {
             image_data = yield backend.image_get_data (cat_url, progress);
 
-            if (image_data == null) {
+            if (image_data.length == 153) {
+                data_404.set_revealed (true);
+                progress.set_visible (false);
+            } else if (image_data == null) {
                 data_issue.set_revealed (true);
             } else {
                 clean_last_override ();
+                image_render ();
             }
-
-            image_render ();
         } else {
             data_issue.set_revealed (true);
         }
@@ -598,6 +620,36 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         }
         if (last_cat_indexer != 0 && last_cat_indexer < last_cats.length) {
             next.set_sensitive (true);
+        }
+    }
+
+    private void go_back_action () {
+        var disabled = back.get_sensitive ();
+        if ( disabled ) {
+            go_back_one ();
+        }
+    }
+
+    private void go_next_action () {
+        var disabled = next.get_sensitive ();
+        if ( disabled ) {
+            go_forward_one ();
+        }
+    }
+
+    private void add_one_action () {
+        var disabled = dice.get_sensitive ();
+        if ( disabled && selection_id != 5) {
+            cat_id++;
+            cat_id_button.set_value((double) cat_id);
+        }
+    }
+
+    private void rm_one_action () {
+        var disabled = dice.get_sensitive ();
+        if ( disabled && selection_id != 5) {
+            cat_id--;
+            cat_id_button.set_value((double) cat_id);
         }
     }
 }

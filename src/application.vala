@@ -45,6 +45,10 @@ public class Kittiesgtk.Application : Adw.Application {
         this.set_accels_for_action ("win.copy", {"<control>c"});
         this.set_accels_for_action ("win.mark_starred", {"<control>b"});
         this.set_accels_for_action ("win.open_starred", {"<control><shift>b"});
+        this.set_accels_for_action ("win.go_back", {"<alt>Left"});
+        this.set_accels_for_action ("win.go_next", {"<alt>Right"});
+        this.set_accels_for_action ("win.add_one", {"<alt>Up"});
+        this.set_accels_for_action ("win.rm_one", {"<alt>Down"});
         this.set_accels_for_action ("app.quit", {"<control>q"});
     }
 
