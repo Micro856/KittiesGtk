@@ -82,7 +82,7 @@ public class Kittiesgtk.Arrays {
                 var cat = history[0];
                 var id_str = history[1];
                 int64 id = int64.parse(id_str);
-                var url = history[2];
+                var new_url = history[2];
 
                 new_widget.set_title (cat);
                 new_widget.set_subtitle (id.to_string ());
@@ -90,7 +90,7 @@ public class Kittiesgtk.Arrays {
                 bookmarks.add (new_widget);
 
                 new_suffix.clicked.connect (() => {
-                    win.show_cat (cat, id, url);
+                    win.show_cat (cat, id, new_url);
                 });
             });
         } else {

@@ -484,23 +484,25 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         set_popover_title ();
         actual_selection = cat;
         var looked = @"$cat-$cat-$id-$url";
-        var looked_result = last_cats.find_with_equal_func(looked, str_equal);
         var looked2 = @"Surprise-$cat-$id-$url";
+        var looked_result = last_cats.find_with_equal_func(looked, str_equal);
         var looked2_result = last_cats.find_with_equal_func(looked2, str_equal);
-        stdout.printf ("%b %b\n", looked_result, looked2_result);
 
         if (looked_result == true || looked2_result == true) {
+            bool found = false;
             for (int i = 0; i < last_cats.length; i++) {
-                if (last_cats.get (i) == looked) {
-                    var history = arrays.regex (last_cats.get (i));
-                    info_url.set_subtitle (@"<a href='$url'>$url</a>");
-                    cat_id_button.set_value((double) id);
-                    cat_id = (int64) cat_id_button.get_value ();
-                    image_data = last_cats_data.get (i);
-                    set_spinner ();
-                    image_render ();
-                    change_method = "manual";
-                }
+                    if ((last_cats.get (i) == looked || last_cats.get (i) == looked2) && found == false) {
+                        var history = arrays.regex (last_cats.get (i));
+                        cat_url = url;
+                        info_url.set_subtitle (@"<a href='$cat_url'>$cat_url</a>");
+                        cat_id_button.set_value((double) id);
+                        cat_id = (int64) cat_id_button.get_value ();
+                        image_data = last_cats_data.get (i);
+                        set_spinner ();
+                        image_render ();
+                        change_method = "manual";
+                        found = true;
+                    }
             }
         } else {
             change_method = "manual";
@@ -577,6 +579,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         }
         set_popover_title ();
         actual_selection = act_select;
+        cat_url = url;
         info_url.set_subtitle (@"<a href='$url'>$url</a>");
         cat_id_button.set_value((double) id);
         cat_id = (int64) cat_id_button.get_value ();
