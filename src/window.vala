@@ -318,9 +318,8 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
             picture.set_paintable (to_display);
 
             if (render_method == "render") {
-                var sel = selection_id;
+                var sel = selection.string;
                 last_cats.add (@"$sel-$actual_selection-$cat_id-$cat_url");
-                stdout.printf (@"$sel-$actual_selection-$cat_id-$cat_url\n");
                 last_cats_data.add (image_data);
                 clean_last_above();
             }
@@ -596,8 +595,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         last_cat_indexer++;
         var str = last_cats.get (last_cats.length - 1 - last_cat_indexer);
         var history = arrays.regex (str);
-        var select_str = history[0];
-        int select = int.parse(select_str);
+        var select = history[0];
         var act_select = history[1];
         var id_str = history[2];
         int64 id = int64.parse(id_str);
@@ -611,8 +609,7 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         last_cat_indexer--;
         var str = last_cats.get (last_cats.length - 1 - last_cat_indexer);
         var history = arrays.regex (str);
-        var select_str = history[0];
-        int select = int.parse(select_str);
+        var select = history[0];
         var act_select = history[1];
         var id_str = history[2];
         int64 id = int64.parse(id_str);
@@ -621,19 +618,19 @@ public class Kittiesgtk.Window : Adw.ApplicationWindow {
         show_cat_history (select, act_select, id, url, img);
     }
 
-    private void show_cat_history (int select, string act_select, int64 id, string url, GLib.Bytes img) {
+    private void show_cat_history (string select, string act_select, int64 id, string url, GLib.Bytes img) {
         change_method = "auto";
-        if ( select  == 1 ) {
+        if ( select  == "Gary" ) {
             switch_to_gary ();
-        } else if ( select == 0 ) {
+        } else if ( select  == "Garfield" ) {
             switch_to_garfield ();
-        } else if ( select == 2 ) {
+        } else if ( select  == "Goober" ) {
             switch_to_goober ();
-        } else if ( select == 3 ) {
+        } else if ( select  == "Gully" ) {
             switch_to_gully ();
-        } else if ( select == 4 ) {
+        } else if ( select  == "Rory" ) {
             switch_to_rory ();
-        } else if ( select == 5 ) {
+        } else if ( select  == "Surprise" ) {
             switch_to_surprise ();
         } else {
             switch_to_gary ();
