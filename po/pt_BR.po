@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: kittiesgtk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-11-07 15:40+0100\n"
-"PO-Revision-Date: 2026-11-22 23:25+0300\n"
+"PO-Revision-Date: 2026-11-22 23:28+0300\n"
 "Last-Translator: Pedro Lucas <pedrolucasdev644@gmail.com>\n"
 "Language-Team: Brazilian Portuguese\n"
 "Language: pt_BR\n"
@@ -259,7 +259,7 @@ msgstr "Licença"
 
 #. An image property, the API used to fetch the cat image, if Gary is selected, it should be read as "API: api.garythe.cat"
 #: src/window.blp:101
-msgctxt "Image details"
+msgctxt "Image details"d
 msgid "API"
 msgstr "API"
 
@@ -273,7 +273,7 @@ msgstr "Menu principal"
 #: src/window.blp:121
 msgctxt "Banner"
 msgid "A problem occurred while getting the image."
-msgstr "Um problema ocorreu ao pegar a imagem."
+msgstr "Ocorreu um problema ao obter a imagem."
 
 #. Button for the action of both banners
 #: src/window.blp:123 src/window.blp:129
@@ -285,7 +285,7 @@ msgstr "Tentar de novo"
 #: src/window.blp:128
 msgctxt "Banner"
 msgid "A problem occurred while displaying the image."
-msgstr "Um problema ocorreu ao mostrar a imagem."
+msgstr "Ocorreu um problema ao exibir a imagem."
 
 #. Little popup that appears when file was saved
 #: src/window.blp:148
@@ -297,7 +297,7 @@ msgstr "Imagem salva com sucesso!"
 #: src/window.blp:153
 msgctxt "Toast"
 msgid "A problem occurred while saving the image."
-msgstr "Um problema ocorreu ao salvar a imagem."
+msgstr "Ocorreu um problema ao salvar a imagem."
 
 #. Little popup that appears when user cancells saving
 #: src/window.blp:158
