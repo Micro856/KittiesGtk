@@ -2,13 +2,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the kittiesgtk package.
 # Pedro Lucas <pedrolucasdev644@gmail.com>, 2026.
-
 msgid ""
 msgstr ""
 "Project-Id-Version: kittiesgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-07 15:40+0100\n"
-"PO-Revision-Date: 2026-11-07 16:52+0200\n"
+"POT-Creation-Date: 2026-11-23 12:26-0300\n"
+"PO-Revision-Date: 2026-11-23 12:49-0300\n"
 "Last-Translator: Pedro Lucas <pedrolucasdev644@gmail.com>\n"
 "Language-Team: Brazilian Portuguese\n"
 "Language: pt_BR\n"
@@ -16,69 +15,100 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.9\n"
 
 #. This name is generic enough. Go ahead translate it.
-#: data/io.github.Micro856.KittiesGtk.desktop.in:2
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:7 src/application.vala:57
-#: src/window.blp:6
+#: data/io.github.Micro856.KittiesGtk.desktop.in.in:2 data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:7
+#: src/application.vala:65 src/window.blp:6 src/window.blp:13
 msgid "Kitties"
 msgstr "Gatinhos"
 
-#: data/io.github.Micro856.KittiesGtk.desktop.in:8
+#: data/io.github.Micro856.KittiesGtk.desktop.in.in:8
 msgid "GTK;Cat;Cats;Kitty;Feline;Felines;Meow;Gary;Goober;Gully;Garfield;Rory;API;Image;Download;Random;"
 msgstr "GTK;Gato;Gatos;Gatinhos;Felino;Felinos;Miau;Gary;Goober;Gully;Garfield;Rory;API;Imagem;Baixar;Aleatório;"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:8
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:8
 msgid "View random images of felines"
 msgstr "Ver imagens aleatórias de felinos"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:10
-msgid ""
-"Kitties is an app that lets you display a random image of one of the "
-"available cats."
-msgstr ""
-"Gatinhos é um aplicativo que te permite exibir uma imagem aleatória "
-"de um dos gatos disponíveis."
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:10
+msgid "Kitties is an app that lets you display a random image of one of the available cats."
+msgstr "Gatinhos é um aplicativo que te permite exibir uma imagem aleatória de um dos gatos disponíveis."
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:11
-msgid ""
-"These pictures come from various APIs including api.garythe.cat and rory.cat."
-msgstr ""
-"Essas fotos vêm de várias APIs, incluindo api.garythe.cat e rory.cat."
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:11
+msgid "These pictures come from various APIs including api.garythe.cat and rory.cat."
+msgstr "Essas fotos vêm de várias APIs, incluindo api.garythe.cat e rory.cat."
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:12
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:12
 msgid "Features:"
 msgstr "Recursos:"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:14
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:14
 msgid "Support for Multiple APIs"
 msgstr "Suporte a várias APIs"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:15
-msgid "Saving Cat Images"
-msgstr "Salvando imagens de gato"
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:15
+msgid "Saving & Copying Cat Images"
+msgstr "Salvando e copiando imagens de gatos"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:16
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:16
 msgid "Keyboard Navigation"
 msgstr "Navegação por teclado"
 
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:21
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:21
 msgid "Marcel Mrówka"
 msgstr "Marcel Mrówka"
 
 # Coloquei do app Gatinhos em vez de do Gatinhos pois
 # do (singular) briga não fica bem acompanhado de Gatinhos (plural)
-#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in:42
-msgid "Main Window of Kitties showing an image of Gary"
-msgstr "Janela principal do app Gatinhos mostrando uma imagem do Gary"
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:42
+msgid "Main Window of Kitties showing an image of Rory"
+msgstr "Janela principal do app Gatinhos mostrando uma imagem do Rory"
+
+# Coloquei do app Gatinhos em vez de do Gatinhos pois
+# do (singular) briga não fica bem acompanhado de Gatinhos (plural)
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:46
+msgid "Main Window of Kitties showing an image of Goober with “Cat & Image Picker” Menu open"
+msgstr "Janela principal do app Gatinhos mostrando uma imagem do Goober com o menu “Cat & Image Picker”"
+
+# Coloquei do app Gatinhos em vez de do Gatinhos pois
+# do (singular) briga não fica bem acompanhado de Gatinhos (plural)
+#: data/io.github.Micro856.KittiesGtk.metainfo.xml.in.in:50
+msgid "Main Window of Kitties showing an image of Gary with “Cat & Image Picker” Menu and Cat Picker open"
+msgstr ""
+"Janela principal do app Gatinhos mostrando uma imagem do Gary com o menu “Selecionador por gato e imagem”"
+
+#: data/io.github.Micro856.KittiesGtk.gschema.xml:6
+msgid "Currently selected cat"
+msgstr "Gato selecionado"
+
+#: data/io.github.Micro856.KittiesGtk.gschema.xml:7
+msgid "Name of the currently selected cat"
+msgstr "Nome do gato selecionado"
+
+#: data/io.github.Micro856.KittiesGtk.gschema.xml:13
+msgid "Starred Images"
+msgstr "Imagens favoritas"
+
+#: data/io.github.Micro856.KittiesGtk.gschema.xml:14
+msgid "Starred Images as an array. Format: (cats-name)(id)"
+msgstr "Imagens favoritas como uma matriz. Formato (cats-name)(id)"
+
+#: data/io.github.Micro856.KittiesGtk.gschema.xml:20
+msgid "Amount of Images to store"
+msgstr "Quantidade de imagens para armazenar"
+
+#: data/io.github.Micro856.KittiesGtk.gschema.xml:21
+msgid "How much cat images should be stored in history"
+msgstr "Quantas imagens de gatos devem ser armazenadas no histórico"
 
 #. Format: NAMES/NICKNAME <e-mail/website-url>, YEAR
-#: src/application.vala:61
+#: src/application.vala:69
 msgctxt "credits"
 msgid "translator-credits"
 msgstr "Pedro Lucas <pedrolucasdev644@gmail.com>"
 
-#: src/application.vala:64
+#: src/application.vala:72
 msgid ""
 "© 2026 Marcel Mrówka\n"
 "\n"
@@ -109,6 +139,26 @@ msgstr ""
 "\n"
 "You should have received a copy of the GNU General Public License\n"
 "along with this program.  If not, see https://www.gnu.org/licenses/."
+
+#: src/window.vala:226
+msgid "Surprise"
+msgstr "Surprise"
+
+#. Tooltip for a button, which when pressed will add image to "Starred"
+#: src/window.vala:513 src/window.blp:80
+msgctxt "Button tooltip"
+msgid "Mark as Starred"
+msgstr "Favoritar"
+
+#: src/window.vala:516
+msgctxt "Button tooltip"
+msgid "Unmark as Starred"
+msgstr "Desfavoritar"
+
+#: src/arrays.vala:78
+msgctxt "Button tooltip"
+msgid "Show Image"
+msgstr "Mostrar imagem"
 
 #. Title of the keyboard shortcut category
 #: src/shortcuts-dialog.blp:7
@@ -119,216 +169,360 @@ msgstr "Geral"
 #. Name of the keyboard shortcut
 #: src/shortcuts-dialog.blp:10
 msgctxt "Shortcut"
+msgid "Show Starred"
+msgstr "Mostrar favoritos"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:15
+msgctxt "Shortcut"
+msgid "Show Preferences"
+msgstr "Mostrar preferências"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:20
+msgctxt "Shortcut"
 msgid "Show Shortcuts"
 msgstr "Mostrar atalhos"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:15
+#: src/shortcuts-dialog.blp:25
 msgctxt "Shortcut"
 msgid "Quit"
 msgstr "Sair"
 
 #. Tile of the keyboard shortcut category, things done to/with the image
-#: src/shortcuts-dialog.blp:21
+#: src/shortcuts-dialog.blp:31
+msgctxt "Shortcut category"
+msgid "Image History"
+msgstr "História da imagem"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:34
+msgctxt "Shortcut"
+msgid "Go Back"
+msgstr "Voltar"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:39
+msgctxt "Shortcut"
+msgid "Go Forward"
+msgstr "Avançar"
+
+#. Tile of the keyboard shortcut category, things done to/with the image
+#: src/shortcuts-dialog.blp:45
 msgctxt "Shortcut category"
 msgid "Image"
 msgstr "Imagem"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:24
+#: src/shortcuts-dialog.blp:48
 msgctxt "Shortcut"
 msgid "Copy Image"
 msgstr "Copiar imagem"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:29
+#: src/shortcuts-dialog.blp:53
 msgctxt "Shortcut"
 msgid "Enter Image Number"
 msgstr "Digitar número da imagem"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:34
+#: src/shortcuts-dialog.blp:58
+msgctxt "Shortcut"
+msgid "Increase Image Number"
+msgstr "Aumentar número da imagem"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:63
+msgctxt "Shortcut"
+msgid "Decrease Image Number"
+msgstr "Diminuir número da imagem"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:68
+msgctxt "Shortcut"
+msgid "Mark/Unmark as Starred"
+msgstr "Marcar/desmarcar como favorito"
+
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:73
 msgctxt "Shortcut"
 msgid "Randomize Image"
 msgstr "Imagem aleatória"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:39
+#: src/shortcuts-dialog.blp:78
 msgctxt "Shortcut"
 msgid "Save Image"
 msgstr "Salvar imagem"
 
 #. Name of the keyboard shortcut category, selecting cats form keyboard
-#: src/shortcuts-dialog.blp:45
+#: src/shortcuts-dialog.blp:84
 msgctxt "Shortcut category"
 msgid "Cat Selection"
-msgstr "Seleção de gatos"
+msgstr "Selecionar gato"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:48
+#: src/shortcuts-dialog.blp:87
 msgctxt "Shortcut"
 msgid "Switch to Garfield"
 msgstr "Mudar para Garfield"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:53
+#: src/shortcuts-dialog.blp:92
 msgctxt "Shortcut"
 msgid "Switch to Gary"
 msgstr "Mudar para Gary"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:58
+#: src/shortcuts-dialog.blp:97
 msgctxt "Shortcut"
 msgid "Switch to Goober"
 msgstr "Mudar para Goober"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:63
+#: src/shortcuts-dialog.blp:102
 msgctxt "Shortcut"
 msgid "Switch to Gully"
 msgstr "Mudar para Gully"
 
 #. Name of the keyboard shortcut
-#: src/shortcuts-dialog.blp:68
+#: src/shortcuts-dialog.blp:107
 msgctxt "Shortcut"
 msgid "Switch to Rory"
 msgstr "Mudar para Rory"
 
+#. Name of the keyboard shortcut
+#: src/shortcuts-dialog.blp:112
+msgctxt "Shortcut"
+msgid "Switch to Surprise"
+msgstr "Mudar para Surprise"
+
 #. A tooltip
-#: src/window.blp:17
-msgid "Cat & Image Selector"
-msgstr "Selecionar gato e imagem"
+#: src/window.blp:21
+msgid "Cat & Image Picker"
+msgstr "Selecionador por gato e imagem"
 
 #. Title for selector of cats, this means the currently selected Cat is, kind of like "Cat:", but without ':'
-#: src/window.blp:22
+#: src/window.blp:26
 msgctxt "Cat selector"
 msgid "Cat"
 msgstr "Gato"
 
 #. Title for the selector of the image, just like with the cat selector, this means ID number of the image to display
-#: src/window.blp:30
+#: src/window.blp:33
 msgctxt "Image selector"
 msgid "Image Number"
 msgstr "Número da imagem"
 
+#. Tooltip for a button, which when pressed will go Backwards 1 step
+#: src/window.blp:53
+msgctxt "Button tooltip"
+msgid "Back"
+msgstr "Voltar"
+
+#. Tooltip for a button, which when pressed will go Forwards 1 step
+#: src/window.blp:61
+msgctxt "Button tooltip"
+msgid "Forward"
+msgstr "Avançar"
+
 #. Tooltip for a button, which when pressed will display a random image
-#: src/window.blp:50
+#: src/window.blp:69
 msgctxt "Button tooltip"
 msgid "Randomize Image"
 msgstr "Imagem aleatória"
 
-#. Tooltip for a button, which when pressed will save the currently visible image
-#: src/window.blp:57
-msgctxt "Button tooltip"
-msgid "Save Image"
-msgstr "Salvar imagem"
-
-#. Tooltip for a button, which when pressed will save the currently visible image
-#: src/window.blp:64
-msgctxt "Button tooltip"
-msgid "Copy Image"
-msgstr "Copiar imagem"
-
 #. Tooltip for a button, which when pressed will display the details of the image
-#: src/window.blp:74
+#: src/window.blp:86
 msgid "Image Details"
 msgstr "Detalhes da imagem"
 
 #. An image property, works like "Cat:", for example if selected cat is Gary, it should be read as "Cat: Gary"
-#: src/window.blp:80
+#: src/window.blp:92
 msgctxt "Image details"
 msgid "Cat"
 msgstr "Gato"
 
 #. An image property, works like "Cat:", for example if selected image is 2, it should be read as "Image number: 2"
-#: src/window.blp:85
+#: src/window.blp:97
 msgctxt "Image details"
 msgid "Image Number"
 msgstr "Número da imagem"
 
-#: src/window.blp:89
+#: src/window.blp:101
 msgctxt "Image details"
 msgid "Image URL"
 msgstr "Link da imagem"
 
 #. An image property, licence/license of the image
-#: src/window.blp:95
+#: src/window.blp:107
 msgctxt "Image details"
 msgid "License"
 msgstr "Licença"
 
 #. An image property, the API used to fetch the cat image, if Gary is selected, it should be read as "API: api.garythe.cat"
-#: src/window.blp:101
+#: src/window.blp:113
 msgctxt "Image details"
 msgid "API"
 msgstr "API"
 
 #. A tooltip for a button, which when pressed opens the main menu
-#: src/window.blp:111
+#: src/window.blp:123
 msgctxt "Button tooltip"
 msgid "Main Menu"
 msgstr "Menu principal"
 
 #. Text for the banner, which displays when the random image number or the image data could not be fetched
-#: src/window.blp:121
+#: src/window.blp:133
 msgctxt "Banner"
 msgid "A problem occurred while getting the image."
-msgstr "Um problema ocorreu ao pegar a imagem."
+msgstr "Ocorreu um problema ao obter a imagem."
 
 #. Button for the action of both banners
-#: src/window.blp:123 src/window.blp:129
+#: src/window.blp:135 src/window.blp:148
 msgctxt "Banner icon"
 msgid "Try Again"
 msgstr "Tentar de novo"
 
+#. Text for the banner, which displays when the output is a 404 page
+#: src/window.blp:140
+msgctxt "Banner"
+msgid "This Image does not exist."
+msgstr "Esta imagem não existe."
+
+#. Button for the action of the banner
+#: src/window.blp:142
+msgctxt "Banner icon"
+msgid "Randomize"
+msgstr "Aleatório"
+
 #. Text for the banner, which displays when the image could not be displayed
-#: src/window.blp:128
+#: src/window.blp:147
 msgctxt "Banner"
 msgid "A problem occurred while displaying the image."
-msgstr "Um problema ocorreu ao mostrar a imagem."
+msgstr "Ocorreu um problema ao exibir a imagem."
+
+#: src/window.blp:166
+msgctxt "Starred Page Title"
+msgid "Starred"
+msgstr "Favoritos"
 
 #. Little popup that appears when file was saved
-#: src/window.blp:148
+#: src/window.blp:186
 msgctxt "Toast"
 msgid "File saved successfully!"
 msgstr "Imagem salva com sucesso!"
 
 #. Little popup if the file wasn't saved correctly
-#: src/window.blp:153
+#: src/window.blp:191
 msgctxt "Toast"
 msgid "A problem occurred while saving the image."
-msgstr "Um problema ocorreu ao salvar a imagem."
+msgstr "Ocorreu um problema ao salvar a imagem."
 
 #. Little popup that appears when user cancells saving
-#: src/window.blp:158
+#: src/window.blp:196
 msgctxt "Toast"
 msgid "File saving cancelled"
 msgstr "Salvamento da imagem cancelado"
 
 #. Little popup that appears when user copies an image
-#: src/window.blp:163
+#: src/window.blp:201
 msgctxt "Toast"
 msgid "Copied to Clipboard!"
 msgstr "Copiado para a área de transferência!"
 
+#: src/window.blp:207
+msgctxt "Starred"
+msgid "No Starred Images"
+msgstr "Sem imagens favoritas"
+
+#: src/window.blp:208
+msgctxt "Starred"
+msgid "Try using the “Mark as Starred” button"
+msgstr "Tente usar o botão “Favoritar”"
+
 #. Text for the entry of image number that get's triggered with a keyboard shortcut
-#: src/window.blp:181
+#: src/window.blp:225
 msgctxt "Tooltip?"
 msgid "Enter Image Number:"
 msgstr "Digitar número da imagem:"
 
+#: src/window.blp:243
+msgctxt "Window Title"
+msgid "Preferences"
+msgstr "Preferências"
+
+#: src/window.blp:245
+msgctxt "Preferences Group Title"
+msgid "History Management"
+msgstr "Gerenciamento de Histórico"
+
+#: src/window.blp:247
+msgctxt "Preference Title"
+msgid "Amount of Images to store"
+msgstr "Quantidade de imagens para armazenar"
+
+#: src/window.blp:248
+msgctxt "Preference Subtitle"
+msgid "How much cat images should be stored in history."
+msgstr "Quantas imagens de gatos devem ser armazenadas no histórico."
+
+#: src/window.blp:263 src/window.blp:269
+msgctxt "Preference Title"
+msgid "Did you know?"
+msgstr "Você sabia?"
+
+#: src/window.blp:264
+msgctxt "Preference Subitle"
+msgid "The cat on the app’s icon is named Rudi? He was my cat."
+msgstr "O gato no ícone do app chamado Rudy era o meu gato."
+
+#: src/window.blp:270
+msgctxt "Preference Subitle"
+msgid "The cat on the app’s icon is named Miziany? He is my cat."
+msgstr "O gato no ícone do app chamado Miziany é o meu gato."
+
 #. Label for menu item
-#: src/window.blp:200
+#: src/window.blp:281
+msgctxt "Menu item"
+msgid "_Save Image"
+msgstr "_Salvar imagem"
+
+#. Label for menu item
+#: src/window.blp:286
+msgctxt "Menu item"
+msgid "_Copy Image"
+msgstr "_Copiar imagem"
+
+#. Label for menu item
+#: src/window.blp:293
+msgctxt "Menu item"
+msgid "S_tarred"
+msgstr "_Favoritas"
+
+#. Label for menu item
+#: src/window.blp:300
 msgctxt "Menu item"
 msgid "_Keyboard Shortcuts"
 msgstr "Atalhos de _teclado"
 
+#. Label for menu item
+#: src/window.blp:305
+msgctxt "Menu item"
+msgid "_Preferences"
+msgstr "_Preferências"
+
 # Mesma ideia do comentário das linhas 69-70
 #. Label for menu item
-#: src/window.blp:205
+#: src/window.blp:310
 msgctxt "Menu item"
 msgid "_About Kitties"
 msgstr "_Sobre o app Gatinhos"
+
+#~ msgctxt "Button tooltip"
+#~ msgid "Copy Image"
+#~ msgstr "Copiar imagem"
 
 #~ msgctxt "App name"
 #~ msgid "Kitties"

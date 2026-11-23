@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kittiesgtk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-22 18:26+0100\n"
+"POT-Creation-Date: 2026-11-23 12:26-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -127,17 +127,17 @@ msgid ""
 "along with this program.  If not, see https://www.gnu.org/licenses/."
 msgstr ""
 
-#: src/window.vala:219
+#: src/window.vala:226
 msgid "Surprise"
 msgstr ""
 
 #. Tooltip for a button, which when pressed will add image to "Starred"
-#: src/window.vala:506 src/window.blp:80
+#: src/window.vala:513 src/window.blp:80
 msgctxt "Button tooltip"
 msgid "Mark as Starred"
 msgstr ""
 
-#: src/window.vala:509
+#: src/window.vala:516
 msgctxt "Button tooltip"
 msgid "Unmark as Starred"
 msgstr ""
