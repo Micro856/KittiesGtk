@@ -259,7 +259,7 @@ msgstr "Licença"
 
 #. An image property, the API used to fetch the cat image, if Gary is selected, it should be read as "API: api.garythe.cat"
 #: src/window.blp:101
-msgctxt "Image details"d
+msgctxt "Image details"
 msgid "API"
 msgstr "API"
 
