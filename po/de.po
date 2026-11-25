@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: kittiesgtk\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-11-22 22:28+0100\n"
-"PO-Revision-Date: 2026-11-24 08:07+0100\n"
+"PO-Revision-Date: 2026-11-25 08:34+0100\n"
 "Last-Translator: lzma79 <357816491+lzma79@users.noreply.github.com>\n"
 "Language-Team: de_DE\n"
 "Language: de_DE\n"
@@ -486,12 +486,12 @@ msgstr "Haben Sie gewusst?"
 #: src/window.blp:264
 msgctxt "Preference Subitle"
 msgid "The cat on the app’s icon is named Rudi? He was my cat."
-msgstr "Das der Kater in dem App Icon Rudi heißt? Er war mein Kater."
+msgstr "Dass der Kater in dem App Icon Rudi heißt? Er war mein Kater."
 
 #: src/window.blp:270
 msgctxt "Preference Subitle"
 msgid "The cat on the app’s icon is named Miziany? He is my cat."
-msgstr "Das der Kater in dem App Icon Miziany heißt? Er ist mein Kater."
+msgstr "Dass der Kater in dem App Icon Miziany heißt? Er ist mein Kater."
 
 #. Label for menu item
 #: src/window.blp:281
